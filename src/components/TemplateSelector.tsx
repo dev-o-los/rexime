@@ -7,7 +7,7 @@ import {
   TransformWrapper,
   useControls,
 } from "react-zoom-pan-pinch";
-import TemplateAmazing from "./template-amazing";
+import Resume from "./templates/Resume";
 
 const Controls = () => {
   const { zoomIn, zoomOut, resetTransform } = useControls();
@@ -36,7 +36,7 @@ export default function TemplateSelector() {
         <>
           {/* <Controls /> */}
           <TransformComponent>
-            <TemplateAmazing data={data} />
+            <Resume data={data} />
           </TransformComponent>
         </>
       )}

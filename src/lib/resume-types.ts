@@ -1,54 +1,37 @@
-export type ResumeContact = {
-  email: string;
-  phone?: string;
-  location?: string;
-  website?: string;
-  linkedin?: string;
-  github?: string;
-};
-
 export type ResumeExperience = {
+  title: string;
   company: string;
-  role: string;
   location?: string;
-  startDate: string;
-  endDate?: string;
-  current?: boolean;
-  bullets: string[];
-};
-
-export type ResumeEducation = {
-  school: string;
-  degree: string;
-  startDate: string;
-  endDate: string;
-  location?: string;
+  duration?: string;
+  points?: string[];
 };
 
 export type ResumeProject = {
-  name: string;
-  link?: string;
-  description?: string;
-  bullets?: string[];
-  tech?: string[];
-};
-
-export type ResumeAward = {
   title: string;
-  by?: string;
-  date?: string;
-  summary?: string;
+  stack?: string;
+  duration?: string;
+  points?: string[];
 };
 
 export type ResumeData = {
   name: string;
-  title: string;
-  contact?: ResumeContact;
-  summary?: string;
-  skills?: { name: string; level?: string }[];
-  experience: ResumeExperience[];
-  education: ResumeEducation[];
+  phone?: string;
+  email?: string;
+  linkedin?: string;
+  education?: {
+    institute: string;
+    degree: string;
+    location?: string;
+    duration?: string;
+  };
+  experience?: ResumeExperience[];
   projects?: ResumeProject[];
-  awards?: ResumeAward[];
-  languages?: string[];
+  achievements?: string[];
+  skills?: {
+    languages?: string[];
+    frameworks?: string[];
+    databases?: string[];
+    cloud?: string[];
+    tools?: string[];
+  };
 };

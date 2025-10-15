@@ -1,121 +1,76 @@
 import type { ResumeData } from "@/lib/resume-types";
 import { atom } from "jotai";
 
-const defaultResumeData: ResumeData = {
-  name: "",
-  title: "",
-  contact: {
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
-  },
-  summary: "",
-  skills: [],
-  experience: [],
-  education: [],
-  projects: [],
-  awards: [],
-  languages: [],
-};
-
 const sampleData: ResumeData = {
-  name: "Alexandra Chen",
-  title: "Senior Software Engineer",
-  contact: {
-    email: "alexandra.chen@example.com",
-    phone: "+1 (555) 010-2048",
-    location: "San Francisco, CA",
-    website: "alexandra.dev",
-    linkedin: "linkedin.com/in/alexandra-chen",
-    github: "github.com/alexchen",
+  name: "Sanika Jain",
+  phone: "+91-8989898989",
+  email: "sanikatest@gmail.com",
+  linkedin: "https://www.linkedin.com/in/sanikatest",
+  education: {
+    institute: "Indian Institute of Technology (IIT) Bombay",
+    degree: "Bachelor of Technology in Computer Science",
+    location: "Mumbai, India",
+    duration: "Aug 2018 – May 2022",
   },
-  summary:
-    "Senior engineer with 8+ years building high-performance web platforms. I lead cross-functional teams to ship impact, improve reliability, and reduce costs. Passionate about developer experience and systems that scale.",
-  skills: [
-    { name: "TypeScript" },
-    { name: "React" },
-    { name: "Next.js" },
-    { name: "Node.js" },
-    { name: "PostgreSQL" },
-    { name: "AWS" },
-    { name: "Distributed Systems" },
-    { name: "CI/CD" },
-  ],
   experience: [
     {
-      company: "Meta",
-      role: "Staff Software Engineer",
-      location: "Menlo Park, CA",
-      startDate: "2022",
-      current: true,
-      bullets: [
-        "Led migration of monolith services to a modular architecture, improving deployment speed by 35%.",
-        "Mentored 6 engineers; established performance review rubrics that improved promo clarity.",
-        "Optimized GraphQL layer reducing P95 latency from 420ms to 180ms.",
+      title: "Software Development Engineer - I",
+      company: "Amazon India",
+      location: "Bangalore, India",
+      duration: "July 2022 – Present",
+      points: [
+        "Developed a microservices-based order tracking system, improving latency by 30%.",
+        "Implemented DynamoDB and Redis caching to reduce database queries by 40%.",
+        "Optimized an existing payment fraud detection model using ML, reducing false positives by 20%.",
+        "Collaborated with cross-functional teams to enhance the AWS Lambda-based notification service.",
       ],
     },
     {
-      company: "Amazon",
-      role: "Senior Software Engineer",
-      location: "Seattle, WA",
-      startDate: "2019",
-      endDate: "2022",
-      bullets: [
-        "Delivered event-driven pipeline that processed 1B+ daily events with exactly-once semantics.",
-        "Cut infra costs by 22% via right-sizing, zonal spread, and autoscaling policies.",
-        "Shipped internal UI kit adopted by 14 teams, reducing design drift.",
-      ],
-    },
-    {
-      company: "Startup XYZ",
-      role: "Software Engineer",
-      startDate: "2016",
-      endDate: "2019",
-      bullets: [
-        "Built customer analytics platform; increased activation by 18% through insights-driven features.",
-        "Introduced testing strategy and CI, reducing regressions by 40%.",
+      title: "Software Engineer Intern",
+      company: "Amazon India",
+      location: "Hyderabad, India",
+      duration: "Jan 2022 – June 2022",
+      points: [
+        "Built an automated anomaly detection tool using Python and AWS, reducing manual checks by 60%.",
+        "Developed an internal debugging dashboard for the supply chain team, reducing incident resolution time.",
       ],
     },
   ],
   projects: [
     {
-      name: "Realtime Collaboration Suite",
-      link: "https://alexandra.dev/realtime",
-      description:
-        "Low-latency presence, CRDT-based text editing, and media sync.",
-      bullets: [
-        "WebSockets + CRDTs",
-        "E2E encrypted rooms",
-        "Collapsed updates for efficiency",
+      title: "Scalable URL Shortener",
+      stack: "Spring Boot, AWS Lambda, DynamoDB, React",
+      duration: "Oct 2021 – Jan 2022",
+      points: [
+        "Built a distributed URL shortening service handling 5M+ requests/day.",
+        "Implemented consistent hashing for even load balancing.",
+        "Used AWS Lambda and API Gateway, reducing infra costs by 25%.",
       ],
-      tech: ["TypeScript", "WebRTC", "CRDT"],
     },
     {
-      name: "Open Source UI Library",
-      link: "https://github.com/alexchen/ui",
-      description: "Composable components with accessibility-first patterns.",
-      tech: ["React", "Tailwind"],
+      title: "AI-Powered Resume Parser",
+      stack: "Python, NLP, FastAPI, PostgreSQL",
+      duration: "July 2021 – Sep 2021",
+      points: [
+        "Developed a machine-learning-powered resume parser achieving 92% accuracy.",
+        "Used spaCy and Named Entity Recognition (NER) for key detail extraction.",
+        "Designed REST API with FastAPI integrating with ATS for large-scale hiring.",
+      ],
     },
   ],
-  education: [
-    {
-      school: "University of California, Berkeley",
-      degree: "B.S. Computer Science",
-      startDate: "2012",
-      endDate: "2016",
-      location: "Berkeley, CA",
-    },
+  achievements: [
+    "Secured Rank 200 in Google Kick Start coding competition among 10,000+ participants.",
+    "Won 1st place in Amazon SDE Hackathon 2021 for building a real-time fraud detection system.",
+    "Published 3 research papers on distributed computing and ML in IEEE conferences.",
+    "Received Best Intern Award at Amazon for automation tool reducing manual work by 60%.",
   ],
-  awards: [
-    {
-      title: "Company Top 1% Award",
-      by: "Meta",
-      date: "2024",
-      summary: "Impact across multiple org initiatives.",
-    },
-  ],
-  languages: ["English", "Mandarin"],
+  skills: {
+    languages: ["Java", "Python", "C++", "JavaScript", "SQL"],
+    frameworks: ["Spring Boot", "Node.js", "React.js", "Flask"],
+    databases: ["PostgreSQL", "DynamoDB", "MongoDB"],
+    cloud: ["AWS (Lambda, S3, EC2, API Gateway)"],
+    tools: ["Git", "Docker", "Kubernetes", "Jenkins"],
+  },
 };
 
 export const openSignUpDialogAtom = atom(false);

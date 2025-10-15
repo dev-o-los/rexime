@@ -1,6 +1,6 @@
 import { PrintPdfBtn } from "@/components/buttons/PrintPdfBtn";
 import { ResumeForm } from "@/components/form/ResumeForm";
-import TemplateSelector from "@/components/templates/TemplateSelector";
+import TemplateSelector from "@/components/TemplateSelector";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Page() {
