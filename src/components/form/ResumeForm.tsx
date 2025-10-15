@@ -95,9 +95,7 @@ export function ResumeForm() {
       </div>
 
       <hr className="mt-5" />
-
       <FormTextArea field="summary" />
-
       <hr className="mt-5" />
 
       <FormPlaceHolderSection
