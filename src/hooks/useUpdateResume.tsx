@@ -1,12 +1,23 @@
 import { resumeAtom } from "@/app/store";
 import { ResumeContact, ResumeData } from "@/lib/resume-types";
-import { useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 
 export const useUpdateResume = (
   field: keyof ResumeData,
   nestedKey?: keyof ResumeContact
 ) => {
-  const setResumeData = useSetAtom(resumeAtom);
+  const [resumeData, setResumeData] = useAtom(resumeAtom);
+
+  const addSectionItem = <K extends keyof ResumeData>(
+    field: K,
+    newItem: any
+  ) => {
+    if (!Array.isArray(resumeData[field])) return;
+    setResumeData((prev) => ({
+      ...prev,
+      [field]: [...(prev[field] as any[]), newItem],
+    }));
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -31,5 +42,5 @@ export const useUpdateResume = (
     });
   };
 
-  return { handleChange };
+  return { handleChange, addSectionItem };
 };
