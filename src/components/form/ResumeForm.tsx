@@ -51,20 +51,20 @@ export function ResumeForm() {
 
       <FormPlaceHolderSection heading="Experience" icon={<MdWorkOutline />} />
       <FormPlaceHolderSection
-        heading="ExtraCurricular"
-        icon={<MdWorkOutline />}
-      />
-      <FormPlaceHolderSection
         heading="Education"
         icon={<MdAssuredWorkload />}
       />
       <FormPlaceHolderSection heading="Skills" icon={<SiHyperskill />} />
+      <FormPlaceHolderSection heading="Projects" icon={<GrProjects />} />
       <FormPlaceHolderSection heading="Awards" icon={<CgAwards />} />
       <FormPlaceHolderSection
-        heading="Certications"
+        heading="Certifications"
         icon={<PiCertificateLight />}
       />
-      <FormPlaceHolderSection heading="Projects" icon={<GrProjects />} />
+      <FormPlaceHolderSection
+        heading="ExtraCurricular"
+        icon={<MdWorkOutline />}
+      />
     </div>
   );
 }

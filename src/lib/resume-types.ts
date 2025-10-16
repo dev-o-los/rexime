@@ -1,42 +1,3 @@
-// export type ResumeExperience = {
-//   title: string;
-//   company: string;
-//   location?: string;
-//   duration?: string;
-//   points?: string[];
-// };
-
-// export type ResumeProject = {
-//   title: string;
-//   stack?: string;
-//   duration?: string;
-//   points?: string[];
-// };
-
-// export type ResumeData = {
-//   name: string;
-//   phone?: string;
-//   email?: string;
-//   linkedin?: string;
-//   summary?: string;
-//   education?: {
-//     institute: string;
-//     degree: string;
-//     location?: string;
-//     duration?: string;
-//   };
-//   experience?: ResumeExperience[];
-//   projects?: ResumeProject[];
-//   achievements?: string[];
-//   skills?: {
-//     languages?: string[];
-//     frameworks?: string[];
-//     databases?: string[];
-//     cloud?: string[];
-//     tools?: string[];
-//   };
-// };
-
 export type ResumeField = {
   label: string; // e.g. "Company", "Duration", "Role"
   value?: string; // The value like "Google", "2021–2023"
@@ -46,6 +7,7 @@ export type ResumeEntry = {
   title?: string; // Optional main heading, e.g., "Software Engineer"
   subtitle?: string; // Optional subheading, e.g., "Google"
   meta?: string; // e.g., "Jan 2021 – Dec 2023 | Mountain View"
+  website?: string;
   points?: string[]; // Bullet points
   fields?: ResumeField[]; // Arbitrary labeled fields for flexibility
 };
@@ -71,4 +33,15 @@ export type ResumeData = {
   location?: string;
   sections?: ResumeSection[];
   skills?: ResumeSkills;
+};
+
+export type SectionFields = {
+  title1: string;
+  placeholder1: string;
+  title2: string;
+  placeholder2: string;
+  title3: string;
+  placeholder3: string;
+  title4: string;
+  placeholder4: string;
 };

@@ -5,6 +5,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { sectionData } from "@/lib/utils";
 import { Field, FieldControl, FieldLabel } from "../ui/field";
 import { Textarea } from "../ui/textarea";
 
@@ -23,7 +24,10 @@ function DialogField({
   );
 }
 
-export default function AddNewItemDialog() {
+export default function AddNewItemDialog({ id }: { id: string }) {
+  let data = sectionData[id];
+  if (data == undefined) data = sectionData["experience"];
+
   return (
     <Dialog>
       <DialogTrigger className="w-full">
@@ -34,17 +38,13 @@ export default function AddNewItemDialog() {
       <DialogContent className="gap-2">
         <DialogTitle>New Item</DialogTitle>
         <div className="flex gap-2">
-          <DialogField label="Company" placeholder="company name" />
-          <DialogField label="Position" placeholder="Senior developer" />
+          <DialogField label={data.title1} placeholder={data.placeholder1} />
+          <DialogField label={data.title2} placeholder={data.placeholder2} />
         </div>
         <div className="flex gap-2">
-          <DialogField
-            label="Date or Date Range"
-            placeholder="March 2025 to Present"
-          />
-          <DialogField label="Location" placeholder="Mars" />
+          <DialogField label={data.title3} placeholder={data.placeholder3} />
+          <DialogField label={data.title4} placeholder={data.placeholder4} />
         </div>
-        {/* <DialogField label="Description" placeholder="Write something..." /> */}
         <Field>
           <FieldLabel>Description</FieldLabel>
           <Textarea placeholder="Write something..." className="h-32" />

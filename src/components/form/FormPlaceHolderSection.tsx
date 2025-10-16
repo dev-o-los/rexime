@@ -12,7 +12,7 @@ export function FormPlaceHolderSection({
   return (
     <div>
       <FormHeading heading={heading} icon={icon} />
-      <AddNewItemDialog />
+      <AddNewItemDialog id={heading.toLowerCase()} />
       <hr className="w-full mt-7" />
     </div>
   );
