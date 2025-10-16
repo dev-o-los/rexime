@@ -1,6 +1,7 @@
 import { PrintPdfBtn } from "@/components/buttons/PrintPdfBtn";
 import { ResumeForm } from "@/components/form/ResumeForm";
 import TemplateSelector from "@/components/TemplateSelector";
+import TemplateShowcase from "@/components/TemplateShowcase";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Page() {
@@ -15,7 +16,7 @@ export default function Page() {
 
       {/* MIDDLE SECTION — Resume preview */}
       <main className="w-2/4 h-full m-0 p-0 block" id="resume-section">
-        <TemplateSelector />
+        <TemplateShowcase />
       </main>
 
       {/* RIGHT SECTION — Scrollable color + template picker */}
@@ -24,12 +25,7 @@ export default function Page() {
           <PrintPdfBtn />
           {/* Color Picker */}
           {/* Template Selector */}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-secondary p-4 h-50 rounded">Resume 1</div>
-            <div className="bg-secondary p-4 h-50 rounded">Resume 2</div>
-            <div className="bg-secondary p-4 h-50 rounded">Resume 3</div>
-            <div className="bg-secondary p-4 h-50 rounded">Resume 4</div>
-          </div>
+          <TemplateSelector />
         </ScrollArea>
       </aside>
     </div>
