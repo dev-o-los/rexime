@@ -26,10 +26,8 @@ const sampleData: ResumeData = {
           title: "Bachelor of Technology in Computer Science",
           subtitle: "Indian Institute of Technology (IIT) Bombay",
           meta: "Aug 2018 – May 2022 | Mumbai, India",
-          points: [
-            "Graduated with distinction, majoring in Computer Science.",
-            "Led a student team in building a cloud-hosted IoT data analysis platform.",
-          ],
+          editorHTML:
+            "<ul><li>Graduated with distinction, majoring in Computer Science.</li><li>Led a student team in building a cloud-hosted IoT data analysis platform.</li></ul>",
         },
       ],
     },
@@ -44,19 +42,15 @@ const sampleData: ResumeData = {
           title: "Software Development Engineer - I",
           subtitle: "Amazon India",
           meta: "July 2022 – Present | Bangalore, India",
-          points: [
-            "Developed a microservices-based order tracking system, improving latency by 30%.",
-            "Implemented DynamoDB and Redis caching to reduce database queries by 40%.",
-          ],
+          editorHTML:
+            "<ul><li>Developed a microservices-based order tracking system, improving latency by 30%.</li><li>Implemented DynamoDB and Redis caching to reduce database queries by 40%.</li></ul>",
         },
         {
           title: "Software Engineer Intern",
           subtitle: "Amazon India",
           meta: "Jan 2022 – June 2022 | Hyderabad, India",
-          points: [
-            "Built an automated anomaly detection tool using Python and AWS, reducing manual checks by 60%.",
-            "Developed an internal debugging dashboard for the supply chain team, reducing incident resolution time.",
-          ],
+          editorHTML:
+            "<ul><li>Built an automated anomaly detection tool using Python and AWS, reducing manual checks by 60%.</li><li>Developed an internal debugging dashboard for the supply chain team, reducing incident resolution time.</li></ul>",
         },
       ],
     },
@@ -76,10 +70,8 @@ const sampleData: ResumeData = {
             },
             { label: "Duration", value: "Oct 2021 – Jan 2022" },
           ],
-          points: [
-            "Built a distributed URL shortening service handling 5M+ requests/day.",
-            "Implemented consistent hashing for even load balancing.",
-          ],
+          editorHTML:
+            "<ul><li>Built a distributed URL shortening service handling 5M+ requests/day.</li><li>Implemented consistent hashing for even load balancing.</li></ul>",
         },
         {
           title: "AI-Powered Resume Parser",
@@ -90,10 +82,8 @@ const sampleData: ResumeData = {
             },
             { label: "Duration", value: "July 2021 – Sep 2021" },
           ],
-          points: [
-            "Developed a machine-learning-powered resume parser achieving 92% accuracy.",
-            "Used spaCy and Named Entity Recognition (NER) for key detail extraction.",
-          ],
+          editorHTML:
+            "<ul><li>Developed a machine-learning-powered resume parser achieving 92% accuracy.</li><li>Used spaCy and Named Entity Recognition (NER) for key detail extraction.</li></ul>",
         },
       ],
     },
@@ -105,11 +95,8 @@ const sampleData: ResumeData = {
       displayOrder: 4,
       items: [
         {
-          points: [
-            "Secured Rank 200 in Google Kick Start coding competition among 10,000+ participants.",
-            "Won 1st place in Amazon SDE Hackathon 2021 for building a real-time fraud detection system.",
-            "Published 3 research papers on distributed computing and ML in IEEE conferences.",
-          ],
+          editorHTML:
+            "<ul><li>Secured Rank 200 in Google Kick Start coding competition among 10,000+ participants.</li><li>Won 1st place in Amazon SDE Hackathon 2021 for building a real-time fraud detection system.</li><li>Published 3 research papers on distributed computing and ML in IEEE conferences.</li></ul>",
         },
       ],
     },
@@ -133,7 +120,7 @@ export const sampleData2: ResumeData = {
         {
           title: "Master of Computer Science, Stanford University",
           meta: "Expected 2020",
-          points: ["Relevant Coursework: A, B, C, and D."],
+          editorHTML: "<ul><li>Relevant Coursework: A, B, C, and D.</li></ul>",
         },
         {
           title: "Bachelor of Computer Science, Stanford University",
@@ -147,15 +134,15 @@ export const sampleData2: ResumeData = {
       items: [
         {
           title: "Technical Skills",
-          points: ["A, B, C, D"],
+          editorHTML: "<ul><li>A, B, C, D</li></ul>",
         },
         {
           title: "Soft Skills",
-          points: ["A, B, C, D"],
+          editorHTML: "<ul><li>A, B, C, D</li></ul>",
         },
         {
           title: "XYZ",
-          points: ["A, B, C, D"],
+          editorHTML: "<ul><li>A, B, C, D</li></ul>",
         },
       ],
     },
@@ -167,21 +154,15 @@ export const sampleData2: ResumeData = {
           title: "Role Name",
           subtitle: "Company Name",
           meta: "Jan 2017 – Jan 2019 | San Francisco, CA",
-          points: [
-            "Achieved X% growth for XYZ using A, B, and C skills.",
-            "Led XYZ which led to X% of improvement in ABC.",
-            "Developed XYZ that did A, B, and C using X, Y, and Z.",
-          ],
+          editorHTML:
+            "<ul><li>Achieved X% growth for XYZ using A, B, and C skills.</li><li>Led XYZ which led to X% of improvement in ABC.</li><li>Developed XYZ that did A, B, and C using X, Y, and Z.</li></ul>",
         },
         {
           title: "Role Name",
           subtitle: "Company Name",
           meta: "Jan 2017 – Jan 2019 | San Francisco, CA",
-          points: [
-            "Achieved X% growth for XYZ using A, B, and C skills.",
-            "Led XYZ which led to X% of improvement in ABC.",
-            "Developed XYZ that did A, B, and C using X, Y, and Z.",
-          ],
+          editorHTML:
+            "<ul><li>Achieved X% growth for XYZ using A, B, and C skills.</li><li>Led XYZ which led to X% of improvement in ABC.</li><li>Developed XYZ that did A, B, and C using X, Y, and Z.</li></ul>",
         },
       ],
     },
@@ -191,17 +172,13 @@ export const sampleData2: ResumeData = {
       items: [
         {
           title: "Hiring Search Tool",
-          points: [
-            "Built a tool to search for Hiring Managers and Recruiters using ReactJS, NodeJS, Firebase, and boolean queries.",
-            "Over 25000 people have used it with 5000+ queries saved and shared, delivering better results than LinkedIn! (Try it here)",
-          ],
+          editorHTML:
+            "<ul><li>Built a tool to search for Hiring Managers and Recruiters using ReactJS, NodeJS, Firebase, and boolean queries.</li><li>Over 25000 people have used it with 5000+ queries saved and shared, delivering better results than LinkedIn! (Try it here)</li></ul>",
         },
         {
           title: "Short Project Title",
-          points: [
-            "Built a project that does something and had quantified success using A, B, and C.",
-            "This project’s description spans two lines and also won an award.",
-          ],
+          editorHTML:
+            "<ul><li>Built a project that does something and had quantified success using A, B, and C.</li><li>This project’s description spans two lines and also won an award.</li></ul>",
         },
       ],
     },
@@ -210,11 +187,8 @@ export const sampleData2: ResumeData = {
       title: "Extra-Curricular Activities",
       items: [
         {
-          points: [
-            "Actively write blog posts and social media posts (TikTok, Instagram) viewed by 20K+ job seekers weekly.",
-            "Help people with best practices to land their dream jobs.",
-            "Sample bullet point.",
-          ],
+          editorHTML:
+            "<ul><li>Actively write blog posts and social media posts (TikTok, Instagram) viewed by 20K+ job seekers weekly.</li><li>Help people with best practices to land their dream jobs.</li><li>Sample bullet point.</li></ul>",
         },
       ],
     },
@@ -223,10 +197,8 @@ export const sampleData2: ResumeData = {
       title: "Leadership",
       items: [
         {
-          points: [
-            "Admin for the FAANGPath Discord community (6000+ job seekers).",
-            "Facilitated online events, career conversations, and managed volunteer moderators.",
-          ],
+          editorHTML:
+            "<ul><li>Admin for the FAANGPath Discord community (6000+ job seekers).</li><li>Facilitated online events, career conversations, and managed volunteer moderators.</li></ul>",
         },
       ],
     },

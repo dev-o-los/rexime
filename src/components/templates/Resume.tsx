@@ -97,13 +97,12 @@ export default function Resume({ data }: Props) {
                     </div>
                   )}
 
-                  {/* Bullet Points */}
-                  {item.points && item.points.length > 0 && (
-                    <ul className="list-disc ml-6 mt-1">
-                      {item.points.map((p, j) => (
-                        <li key={j}>{p}</li>
-                      ))}
-                    </ul>
+                  {/* Editor data */}
+                  {item.editorHTML && (
+                    <div
+                      className="tiptap border-none min-h-auto"
+                      dangerouslySetInnerHTML={{ __html: item.editorHTML }}
+                    />
                   )}
                 </div>
               ))}

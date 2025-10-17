@@ -8,7 +8,7 @@ export type ResumeEntry = {
   subtitle?: string; // Optional subheading, e.g., "Google"
   meta?: string; // e.g., "Jan 2021 – Dec 2023 | Mountain View"
   website?: string;
-  points?: string[]; // Bullet points
+  editorHTML?: string; // Bullet points
   fields?: ResumeField[]; // Arbitrary labeled fields for flexibility
 };
 
