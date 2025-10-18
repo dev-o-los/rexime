@@ -47,7 +47,7 @@ export function ResumeForm() {
 
       <hr className="mt-5" />
       <FormTextArea field="summary" />
-      <hr className="mt-5" />
+      <hr className="mt-7 mb-4" />
 
       <FormPlaceHolderSection heading="Experience" icon={<MdWorkOutline />} />
       <FormPlaceHolderSection

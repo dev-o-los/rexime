@@ -1,5 +1,5 @@
 import { resumeAtom } from "@/app/store";
-import { ResumeData, ResumeSection, ResumeSkills } from "@/lib/resume-types";
+import { ResumeData, ResumeSection } from "@/lib/resume-types";
 import { useAtom } from "jotai";
 import React from "react";
 
@@ -58,25 +58,10 @@ export const useUpdateResume = (field?: keyof ResumeData) => {
     });
   };
 
-  // Add or update skills dynamically
-  const updateSkillCategory = (
-    category: keyof ResumeSkills,
-    newSkills: string[]
-  ) => {
-    setResumeData((prev) => ({
-      ...prev,
-      skills: {
-        ...(prev.skills ?? {}),
-        [category]: newSkills,
-      },
-    }));
-  };
-
   return {
     handleChange,
     addSection,
     addSectionItem,
     updateSectionItem,
-    updateSkillCategory,
   };
 };
