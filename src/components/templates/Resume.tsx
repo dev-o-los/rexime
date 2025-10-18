@@ -72,9 +72,18 @@ export default function Resume({ data }: Props) {
                         <p className="font-semibold">
                           {item.title}
                           {item.subtitle && (
-                            <span className="italic text-gray-700">
+                            <div className="italic text-xs text-gray-700">
                               {" "}
-                              - {item.subtitle}
+                              {item.subtitle}
+                            </div>
+                          )}
+                          {item.website && (
+                            <span>
+                              {" "}
+                              |{" "}
+                              <span className="text-gray-700 underline">
+                                {item.website}
+                              </span>
                             </span>
                           )}
                         </p>

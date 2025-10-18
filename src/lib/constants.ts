@@ -72,24 +72,26 @@ export const sampleData: ResumeData = {
       items: [
         {
           title: "Scalable URL Shortener",
+          meta: "Oct 2021 – Jan 2022",
+          website: "www.xyz.com",
           fields: [
             {
               label: "Tech Stack",
               value: "Spring Boot, AWS Lambda, DynamoDB, React",
             },
-            { label: "Duration", value: "Oct 2021 – Jan 2022" },
           ],
           editorHTML:
             "<ul><li>Built a distributed URL shortening service handling 5M+ requests/day.</li><li>Implemented consistent hashing for even load balancing.</li></ul>",
         },
         {
           title: "AI-Powered Resume Parser",
+          meta: "July 2021 – Sep 2021",
+          website: "www.xyz.com",
           fields: [
             {
               label: "Tech Stack",
               value: "Python, NLP, FastAPI, PostgreSQL",
             },
-            { label: "Duration", value: "July 2021 – Sep 2021" },
           ],
           editorHTML:
             "<ul><li>Developed a machine-learning-powered resume parser achieving 92% accuracy.</li><li>Used spaCy and Named Entity Recognition (NER) for key detail extraction.</li></ul>",
@@ -269,10 +271,10 @@ export const mockBerlinData: ResumeData = {
 
 export const sectionData: Record<string, SectionFields> = {
   experience: {
-    title1: "Company",
-    placeholder1: "Company name",
-    title2: "Position",
-    placeholder2: "Senior Developer",
+    title1: "Position",
+    placeholder1: "Senior Developer",
+    title2: "Company",
+    placeholder2: "Company name",
     title3: "More Information",
     placeholder3: "Jan 2021 – Dec 2023 | Mountain View",
     title4: "Website",
@@ -280,10 +282,10 @@ export const sectionData: Record<string, SectionFields> = {
   },
 
   education: {
-    title1: "Institution",
-    placeholder1: "Stanford University",
-    title2: "Degree",
-    placeholder2: "Bachelor of Computer Science",
+    title1: "Degree",
+    placeholder1: "Bachelor of Computer Science",
+    title2: "Institution",
+    placeholder2: "Stanford University",
     title3: "More Information",
     placeholder3: "2019 – 2023 | California, USA",
     title4: "Grade / CGPA",
@@ -309,7 +311,7 @@ export const sectionData: Record<string, SectionFields> = {
     title3: "More Information",
     placeholder3: "Jan 2024 – Present | React, Firebase, TypeScript",
     title4: "Project Link",
-    placeholder4: "www.github.com/utkarsh/peakflow",
+    placeholder4: "www.github.com/peakflow",
   },
 
   awards: {

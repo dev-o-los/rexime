@@ -8,21 +8,37 @@ import {
 import { sectionData } from "@/lib/constants";
 import { ResumeEntry } from "@/lib/resume-types";
 import { AiOutlineHolder } from "react-icons/ai";
+import { RiQuestionLine } from "react-icons/ri";
 import { DialogTipTapEditor } from "../editor/DialogTipTapEditor";
 import { Field, FieldControl, FieldLabel } from "../ui/field";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 function DialogField({
   label,
   placeholder,
   value,
+  optional = false,
 }: {
   label: string;
   placeholder: string;
   value: string | undefined;
+  optional?: boolean;
 }) {
   return (
     <Field className="w-full">
-      <FieldLabel>{label}</FieldLabel>
+      <div className="flex items-center gap-2">
+        <FieldLabel>{label}</FieldLabel>
+        {optional && (
+          <Tooltip>
+            <TooltipTrigger className="text-gray-300 text-xs">
+              <RiQuestionLine />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Optional field</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
+      </div>
       <FieldControl placeholder={placeholder} value={value} />
     </Field>
   );
@@ -73,6 +89,7 @@ export default function AddNewItemDialog({
             value={entry.meta}
           />
           <DialogField
+            optional
             label={data.title4}
             placeholder={data.placeholder4}
             value={entry.website}
