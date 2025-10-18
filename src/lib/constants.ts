@@ -18,6 +18,7 @@ export const sampleData: ResumeData = {
           title: "Bachelor of Technology in Computer Science",
           subtitle: "Indian Institute of Technology (IIT) Bombay",
           meta: "Aug 2018 – May 2022 | Mumbai, India",
+          gpa: "8.26 GPA",
           editorHTML:
             "<ul><li>Graduated with distinction, majoring in Computer Science.</li><li>Led a student team in building a cloud-hosted IoT data analysis platform.</li></ul>",
         },

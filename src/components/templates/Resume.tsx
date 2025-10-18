@@ -75,6 +75,15 @@ export default function Resume({ data }: Props) {
                             <div className="italic text-xs text-gray-700">
                               {" "}
                               {item.subtitle}
+                              {item.gpa && (
+                                <span>
+                                  {" "}
+                                  -{" "}
+                                  <span className="text-gray-700 font-normal">
+                                    {item.gpa}
+                                  </span>
+                                </span>
+                              )}
                             </div>
                           )}
                           {item.website && (

@@ -9,6 +9,7 @@ export type ResumeEntry = {
   meta?: string; // e.g., "Jan 2021 – Dec 2023 | Mountain View"
   website?: string;
   location?: string;
+  gpa?: string;
   editorHTML?: string; // Bullet points
   fields?: ResumeField[]; // Arbitrary labeled fields for flexibility
 };

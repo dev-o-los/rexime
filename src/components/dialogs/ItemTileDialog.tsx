@@ -92,7 +92,7 @@ export default function AddNewItemDialog({
             optional
             label={data.title4}
             placeholder={data.placeholder4}
-            value={entry.website}
+            value={id == "education" ? entry.gpa : entry.website}
           />
         </div>
         <DialogTipTapEditor content={entry.editorHTML} />
