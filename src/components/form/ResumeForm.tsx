@@ -7,7 +7,7 @@ export function ResumeForm() {
   return (
     <div>
       <div className="basics">
-        <FormHeading heading="Basics" icon={<GoPerson />} />
+        <FormHeading heading="Basics" icon={<GoPerson />} showMore={false} />
         <ResumeField label="Full Name" placeholder="Enter name" field="name" />
         <ResumeField
           label="Title"

@@ -1,12 +1,15 @@
-import { IoMdClose } from "react-icons/io";
-import { Button } from "../ui/button";
+// import { CgMoreVertical } from "react-icons/cg";
+
+import FormHeadingMoreBtn from "../buttons/FormHeadingMoreBtn";
 
 export function FormHeading({
   heading,
   icon,
+  showMore = true,
 }: {
   heading: string;
   icon: React.ReactElement;
+  showMore?: boolean;
 }) {
   return (
     <div className="flex items-center mb-4 mt-2 justify-between">
@@ -14,9 +17,7 @@ export function FormHeading({
         <div className="text-xl">{icon}</div>
         <h1 className="text-3xl font-semibold">{heading}</h1>
       </div>
-      <Button className="rounded-full" variant="secondary" size="icon">
-        <IoMdClose />
-      </Button>
+      {showMore && <FormHeadingMoreBtn />}
     </div>
   );
 }
