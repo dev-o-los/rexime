@@ -189,6 +189,31 @@ export const ResumeBerlin = ({ data }: { data: ResumeData }) => {
             )}
           </div>
         </LeftColumnSection>
+        {data.skillsBerlin && (
+          <LeftColumnSection title="SKILLS">
+            <ul className="space-y-3">
+              {data.skillsBerlin.map((skill) => (
+                <li key={skill} className="text-sm font-medium">
+                  {skill}
+                  <div className="h-[3px] bg-gray-300 mt-1.5 w-full"></div>
+                </li>
+              ))}
+            </ul>
+          </LeftColumnSection>
+        )}
+
+        {data.languages && (
+          <LeftColumnSection title="LANGUAGES">
+            <ul className="space-y-3">
+              {data.languages.map((lang) => (
+                <li key={lang} className="text-sm font-medium">
+                  {lang}
+                  <div className="h-[3px] bg-gray-300 mt-1.5 w-3/4"></div>
+                </li>
+              ))}
+            </ul>
+          </LeftColumnSection>
+        )}
       </aside>
 
       {/* Right Column */}

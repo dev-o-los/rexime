@@ -220,13 +220,13 @@ const mockBerlinData: ResumeData = {
   phone: "(315) 802-8179",
   email: "taylor.cook@gmail.com",
   nationality: "American",
-  // skills: [
-  //   "Performance Optimization",
-  //   "Troubleshooting and Solutions Deployment",
-  //   "Analytical Thinking Skills",
-  //   "Software Design and Development",
-  //   "Coding and Scripting",
-  // ],
+  skillsBerlin: [
+    "Performance Optimization",
+    "Troubleshooting and Solutions Deployment",
+    "Analytical Thinking Skills",
+    "Software Design and Development",
+    "Coding and Scripting",
+  ],
   languages: ["English", "French"],
   sections: [
     {
@@ -267,15 +267,6 @@ const mockBerlinData: ResumeData = {
           subtitle: "Boston College",
           location: "Boston",
           meta: "Aug 2001 --- Jun 2004",
-        },
-      ],
-    },
-    {
-      id: "skills",
-      title: "SKILLS  ",
-      items: [
-        {
-          editorHTML: `<p>skills: Performance Optimization, Troubleshooting and Solutions Deployment, Analytical Thinking Skills, Software Design and Development, Coding and Scripting</p>`,
         },
       ],
     },
