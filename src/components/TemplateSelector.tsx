@@ -10,16 +10,20 @@ function ResumeImage({
   src,
   alt,
   onClick,
+  isSel,
 }: {
   src: string;
   alt: string;
   onClick: MouseEventHandler<HTMLImageElement>;
+  isSel: boolean;
 }) {
   return (
     <Image
       src={src}
       alt={alt}
-      className="h-52 rounded-sm cursor-pointer active:scale-95 transition-all"
+      className={`h-52 rounded-lg cursor-pointer ${
+        isSel && "border p-0.5 border-white"
+      }`}
       height={400}
       width={200}
       onClick={onClick}
@@ -31,8 +35,9 @@ export default function TemplateSelector() {
   const [index, setIdx] = useAtom(resumeShowCaseIdxAtom);
   const setResume = useSetAtom(resumeAtom);
   const images = [
-    { imagePath: "/resume-simple.jpeg", defaultResume: sampleData },
-    { imagePath: "/resume-stylish.jpg", defaultResume: mockBerlinData },
+    { imagePath: "/resume-simple.png", defaultResume: sampleData },
+    { imagePath: "/resume-berlin.jpg", defaultResume: mockBerlinData },
+    { imagePath: "/resume-awesome.jpeg", defaultResume: mockBerlinData },
   ];
 
   const handleClick = (index: number, resume: ResumeData) => {
@@ -43,12 +48,11 @@ export default function TemplateSelector() {
   return (
     <div className="grid grid-cols-2 gap-3">
       {images.map((data, key) => (
-        <div
-          className={index == key ? "border p-0.5 border-white rounded-lg" : ""}
-        >
+        <div className={index == key ? "" : ""}>
           <ResumeImage
-            key={key}
-            src="/resume-simple.jpeg"
+            isSel={index == key}
+            key={data.imagePath}
+            src={data.imagePath}
             alt={data.imagePath.slice(1)}
             onClick={() => handleClick(key, data.defaultResume)}
           />
