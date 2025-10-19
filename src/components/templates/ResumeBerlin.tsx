@@ -226,9 +226,12 @@ export const ResumeBerlin = ({ data }: { data: ResumeData }) => {
             <div dangerouslySetInnerHTML={{ __html: data.summary }} />
           </section>
         )}
-        {data.sections?.map((section) => (
-          <RightColumnSection key={section.id} section={section} />
-        ))}
+        {data.sections?.map(
+          (section) =>
+            section.id != "skills" && (
+              <RightColumnSection key={section.id} section={section} />
+            )
+        )}
       </main>
     </div>
   );
