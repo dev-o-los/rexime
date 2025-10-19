@@ -9,6 +9,7 @@ import {
 } from "react-zoom-pan-pinch";
 import Resume from "./templates/Resume";
 import { ResumeBerlin } from "./templates/ResumeBerlin";
+import { mockData, ResumeTimeLine } from "./templates/ResumeTimeline";
 
 const Controls = () => {
   const { zoomIn, zoomOut, resetTransform } = useControls();
@@ -29,6 +30,7 @@ export default function TemplateShowcase() {
   const resumes: Record<number, React.ReactElement> = {
     0: <Resume data={data} />,
     1: <ResumeBerlin data={data} />,
+    2: <ResumeTimeLine data={mockData} />,
   };
 
   return (
