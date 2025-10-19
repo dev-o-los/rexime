@@ -10,6 +10,8 @@ import { ResumeData } from "@/lib/resume-types";
 import { useAtom, useSetAtom } from "jotai";
 import Image from "next/image";
 import { MouseEventHandler } from "react";
+import { GrTemplate } from "react-icons/gr";
+import { FormHeading } from "./form/FormHeading";
 
 function ResumeImage({
   src,
@@ -52,16 +54,23 @@ export default function TemplateSelector() {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-3">
-      {images.map((data, key) => (
-        <ResumeImage
-          isSel={index == key}
-          key={key}
-          src={data.imagePath}
-          alt={data.imagePath.slice(1)}
-          onClick={() => handleClick(key, data.defaultResume)}
-        />
-      ))}
+    <div>
+      <FormHeading
+        heading={"Templates"}
+        icon={<GrTemplate />}
+        showMore={false}
+      />
+      <div className="grid grid-cols-2 gap-3">
+        {images.map((data, key) => (
+          <ResumeImage
+            isSel={index == key}
+            key={key}
+            src={data.imagePath}
+            alt={data.imagePath.slice(1)}
+            onClick={() => handleClick(key, data.defaultResume)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

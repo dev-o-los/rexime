@@ -1,8 +1,11 @@
 import { PrintPdfBtn } from "@/components/buttons/PrintPdfBtn";
+import ColorPicker from "@/components/ColorPicker";
+import { FormHeading } from "@/components/form/FormHeading";
 import { ResumeForm } from "@/components/form/ResumeForm";
 import TemplateSelector from "@/components/TemplateSelector";
 import TemplateShowcase from "@/components/TemplateShowcase";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { CiPalette } from "react-icons/ci";
 
 export default function Page() {
   return (
@@ -23,9 +26,15 @@ export default function Page() {
       <aside className="w-1/4 border-l">
         <ScrollArea className="h-full p-4 space-y-8">
           <PrintPdfBtn />
-          {/* Color Picker */}
-          {/* Template Selector */}
           <TemplateSelector />
+          <div className="mt-5">
+            <FormHeading
+              heading={"Theme"}
+              icon={<CiPalette />}
+              showMore={false}
+            />
+            <ColorPicker />
+          </div>
         </ScrollArea>
       </aside>
     </div>
