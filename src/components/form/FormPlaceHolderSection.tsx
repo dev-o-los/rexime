@@ -2,7 +2,7 @@
 
 import { openCustomEditorAtom } from "@/app/store";
 import { ResumeEntry } from "@/lib/resume-types";
-import { useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import * as React from "react";
 import AddNewItemDialog from "../dialogs/AddNewItemDialog";
 import ItemTileDialog from "../dialogs/ItemTileDialog";
@@ -19,8 +19,14 @@ export function FormPlaceHolderSection({
   icon: React.ReactElement;
   entries: ResumeEntry[];
 }) {
-  const isEditorOpen = useAtomValue(openCustomEditorAtom);
+  const [isEditorOpen, setIsEditorOpen] = useAtom(openCustomEditorAtom);
   const id = heading.toLowerCase();
+
+  React.useEffect(() => {
+    if (id == "skills" && entries.some((val) => val.fields == undefined)) {
+      setIsEditorOpen(true);
+    }
+  }, []);
   return (
     <div>
       <FormHeading heading={heading} icon={icon} />
