@@ -11,9 +11,9 @@ import { AiOutlineHolder } from "react-icons/ai";
 import { RiQuestionLine } from "react-icons/ri";
 import { SaveChangesBtn } from "../buttons/SaveChangesBtn";
 import TiptapEditor from "../editor/TiptapEditor";
-import InputWithTags from "../InputWithTags";
 import { Field, FieldControl, FieldLabel } from "../ui/field";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { SkillDialogContent } from "./SkillDialog";
 
 function DialogField({
   label,
@@ -77,15 +77,7 @@ export default function ItemTileDialog({
       >
         <DialogTitle>Update Item</DialogTitle>
         {id == "skills" ? (
-          <div>
-            <DialogField
-              label={"Skill Category"}
-              placeholder={"Frame works"}
-              value={""}
-            />
-            <InputWithTags />
-            <SaveChangesBtn />
-          </div>
+          <SkillDialogContent />
         ) : (
           <div>
             <div className="flex gap-2">
