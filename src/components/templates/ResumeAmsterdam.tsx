@@ -1,5 +1,3 @@
-import React from "react";
-
 // -------------------------------------------------
 // 1. DATA TYPES (As provided by you)
 // -------------------------------------------------
@@ -46,8 +44,6 @@ export type ResumeData = {
 // -------------------------------------------------
 // 2. ICONS
 // -------------------------------------------------
-import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
-import { MdLocationOn } from "react-icons/md";
 
 // -------------------------------------------------
 // 3. HELPER COMPONENTS
@@ -62,20 +58,12 @@ const SidebarHeader = ({ title }: { title: string }) => (
   </div>
 );
 
-const DetailItem = ({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value?: string;
-}) => (
+const DetailItem = ({ label, value }: { label: string; value?: string }) => (
   <div className="mb-2">
     <h4 className="text-xs font-bold uppercase text-gray-600 tracking-wider">
       {label}
     </h4>
-    <span className="text-gray-600 text-xs whitespace-pre-line">{value}</span>
+    <div className="text-gray-700 text-xs">{value}</div>
   </div>
 );
 
@@ -127,7 +115,7 @@ const EmploymentEntry = ({ item }: { item: ResumeEntry }) => (
     )}
     {item.editorHTML && (
       <div
-        className="text-sm text-gray-800 leading-snug"
+        className="text-xs text-gray-800"
         dangerouslySetInnerHTML={{ __html: item.editorHTML }}
       />
     )}
@@ -154,7 +142,7 @@ const EducationEntry = ({ item }: { item: ResumeEntry }) => (
 );
 
 // -------------------------------------------------
-// 4. MAIN RESUME COMPONENT (Layout Updated)
+// 4. MAIN RESUME COMPONENT (Absolute Header Layout)
 // -------------------------------------------------
 
 export const ResumeAmsterdam = ({ data }: { data: ResumeData }) => {
@@ -165,52 +153,39 @@ export const ResumeAmsterdam = ({ data }: { data: ResumeData }) => {
   const educationSection = sections?.find((s) => s.id === "education");
 
   return (
-    <div className="max-w-4xl mx-auto bg-white shadow-lg font-sans py-6">
-      {/* --- HEADER (Moved to top and centered) --- */}
-      <header className="border-4 border-black p-5 text-center mb-4 max-w-lg mx-auto">
-        {name && (
-          <h1 className="text-3xl text-black font-bold tracking-widest uppercase">
-            {name}
-          </h1>
-        )}
-        {title && (
-          <h2 className="text-sm tracking-wider uppercase text-gray-700 mt-1">
-            {title}
-          </h2>
-        )}
+    // 1. Main wrapper must be 'relative' to contain the absolute header
+    <div className="relative max-w-4xl mx-auto bg-white shadow-lg font-sans">
+      {/* 2. Header is 'absolute', centered, and 'z-10' to sit on top */}
+      <header className="absolute top-0 left-0 right-0 z-10 flex justify-center pt-6">
+        {/* This box has a white background to match the image */}
+        <div className="border-4 border-black p-5 text-center bg-white w-full max-w-lg">
+          {name && (
+            <h1 className="text-2xl text-black font-bold tracking-widest uppercase">
+              {name}
+            </h1>
+          )}
+          {title && (
+            <h2 className="text-sm tracking-wider uppercase text-gray-700 mt-1">
+              {title}
+            </h2>
+          )}
+        </div>
       </header>
 
-      {/* --- Main two-column layout --- */}
+      {/* 3. Main two-column layout (sits *under* the header) */}
       <div className="flex">
-        {/* --- LEFT SIDEBAR (Added top padding) --- */}
-        <aside className="w-1/3 bg-gray-200 px-5 pt-6">
-          {" "}
-          {/* CHANGED: bg-gray-50 to bg-white, added pt-6, px-5 */}
+        {/* --- LEFT SIDEBAR --- */}
+        {/* 4. 'bg-gray-50' now extends to the top */}
+        {/* 5. 'pt-36' pushes the *content* down to clear the header */}
+        <aside className="w-1/3 bg-gray-100 px-5 py-6 pt-40">
           {/* Details Section */}
           <SidebarHeader title="Details" />
           <div className="mt-3">
-            {location && (
-              <DetailItem
-                icon={<MdLocationOn className="w-4 h-4 text-gray-600" />}
-                label="Address"
-                value={location}
-              />
-            )}
-            {phone && (
-              <DetailItem
-                icon={<FaPhoneAlt className="w-4 h-4 text-gray-600" />}
-                label="Phone"
-                value={phone}
-              />
-            )}
-            {email && (
-              <DetailItem
-                icon={<FaEnvelope className="w-4 h-4 text-gray-600" />}
-                label="Email"
-                value={email}
-              />
-            )}
+            {location && <DetailItem label="Address" value={location} />}
+            {phone && <DetailItem label="Phone" value={phone} />}
+            {email && <DetailItem label="Email" value={email} />}
           </div>
+
           {/* Skills Section */}
           {skillsSection && (
             <div className="mt-4">
@@ -225,16 +200,17 @@ export const ResumeAmsterdam = ({ data }: { data: ResumeData }) => {
         </aside>
 
         {/* --- RIGHT MAIN CONTENT --- */}
-        <main className="w-2/3 px-6">
-          {" "}
-          {/* CHANGED: p-6 to px-6 */}
+        {/* 6. 'bg-white' also extends to the top */}
+        {/* 7. 'pt-36' pushes this content down as well */}
+        <main className="w-2/3 bg-white px-6 py-6 pt-36">
           {/* Profile Section (from data.summary) */}
           {summary && (
             <section>
               <MainSectionTitle title="Profile" />
-              <p className="text-sm text-gray-800 leading-snug">{summary}</p>
+              <p className="text-xs text-gray-800 leading-snug">{summary}</p>
             </section>
           )}
+
           {/* Employment Section */}
           {employmentSection && (
             <section>
@@ -244,6 +220,7 @@ export const ResumeAmsterdam = ({ data }: { data: ResumeData }) => {
               ))}
             </section>
           )}
+
           {/* Education Section */}
           {educationSection && (
             <section>
