@@ -1,6 +1,9 @@
 "use client";
 
 import { ResumeData, ResumeEntry, ResumeSection } from "@/lib/resume-types";
+import { FaEnvelope, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
+import { FaLink } from "react-icons/fa6";
+import { MdLocationOn } from "react-icons/md";
 
 type Props = { data: ResumeData };
 
@@ -16,26 +19,48 @@ export default function Resume({ data }: Props) {
 
         {/* Contact Info */}
         <div className="flex justify-center flex-wrap gap-3 text-sm mt-1">
-          {data.phone && <span>📞 {data.phone}</span>}
+          {data.phone && (
+            <span className="flex items-center gap-2">
+              <FaPhoneAlt /> {data.phone}
+            </span>
+          )}
           {data.email && (
-            <a href={`mailto:${data.email}`} className="hover:underline">
-              ✉️ {data.email}
+            <a
+              href={`mailto:${data.email}`}
+              className="hover:underline flex items-center gap-2"
+            >
+              <FaEnvelope />
+              {data.email}
             </a>
           )}
           {data.linkedin && (
-            <a href={data.linkedin} className="hover:underline">
-              🔗 {data.linkedin}
+            <a
+              href={data.linkedin}
+              className="hover:underline flex items-center gap-2"
+            >
+              <FaLinkedin /> {data.linkedin}
             </a>
           )}
           {data.github && (
-            <a href={data.github} className="hover:underline">
-              💻 {data.github}
+            <a
+              href={data.github}
+              className="hover:underline flex items-center gap-2"
+            >
+              <FaGithub /> {data.github}
             </a>
           )}
           {data.website && (
-            <a href={data.website} className="hover:underline">
-              🌐 {data.website}
+            <a
+              href={data.website}
+              className="hover:underline flex items-center gap-2"
+            >
+              <FaLink /> {data.website}
             </a>
+          )}
+          {data.location && (
+            <div className="hover:underline flex items-center gap-2">
+              <MdLocationOn /> {data.location}
+            </div>
           )}
         </div>
       </header>

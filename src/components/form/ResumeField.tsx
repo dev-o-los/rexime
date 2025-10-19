@@ -19,12 +19,13 @@ export function ResumeField({
   type = "text",
   field,
 }: ResumeFieldProps) {
-  const { handleChange } = useUpdateResume(field);
+  const { handleChange, resumeData } = useUpdateResume(field);
 
   return (
     <Field>
       <FieldLabel>{label}</FieldLabel>
       <FieldControl
+        value={resumeData[field]?.toString()}
         onChange={handleChange}
         placeholder={placeholder}
         disabled={disabled}
