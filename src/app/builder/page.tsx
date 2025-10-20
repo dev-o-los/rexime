@@ -12,7 +12,7 @@ export default function Page() {
     <div className="flex h-screen w-full overflow-hidden">
       {/* LEFT SECTION — Scrollable form */}
       <aside className="w-[30%] border-r">
-        <ScrollArea className="h-full px-6 py-3 space-y-8">
+        <ScrollArea className="h-full px-6 py-3">
           <ResumeForm />
         </ScrollArea>
       </aside>

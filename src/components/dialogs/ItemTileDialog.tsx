@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -27,15 +29,19 @@ export default function ItemTileDialog({
 
   return (
     <Dialog>
-      <DialogTrigger className="w-full" asChild>
+      <DialogTrigger asChild>
         <Button
           variant="secondary"
           className="w-full px-4 py-8 mb-2 justify-start"
         >
           <AiOutlineHolder />
           <div className="flex flex-col text-start pl-2">
-            <div>{entry.title ?? entryFields?.label ?? "Update " + id}</div>
-            <div className="text-xs font-normal">{entry.subtitle}</div>
+            <div className="overflow-ellipsis text-wrap line-clamp-1">
+              {entry.title ?? entryFields?.label ?? "Update " + id}
+            </div>
+            <div className="text-xs font-normal overflow-ellipsis text-wrap line-clamp-1">
+              {entry.subtitle}
+            </div>
           </div>
         </Button>
       </DialogTrigger>
