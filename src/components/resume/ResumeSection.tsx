@@ -1,6 +1,7 @@
 "use client";
 
 import { openCustomEditorAtom } from "@/app/store";
+import { useUpdateResume } from "@/hooks/useUpdateResume";
 import { ResumeEntry } from "@/lib/resume-types";
 import { useAtom } from "jotai";
 import * as React from "react";
@@ -21,14 +22,17 @@ export function ResumeSection({
 }) {
   const [isEditorOpen, setIsEditorOpen] = useAtom(openCustomEditorAtom);
   const id = heading.toLowerCase();
+  const { updateSectionItem } = useUpdateResume();
 
   React.useEffect(() => {
-    if (id == "skills" && entries.some((val) => val.fields == undefined)) {
+    if (
+      id == "skills" &&
+      entries.some((val) => val.fields == undefined || val.fields.length == 0)
+    ) {
       setIsEditorOpen(true);
     } else {
       setIsEditorOpen(false);
     }
-    console.log("erunnig");
   }, [id, entries, setIsEditorOpen]);
 
   return (
@@ -37,9 +41,9 @@ export function ResumeSection({
 
       {(isEditorOpen && id == "skills") || id == "achievements" ? (
         <TiptapEditor
-          onContentChange={function (html: string): void {
-            throw new Error("Function not implemented.");
-          }}
+          onContentChange={(content) =>
+            updateSectionItem(id, 0, { editorHTML: content })
+          }
           content={entries[0].editorHTML ?? ""}
         />
       ) : (
