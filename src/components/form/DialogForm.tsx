@@ -29,6 +29,7 @@ export default function DialogForm({
   const { updateSectionItem, addSectionItem } = useUpdateResume();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(editorHtml);
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const entry = {
@@ -40,6 +41,8 @@ export default function DialogForm({
       location: formData.get("location")?.toString(),
       editorHTML: editorHtml,
     };
+
+    console.log(index, id);
 
     if (index != undefined) {
       updateSectionItem(id, index, entry);

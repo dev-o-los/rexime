@@ -2,6 +2,8 @@ import { ResumeData, ResumeEntry } from "@/lib/resume-types";
 import { BsFillDiamondFill } from "react-icons/bs";
 import { FaEnvelope, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
+import TiptapHTML from "../editor/TiptapHTML";
+import { email } from "zod";
 
 /// -------------------------------------------------
 // 2. ICON COMPONENTS (Inline SVGs, no libraries)
@@ -38,10 +40,7 @@ const DefaultItem = ({ item }: { item: ResumeEntry }) => (
       </p>
     )}
     {item.editorHTML && (
-      <div
-        className="text-xs text-gray-800  mt-1"
-        dangerouslySetInnerHTML={{ __html: item.editorHTML }}
-      />
+      <TiptapHTML className="text-sm" html={item.editorHTML} />
     )}
   </div>
 );
@@ -85,12 +84,7 @@ const ExperienceItem = ({
       {item.subtitle && (
         <p className="text-sm italic text-gray-700 mt-0">{item.subtitle}</p>
       )}
-      {item.editorHTML && (
-        <div
-          className="text-xs text-gray-800  mt-2"
-          dangerouslySetInnerHTML={{ __html: item.editorHTML }}
-        />
-      )}
+      {item.editorHTML && <TiptapHTML html={item.editorHTML} />}
     </div>
   </div>
 );
@@ -107,12 +101,7 @@ const AchievementItem = ({ item }: { item: ResumeEntry }) => (
       {item.title && (
         <h3 className="font-semibold text-sm text-gray-900">{item.title}</h3>
       )}
-      {item.editorHTML && (
-        <div
-          className="text-xs text-gray-800 "
-          dangerouslySetInnerHTML={{ __html: item.editorHTML }}
-        />
-      )}
+      {item.editorHTML && <TiptapHTML html={item.editorHTML} />}
     </div>
   </div>
 );
@@ -186,7 +175,10 @@ export const ResumeTimeLine = ({ data }: { data: ResumeData }) => {
         {summary && (
           <section>
             <SectionTitle title="Summary" />
-            <p className="text-xs text-gray-800">{summary}</p>
+            <p
+              className="text-xs text-gray-800"
+              dangerouslySetInnerHTML={{ __html: summary }}
+            />
           </section>
         )}
 

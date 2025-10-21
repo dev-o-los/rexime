@@ -214,11 +214,11 @@ export const sampleDataTimeLine: ResumeData = {
           title: "Operations Manager",
           subtitle: "Ledner Group",
           editorHTML: `
-            <ul>
-              <li>Accountable for 3.5M monthly units at a $12M yearly revenue.</li>
-              <li>Led teams of 50+ permanent and agency staff, both operations and administrations.</li>
-              <li>Manage a portfolio of $5M+ of campaigns in booked revenue per Quarter across NSW and QLD clients.</li>
-            </ul>
+            <p>
+              <p>Accountable for 3.5M monthly units at a $12M yearly revenue.</p>
+              <p>Led teams of 50+ permanent and agency staff, both operations and administrations.</p>
+              <p>Manage a portfolio of $5M+ of campaigns in booked revenue per Quarter across NSW and QLD clients.</p>
+            </p>
           `,
         },
         {
@@ -227,13 +227,13 @@ export const sampleDataTimeLine: ResumeData = {
           title: "Area Manager",
           subtitle: "Bernier",
           editorHTML: `
-            <ul>
-              <li>Lead and developed a team of 80-100 Amazon Associates in the largest North American Fulfillment Centre to meet daily rates.</li>
-              <li>Responsible for communicating policies to Associates and acting as the primary information source for 4 teams.</li>
-              <li>Partnered with other leadership to ensure the business is operating a balanced lean shift while meeting objectives.</li>
-              <li>Achieved the 2nd highest saving for 2016 at 35.1M units.</li>
-              <li>Instilled and upheld compliance to all safety programs to ensure a safe work environment for all associates.</li>
-            </ul>
+            <p>
+              <p>Lead and developed a team of 80-100 Amazon Associates in the largest North American Fulfillment Centre to meet daily rates.</p>
+              <p>Responsible for communicating policies to Associates and acting as the primary information source for 4 teams.</p>
+              <p>Partnered with other leadership to ensure the business is operating a balanced lean shift while meeting objectives.</p>
+              <p>Achieved the 2nd highest saving for 2016 at 35.1M units.</p>
+              <p>Instilled and upheld compliance to all safety programs to ensure a safe work environment for all associates.</p>
+            </p>
           `,
         },
         {
@@ -242,11 +242,11 @@ export const sampleDataTimeLine: ResumeData = {
           title: "Logistics Administrator",
           subtitle: "Lessard",
           editorHTML: `
-            <ul>
-              <li>Collaborated with beneficiary centers to project demand and prepare outgoing food pallets across 9 teams at $1.5M operational cost.</li>
-              <li>Responsible for logging incoming and outgoing food donations into inventory database within the Logistics department.</li>
-              <li>Partnered with local businesses to initiate food donations as well as maintained relationships with current donors.</li>
-            </ul>
+            <p>
+              <p>Collaborated with beneficiary centers to project demand and prepare outgoing food pallets across 9 teams at $1.5M operational cost.</p>
+              <p>Responsible for logging incoming and outgoing food donations into inventory database within the Logistics department.</p>
+              <p>Partnered with local businesses to initiate food donations as well as maintained relationships with current donors.</p>
+            </p>
           `,
         },
       ],
@@ -303,7 +303,7 @@ export const sampleDataAmsterDam: ResumeData = {
       ],
     },
     {
-      id: "employment",
+      id: "experience",
       title: "Employment History",
       items: [
         {

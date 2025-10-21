@@ -1,53 +1,5 @@
-// -------------------------------------------------
-// 1. DATA TYPES (As provided by you)
-// -------------------------------------------------
-
-export type ResumeField = {
-  label: string;
-  value?: string;
-};
-
-export type ResumeEntry = {
-  title?: string;
-  subtitle?: string;
-  meta?: string;
-  website?: string;
-  location?: string;
-  gpa?: string;
-  editorHTML?: string;
-  fields?: ResumeField[];
-};
-
-export type ResumeSection = {
-  id: string; // Identifying
-  title: string;
-  items: ResumeEntry[];
-  displayOrder?: number;
-};
-
-export type ResumeData = {
-  name: string;
-  title?: string;
-  summary?: string;
-  phone?: string;
-  email?: string;
-  linkedin?: string;
-  github?: string;
-  website?: string;
-  location?: string;
-  nationality?: string;
-  languages?: string[];
-  skillsBerlin?: string[];
-  sections?: ResumeSection[];
-};
-
-// -------------------------------------------------
-// 2. ICONS
-// -------------------------------------------------
-
-// -------------------------------------------------
-// 3. HELPER COMPONENTS
-// -------------------------------------------------
+import { ResumeData, ResumeEntry } from "@/lib/resume-types";
+import TiptapHTML from "../editor/TiptapHTML";
 
 const SidebarHeader = ({ title }: { title: string }) => (
   <div>
@@ -113,12 +65,7 @@ const EmploymentEntry = ({ item }: { item: ResumeEntry }) => (
     {item.meta && (
       <p className="text-xs italic text-gray-600 mb-1">{item.meta}</p>
     )}
-    {item.editorHTML && (
-      <div
-        className="text-xs text-gray-800"
-        dangerouslySetInnerHTML={{ __html: item.editorHTML }}
-      />
-    )}
+    {item.editorHTML && <TiptapHTML html={item.editorHTML} />}
   </div>
 );
 
@@ -139,6 +86,9 @@ const EducationEntry = ({ item }: { item: ResumeEntry }) => (
     </div>
     {item.meta && <p className="text-xs italic text-gray-600">{item.meta}</p>}
     {item.gpa && <p className="text-xs italic text-gray-600">{item.gpa}</p>}
+    {item.editorHTML && (
+      <TiptapHTML className="italic" html={item.editorHTML} />
+    )}
   </div>
 );
 
@@ -150,7 +100,7 @@ export const ResumeAmsterdam = ({ data }: { data: ResumeData }) => {
   const { name, title, summary, phone, email, location, sections } = data;
 
   const skillsSection = sections?.find((s) => s.id === "skills");
-  const employmentSection = sections?.find((s) => s.id === "employment");
+  const employmentSection = sections?.find((s) => s.id === "experience");
   const educationSection = sections?.find((s) => s.id === "education");
 
   return (
@@ -208,7 +158,10 @@ export const ResumeAmsterdam = ({ data }: { data: ResumeData }) => {
           {summary && (
             <section>
               <MainSectionTitle title="Profile" />
-              <p className="text-xs text-gray-800 leading-snug">{summary}</p>
+              <p
+                className="text-xs text-gray-800"
+                dangerouslySetInnerHTML={{ __html: summary }}
+              />
             </section>
           )}
 

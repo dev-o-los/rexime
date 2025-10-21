@@ -14,13 +14,14 @@ export function ResumeSection({
   heading,
   icon,
   entries,
+  id,
 }: {
   heading: string;
   icon: React.ReactElement;
   entries: ResumeEntry[];
+  id: string;
 }) {
   const [isEditorOpen, setIsEditorOpen] = useAtom(openCustomEditorAtom);
-  const id = heading.toLowerCase();
   const { updateSectionItem } = useUpdateResume();
 
   useEffect(() => {
@@ -53,7 +54,7 @@ export function ResumeSection({
                       entry={entry}
                       entryFields={entryFields}
                       key={key}
-                      id={heading.toLowerCase()}
+                      id={id}
                     />
                   ))}
                 </div>
@@ -63,15 +64,11 @@ export function ResumeSection({
                   index={index}
                   entry={entry}
                   key={index}
-                  id={heading.toLowerCase()}
+                  id={id}
                 />
               ))}
           <div className="mb-5"></div>
-          {heading.toLowerCase() == "skills" ? (
-            <SkillDialog />
-          ) : (
-            <AddOrEditItemDialog id={heading.toLowerCase()} />
-          )}
+          {id == "skills" ? <SkillDialog /> : <AddOrEditItemDialog id={id} />}
         </div>
       )}
 

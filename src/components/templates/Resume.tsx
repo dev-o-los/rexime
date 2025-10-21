@@ -4,6 +4,7 @@ import { ResumeData, ResumeEntry, ResumeSection } from "@/lib/resume-types";
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { MdLocationOn } from "react-icons/md";
+import TiptapHTML from "../editor/TiptapHTML";
 
 type Props = { data: ResumeData };
 
@@ -139,12 +140,7 @@ export default function Resume({ data }: Props) {
                 )}
 
                 {/* Editor data */}
-                {item.editorHTML && (
-                  <div
-                    className="tiptap border-none min-h-auto"
-                    dangerouslySetInnerHTML={{ __html: item.editorHTML }}
-                  />
-                )}
+                {item.editorHTML && <TiptapHTML html={item.editorHTML} />}
               </div>
             ))}
           </section>

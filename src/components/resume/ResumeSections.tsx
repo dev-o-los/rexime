@@ -38,6 +38,7 @@ export function ResumeSections() {
             heading={section.title}
             entries={section.items}
             icon={iconMap[section.id]}
+            id={section.id}
           />
         ))}
     </div>

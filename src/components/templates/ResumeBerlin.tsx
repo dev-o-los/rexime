@@ -3,6 +3,7 @@
 
 import { ResumeData, ResumeSection } from "@/lib/resume-types";
 import { FC } from "react";
+import TiptapHTML from "../editor/TiptapHTML";
 
 // // --- DATA TYPES (Tailored for this specific template) ---
 // export type ResumeEntry = {
@@ -131,10 +132,7 @@ const RightColumnSection: FC<{ section: ResumeSection }> = ({ section }) => (
           {item.meta && <p className="text-sm text-gray-500">{item.meta}</p>}
           {item.gpa && <p className="text-sm text-gray-500">{item.gpa}</p>}
           {item.editorHTML && (
-            <div
-              className="text-sm max-w-none mt-2 text-gray-700 [&_ul]:list-disc [&_ul]:list-outside [&_ul]:pl-5"
-              dangerouslySetInnerHTML={{ __html: item.editorHTML }}
-            />
+            <TiptapHTML className="text-sm" html={item.editorHTML} />
           )}
         </div>
       ))}
