@@ -47,24 +47,6 @@ export const sampleData: ResumeData = {
         },
       ],
     },
-    //-----------------------Skills--------------------
-    {
-      id: "skills",
-      title: "Skills",
-      displayOrder: 5,
-      items: [
-        {
-          editorHTML: `<div>
-  <p>Languages: Java, Python, C++, JavaScript, SQL</p>
-  <p>Frameworks: Spring Boot, Node.js, React.js, Flask</p>
-  <p>Databases: PostgreSQL, DynamoDB, MongoDB</p>
-  <p>Cloud: AWS (Lambda, S3, EC2, API Gateway)</p>
-  <p>Tools: Git, Docker, Kubernetes, Jenkins</p>
-</div>`,
-        },
-      ],
-    },
-
     // ---------------- Projects ----------------
     {
       id: "projects",
@@ -109,6 +91,24 @@ export const sampleData: ResumeData = {
         {
           editorHTML:
             "<ul><li>Secured Rank 200 in Google Kick Start coding competition among 10,000+ participants.</li><li>Won 1st place in Amazon SDE Hackathon 2021 for building a real-time fraud detection system.</li><li>Published 3 research papers on distributed computing and ML in IEEE conferences.</li></ul>",
+        },
+      ],
+    },
+
+    //-----------------------Skills--------------------
+    {
+      id: "skills",
+      title: "Skills",
+      displayOrder: 5,
+      items: [
+        {
+          editorHTML: `<div>
+  <p>Languages: Java, Python, C++, JavaScript, SQL</p>
+  <p>Frameworks: Spring Boot, Node.js, React.js, Flask</p>
+  <p>Databases: PostgreSQL, DynamoDB, MongoDB</p>
+  <p>Cloud: AWS (Lambda, S3, EC2, API Gateway)</p>
+  <p>Tools: Git, Docker, Kubernetes, Jenkins</p>
+</div>`,
         },
       ],
     },

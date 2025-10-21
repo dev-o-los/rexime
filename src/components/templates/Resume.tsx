@@ -80,77 +80,75 @@ export default function Resume({ data }: Props) {
 
       {/* ---------------- Dynamic Sections ---------------- */}
       {data.sections &&
-        data.sections
-          .sort((a, b) => (a.displayOrder ?? 0) - (b.displayOrder ?? 0))
-          .map((section: ResumeSection) => (
-            <section key={section.id} className="mb-4">
-              <h2 className="font-bold text-lg border-b border-gray-400 mb-1 uppercase">
-                {section.title}
-              </h2>
+        data.sections.map((section: ResumeSection) => (
+          <section key={section.id} className="mb-4">
+            <h2 className="font-bold text-lg border-b border-gray-400 mb-1 uppercase">
+              {section.title}
+            </h2>
 
-              {section.items.map((item: ResumeEntry, i: number) => (
-                <div key={i} className="mb-3">
-                  {/* Entry Header */}
-                  <div className="flex justify-between flex-wrap">
-                    <div>
-                      {item.title && (
-                        <p className="font-semibold">
-                          {item.title}
-                          {item.subtitle && (
-                            <div className="italic text-xs text-gray-700">
-                              {" "}
-                              {item.subtitle}
-                              {item.gpa && (
-                                <span>
-                                  {" "}
-                                  -{" "}
-                                  <span className="text-gray-700 font-normal">
-                                    {item.gpa}
-                                  </span>
+            {section.items.map((item: ResumeEntry, i: number) => (
+              <div key={i} className="mb-3">
+                {/* Entry Header */}
+                <div className="flex justify-between flex-wrap">
+                  <div>
+                    {item.title && (
+                      <p className="font-semibold">
+                        {item.title}
+                        {item.subtitle && (
+                          <div className="italic text-xs text-gray-700">
+                            {" "}
+                            {item.subtitle}
+                            {item.gpa && (
+                              <span>
+                                {" "}
+                                -{" "}
+                                <span className="text-gray-700 font-normal">
+                                  {item.gpa}
                                 </span>
-                              )}
-                            </div>
-                          )}
-                          {item.website && (
-                            <span>
-                              {" "}
-                              |{" "}
-                              <span className="text-gray-700 underline">
-                                {item.website}
                               </span>
+                            )}
+                          </div>
+                        )}
+                        {item.website && (
+                          <span>
+                            {" "}
+                            |{" "}
+                            <span className="text-gray-700 underline">
+                              {item.website}
                             </span>
-                          )}
-                        </p>
-                      )}
-                    </div>
-                    {item.meta && (
-                      <p className="text-sm text-gray-600">{item.meta}</p>
+                          </span>
+                        )}
+                      </p>
                     )}
                   </div>
-
-                  {/* Optional Fields */}
-                  {item.fields && item.fields.length > 0 && (
-                    <div className="text-sm mt-1">
-                      {item.fields.map((field, j) => (
-                        <p key={j}>
-                          <span className="font-semibold">{field.label}: </span>
-                          {field.value}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Editor data */}
-                  {item.editorHTML && (
-                    <div
-                      className="tiptap border-none min-h-auto"
-                      dangerouslySetInnerHTML={{ __html: item.editorHTML }}
-                    />
+                  {item.meta && (
+                    <p className="text-sm text-gray-600">{item.meta}</p>
                   )}
                 </div>
-              ))}
-            </section>
-          ))}
+
+                {/* Optional Fields */}
+                {item.fields && item.fields.length > 0 && (
+                  <div className="text-sm mt-1">
+                    {item.fields.map((field, j) => (
+                      <p key={j}>
+                        <span className="font-semibold">{field.label}: </span>
+                        {field.value}
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {/* Editor data */}
+                {item.editorHTML && (
+                  <div
+                    className="tiptap border-none min-h-auto"
+                    dangerouslySetInnerHTML={{ __html: item.editorHTML }}
+                  />
+                )}
+              </div>
+            ))}
+          </section>
+        ))}
     </div>
   );
 }

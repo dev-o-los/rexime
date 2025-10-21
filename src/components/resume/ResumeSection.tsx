@@ -1,10 +1,11 @@
 "use client";
 
+import { openCustomEditorAtom } from "@/app/store";
 import { useUpdateResume } from "@/hooks/useUpdateResume";
 import { ResumeEntry } from "@/lib/resume-types";
-import * as React from "react";
-import AddNewItemDialog from "../dialogs/AddNewItemDialog";
-import ItemTileDialog from "../dialogs/ItemTileDialog";
+import { useAtom } from "jotai";
+import { useEffect } from "react";
+import AddOrEditItemDialog from "../dialogs/AddOrEditItemDialog";
 import SkillDialog from "../dialogs/SkillDialog";
 import TiptapEditor from "../editor/TiptapEditor";
 import { ResumeHeading } from "./ResumeHeading";
@@ -18,18 +19,23 @@ export function ResumeSection({
   icon: React.ReactElement;
   entries: ResumeEntry[];
 }) {
+  const [isEditorOpen, setIsEditorOpen] = useAtom(openCustomEditorAtom);
   const id = heading.toLowerCase();
   const { updateSectionItem } = useUpdateResume();
 
-  const shouldEditorpen =
-    id === "skills" &&
-    entries.some((val) => !val.fields || val.fields.length === 0);
+  useEffect(() => {
+    if (id === "skills") {
+      const shouldOpen = (entries[0].editorHTML?.length ?? 0) > 0;
+      setIsEditorOpen(shouldOpen);
+      console.log(shouldOpen, id);
+    }
+  }, [id]);
 
   return (
     <div>
       <ResumeHeading heading={heading} icon={icon} />
 
-      {(shouldEditorpen && id == "skills") || id == "achievements" ? (
+      {(isEditorOpen && id == "skills") || id == "achievements" ? (
         <TiptapEditor
           onContentChange={(content) =>
             updateSectionItem(id, 0, { editorHTML: content })
@@ -42,7 +48,7 @@ export function ResumeSection({
             ? entries.map((entry, key) => (
                 <div key={key}>
                   {entry.fields?.map((entryFields, index) => (
-                    <ItemTileDialog
+                    <AddOrEditItemDialog
                       index={index}
                       entry={entry}
                       entryFields={entryFields}
@@ -53,7 +59,7 @@ export function ResumeSection({
                 </div>
               ))
             : entries.map((entry, index) => (
-                <ItemTileDialog
+                <AddOrEditItemDialog
                   index={index}
                   entry={entry}
                   key={index}
@@ -64,7 +70,7 @@ export function ResumeSection({
           {heading.toLowerCase() == "skills" ? (
             <SkillDialog />
           ) : (
-            <AddNewItemDialog id={heading.toLowerCase()} />
+            <AddOrEditItemDialog id={heading.toLowerCase()} />
           )}
         </div>
       )}

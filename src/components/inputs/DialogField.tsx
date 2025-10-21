@@ -13,7 +13,7 @@ export function DialogField({
   label: string;
   name: string;
   placeholder: string;
-  value: string | undefined;
+  value?: string | undefined;
   optional?: boolean;
 }) {
   return (

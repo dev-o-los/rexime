@@ -13,42 +13,49 @@ import { AiOutlineHolder } from "react-icons/ai";
 import DialogForm from "../form/DialogForm";
 import { SkillDialogContent } from "./SkillDialog";
 
-export default function ItemTileDialog({
+export default function AddOrEditItemDialog({
   entry,
   id,
   entryFields,
   index,
 }: {
-  entry: ResumeEntry;
+  entry?: ResumeEntry;
   id: string;
   entryFields?: ResumeField;
-  index: number;
+  index?: number;
 }) {
   let data = sectionData[id];
   if (data == undefined) data = sectionData["experience"];
+  const isCreateMode = !index && !entry;
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          variant="secondary"
-          className="w-full px-4 py-8 mb-2 justify-start"
-        >
-          <AiOutlineHolder />
-          <div className="flex flex-col text-start pl-2">
-            <div className="overflow-ellipsis text-wrap line-clamp-1">
-              {entry.title ?? entryFields?.label ?? "Update " + id}
+        {isCreateMode ? (
+          <Button variant="outline" className="w-full p-6">
+            Add a new item
+          </Button>
+        ) : (
+          <Button
+            variant="secondary"
+            className="w-full px-4 py-8 mb-2 justify-start"
+          >
+            <AiOutlineHolder />
+            <div className="flex flex-col text-start pl-2">
+              <div className="overflow-ellipsis text-wrap line-clamp-1">
+                {entry?.title ?? entryFields?.label ?? "Update " + id}
+              </div>
+              <div className="text-xs font-normal overflow-ellipsis text-wrap line-clamp-1">
+                {entry?.subtitle}
+              </div>
             </div>
-            <div className="text-xs font-normal overflow-ellipsis text-wrap line-clamp-1">
-              {entry.subtitle}
-            </div>
-          </div>
-        </Button>
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent
         className={`gap-2 ${id == "skills" ? "sm:w-[500px]" : ""}`}
       >
-        <DialogTitle>Update Item</DialogTitle>
+        <DialogTitle>{isCreateMode ? "New Item" : "Update Item"}</DialogTitle>
         {id == "skills" ? (
           <SkillDialogContent />
         ) : (

@@ -15,9 +15,9 @@ export default function DialogForm({
   index,
 }: {
   data: SectionFields;
-  entry: ResumeEntry;
+  entry?: ResumeEntry;
   id: string;
-  index: number;
+  index?: number;
 }) {
   const [editorHtml, seteditorHtml] = useState("");
   const { updateSectionItem } = useUpdateResume();
@@ -26,15 +26,17 @@ export default function DialogForm({
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    updateSectionItem(id, index, {
-      title: formData.get("title")?.toString(),
-      subtitle: formData.get("subtitle")?.toString(),
-      meta: formData.get("meta")?.toString(),
-      gpa: formData.get("gpa")?.toString(),
-      website: formData.get("website")?.toString(),
-      location: formData.get("location")?.toString(),
-      editorHTML: editorHtml,
-    });
+    if (index) {
+      updateSectionItem(id, index, {
+        title: formData.get("title")?.toString(),
+        subtitle: formData.get("subtitle")?.toString(),
+        meta: formData.get("meta")?.toString(),
+        gpa: formData.get("gpa")?.toString(),
+        website: formData.get("website")?.toString(),
+        location: formData.get("location")?.toString(),
+        editorHTML: editorHtml,
+      });
+    }
   };
 
   return (
@@ -43,13 +45,13 @@ export default function DialogForm({
         <DialogField
           label={data.title1}
           placeholder={data.placeholder1}
-          value={entry.title}
+          value={entry?.title}
           name="title"
         />
         <DialogField
           label={data.title2}
           placeholder={data.placeholder2}
-          value={entry.subtitle}
+          value={entry?.subtitle}
           name="subtitle"
         />
       </div>
@@ -57,21 +59,21 @@ export default function DialogForm({
         <DialogField
           label={data.title3}
           placeholder={data.placeholder3}
-          value={entry.meta}
+          value={entry?.meta}
           name="meta"
         />
         <DialogField
           optional
           label={data.title4}
           placeholder={data.placeholder4}
-          value={id == "education" ? entry.gpa : entry.website}
+          value={id == "education" ? entry?.gpa : entry?.website}
           name={id == "education" ? "gpa" : "website"}
         />
       </div>
       <div className="text-sm my-2">Description</div>
       <TiptapEditor
         onContentChange={(content) => seteditorHtml(content)}
-        content={entry.editorHTML}
+        content={entry?.editorHTML}
       />
       <SaveChangesBtn />
     </Form>
