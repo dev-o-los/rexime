@@ -2,7 +2,13 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 
-export default function SkillSlider() {
+export default function SkillSlider({
+  level,
+  onValueChange,
+}: {
+  level: number;
+  onValueChange: (value: number) => void;
+}) {
   const max = 4;
   const skipInterval = 1; // Set to 1 to allow no text skipping
   const ticks = [...Array(max + 1)].map((_, i) => i);
@@ -12,7 +18,12 @@ export default function SkillSlider() {
       <div className="pt-2"></div>
       <Label>Confidence Level</Label>
       <div>
-        <Slider defaultValue={[5]} max={max} aria-label="Slider with ticks" />
+        <Slider
+          defaultValue={[level]}
+          max={max}
+          onValueChange={(val) => onValueChange(val[0])}
+          aria-label="Slider with ticks"
+        />
         <span
           className="mt-3 flex w-full items-center justify-between gap-1 px-2.5 text-xs font-medium text-muted-foreground"
           aria-hidden="true"

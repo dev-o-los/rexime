@@ -13,7 +13,7 @@ import { AiOutlineHolder } from "react-icons/ai";
 import { SiReaddotcv } from "react-icons/si";
 import { VscEdit } from "react-icons/vsc";
 import DialogForm from "../form/DialogForm";
-import { SkillDialogContent } from "./SkillDialog";
+import { SkillDialogForm } from "../form/SkillDialogForm";
 
 export default function AddOrEditItemDialog({
   entry,
@@ -70,8 +70,8 @@ export default function AddOrEditItemDialog({
             </div>
           )}
         </DialogTitle>
-        {id == "skills" ? (
-          <SkillDialogContent />
+        {id == "skills" && entryFields ? (
+          <SkillDialogForm skill={entryFields} entryIndex={index} />
         ) : (
           <DialogForm data={data} entry={entry} id={id} index={index} />
         )}

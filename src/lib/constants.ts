@@ -116,13 +116,13 @@ export const mockBerlinData: ResumeData = {
   nationality: "American",
   summary:
     "<p>Innovative Programmer and Internet Entrepreneur striving to make the world a more unified and connected place. A creative thinker, adept in software development and working with various data structures.</p>",
-  skillsBerlin: [
-    "Performance Optimization",
-    "Troubleshooting and Solutions Deployment",
-    "Analytical Thinking Skills",
-    "Software Design and Development",
-    "Coding and Scripting",
-  ],
+  // skillsBerlin: [
+  //   "Performance Optimization",
+  //   "Troubleshooting and Solutions Deployment",
+  //   "Analytical Thinking Skills",
+  //   "Software Design and Development",
+  //   "Coding and Scripting",
+  // ],
   languages: ["English", "French"],
   sections: [
     {
@@ -165,19 +165,19 @@ export const mockBerlinData: ResumeData = {
           fields: [
             {
               label: "Communication skill",
-              value: "3",
+              value: "1",
             },
             {
               label: "Performance Optimization",
-              value: "3",
+              value: "2",
             },
             {
               label: "Analytical Thinking Skills",
-              value: "3",
+              value: "2",
             },
             {
               label: "Coding and Scripting",
-              value: "3",
+              value: "1",
             },
           ],
         },

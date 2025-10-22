@@ -5,34 +5,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { SaveChangesBtn } from "../buttons/SaveChangesBtn";
-import InputWithTags from "../InputWithTags";
-import SkillSlider from "../SkillSlider";
 import { Field, FieldControl, FieldLabel } from "../ui/field";
+import { SkillDialogForm } from "../form/SkillDialogForm";
 
 export function DialogField({
   label,
   placeholder,
+  value,
+  name,
 }: {
   label: string;
   placeholder: string;
+  value?: string;
+  name: string;
 }) {
   return (
-    <Field className="w-full">
+    <Field name={name} className="w-full">
       <FieldLabel>{label}</FieldLabel>
-      <FieldControl placeholder={placeholder} />
+      <FieldControl placeholder={placeholder} value={value} />
     </Field>
-  );
-}
-
-export function SkillDialogContent() {
-  return (
-    <div>
-      <DialogField label={"Skill Category"} placeholder={"Frame works"} />
-      <SkillSlider />
-      <InputWithTags />
-      <SaveChangesBtn />
-    </div>
   );
 }
 
@@ -46,7 +37,7 @@ export default function SkillDialog() {
       </DialogTrigger>
       <DialogContent className="gap-2 sm:w-[500px]">
         <DialogTitle>New Item</DialogTitle>
-        <SkillDialogContent />
+        <SkillDialogForm />
       </DialogContent>
     </Dialog>
   );
