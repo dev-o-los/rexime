@@ -59,12 +59,7 @@ export const sampleData: ResumeData = {
           title: "Scalable URL Shortener",
           meta: "Oct 2021 – Jan 2022",
           website: "https://urlshortener.com",
-          fields: [
-            {
-              label: "Tech Stack",
-              value: "Spring Boot, AWS Lambda, DynamoDB, React",
-            },
-          ],
+          subtitle: "Lead Developer",
           editorHTML:
             "<ul><li>Built a distributed URL shortening service handling 5M+ requests/day.</li><li>Implemented consistent hashing for even load balancing.</li></ul>",
         },
@@ -72,12 +67,7 @@ export const sampleData: ResumeData = {
           title: "AI-Powered Resume Parser",
           meta: "July 2021 – Sep 2021",
           website: "https://resumeparser.com",
-          fields: [
-            {
-              label: "Tech Stack",
-              value: "Python, NLP, FastAPI, PostgreSQL",
-            },
-          ],
+          subtitle: "System Design Architect",
           editorHTML:
             "<ul><li>Developed a machine-learning-powered resume parser achieving 92% accuracy.</li><li>Used spaCy and Named Entity Recognition (NER) for key detail extraction.</li></ul>",
         },
@@ -419,8 +409,8 @@ export const sectionData: Record<string, SectionFields> = {
     placeholder1: "PeakFlow – Productivity App",
     title2: "Role",
     placeholder2: "Lead Developer",
-    title3: "More Information",
-    placeholder3: "Jan 2024 – Present | React, Firebase, TypeScript",
+    title3: "Date or Date Range",
+    placeholder3: "Jan 2024 – Present",
     title4: "Project Link",
     placeholder4: "www.github.com/peakflow",
   },

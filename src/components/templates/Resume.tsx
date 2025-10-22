@@ -95,20 +95,14 @@ export default function Resume({ data }: Props) {
                     {item.title && (
                       <p className="font-semibold">
                         {item.title}
-                        {item.subtitle && (
-                          <div className="italic text-xs text-gray-700">
+                        {item.gpa && (
+                          <span>
                             {" "}
-                            {item.subtitle}
-                            {item.gpa && (
-                              <span>
-                                {" "}
-                                -{" "}
-                                <span className="text-gray-700 font-normal">
-                                  {item.gpa}
-                                </span>
-                              </span>
-                            )}
-                          </div>
+                            -{" "}
+                            <span className="text-gray-700 font-normal">
+                              {item.gpa}
+                            </span>
+                          </span>
                         )}
                         {item.website && (
                           <span>
@@ -120,6 +114,11 @@ export default function Resume({ data }: Props) {
                           </span>
                         )}
                       </p>
+                    )}
+                    {item.subtitle && (
+                      <div className="italic text-xs text-gray-700">
+                        {item.subtitle}
+                      </div>
                     )}
                   </div>
                   {item.meta && (
@@ -133,18 +132,6 @@ export default function Resume({ data }: Props) {
                     </div>
                   )}
                 </div>
-
-                {/* Optional Fields */}
-                {item.fields && item.fields.length > 0 && (
-                  <div className="text-sm mt-1">
-                    {item.fields.map((field, j) => (
-                      <p key={j}>
-                        <span className="font-semibold">{field.label}: </span>
-                        {field.value}
-                      </p>
-                    ))}
-                  </div>
-                )}
 
                 {/* Editor data */}
                 {item.editorHTML && <TiptapHTML html={item.editorHTML} />}

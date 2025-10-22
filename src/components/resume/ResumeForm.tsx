@@ -10,7 +10,7 @@ export function ResumeForm() {
         <ResumeHeading heading="Basics" icon={<GoPerson />} showMore={false} />
         <ResumeField label="Full Name" placeholder="Enter name" field="name" />
         <ResumeField
-          label="Title"
+          label="Headline"
           placeholder="Awesome headline"
           field="title"
         />

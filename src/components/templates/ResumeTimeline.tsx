@@ -3,7 +3,6 @@ import { BsFillDiamondFill } from "react-icons/bs";
 import { FaEnvelope, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import TiptapHTML from "../editor/TiptapHTML";
-import { email } from "zod";
 
 /// -------------------------------------------------
 // 2. ICON COMPONENTS (Inline SVGs, no libraries)
@@ -39,6 +38,18 @@ const DefaultItem = ({ item }: { item: ResumeEntry }) => (
         {item.subtitle}
       </p>
     )}
+    <div className="flex items-center text-xs italic">
+      {item.meta && <p>{item.meta}</p>}
+
+      {item.website && (
+        <p>
+          &nbsp;|{" "}
+          <a className="underline" href={item.website} target="_blank">
+            {item.website}
+          </a>
+        </p>
+      )}
+    </div>
     {item.editorHTML && (
       <TiptapHTML className="text-sm" html={item.editorHTML} />
     )}
@@ -175,10 +186,7 @@ export const ResumeTimeLine = ({ data }: { data: ResumeData }) => {
         {summary && (
           <section>
             <SectionTitle title="Summary" />
-            <p
-              className="text-xs text-gray-800"
-              dangerouslySetInnerHTML={{ __html: summary }}
-            />
+            <TiptapHTML html={summary} />
           </section>
         )}
 
