@@ -14,6 +14,11 @@ function isEmptyObject(obj: Record<string, any>): boolean {
   );
 }
 
+type OptinalFieldData = {
+  name: string;
+  val: string | undefined;
+};
+
 export default function DialogForm({
   data,
   entry,
@@ -53,6 +58,12 @@ export default function DialogForm({
     }
   };
 
+  const optionalFieldDataVal: Record<string, OptinalFieldData> = {
+    education: { name: "gpa", val: entry?.gpa },
+    experience: { name: "location", val: entry?.location },
+    projects: { name: "website", val: entry?.website },
+  };
+
   return (
     <Form onSubmit={onSubmit}>
       <div className="flex gap-2">
@@ -80,8 +91,8 @@ export default function DialogForm({
           optional
           label={data.title4}
           placeholder={data.placeholder4}
-          value={id == "education" ? entry?.gpa : entry?.website}
-          name={id == "education" ? "gpa" : "website"}
+          value={optionalFieldDataVal[id].val}
+          name={optionalFieldDataVal[id].name}
         />
       </div>
       <div className="text-sm my-2">Description</div>
