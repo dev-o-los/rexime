@@ -1,4 +1,6 @@
+import { resumeColorAtom } from "@/app/store";
 import { ResumeData, ResumeEntry } from "@/lib/resume-types";
+import { useAtomValue } from "jotai";
 import TiptapHTML from "../editor/TiptapHTML";
 
 const SidebarHeader = ({ title }: { title: string }) => (
@@ -132,6 +134,7 @@ export const ResumeAmsterdam = ({ data }: { data: ResumeData }) => {
   const skillsSection = sections?.find((s) => s.id === "skills");
   const employmentSection = sections?.find((s) => s.id === "experience");
   const educationSection = sections?.find((s) => s.id === "education");
+  const resumeColor = useAtomValue(resumeColorAtom);
 
   return (
     // 1. Main wrapper must be 'relative' to contain the absolute header
@@ -158,7 +161,7 @@ export const ResumeAmsterdam = ({ data }: { data: ResumeData }) => {
         {/* --- LEFT SIDEBAR --- */}
         {/* 4. 'bg-gray-50' now extends to the top */}
         {/* 5. 'pt-36' pushes the *content* down to clear the header */}
-        <aside className="w-1/3 bg-gray-100 px-5 py-6 pt-40">
+        <aside className={`w-1/3 ${resumeColor} px-5 py-6 pt-40`}>
           {/* Details Section */}
           <SidebarHeader title="Details" />
           <div className="mt-3">

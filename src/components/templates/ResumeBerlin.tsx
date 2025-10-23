@@ -1,97 +1,9 @@
 // components/resumes/resumeBerlin.tsx
-// import type { FC } from "react";
-
+import { resumeColorAtom } from "@/app/store";
 import { ResumeData, ResumeSection } from "@/lib/resume-types";
+import { useAtomValue } from "jotai";
 import { FC } from "react";
 import TiptapHTML from "../editor/TiptapHTML";
-
-// // --- DATA TYPES (Tailored for this specific template) ---
-// export type ResumeEntry = {
-//   title?: string;
-//   subtitle?: string;
-//   meta?: string;
-//   location?: string;
-//   editorHTML?: string;
-// };
-
-// export type ResumeSection = {
-//   id: string;
-//   title: string;
-//   items: ResumeEntry[];
-// };
-
-// export type ResumeDataBerlin = {
-//   name: string;
-//   title?: string;
-//   location?: string;
-//   phone?: string;
-//   email?: string;
-//   nationality?: string;
-//   skills?: string[];
-//   languages?: string[];
-//   sections?: ResumeSection[];
-// };
-
-// --- MOCK DATA (Matches the provided image exactly) ---
-// const mockBerlinData: ResumeDataBerlin = {
-//   name: "TAYLOR COOK",
-//   title: "Programmer",
-//   location: "1600 Amphitheatre Road\nPalo Alto, CA 94304\nUnited States",
-//   phone: "(315) 802-8179",
-//   email: "taylor.cook@gmail.com",
-//   nationality: "American",
-//   skills: [
-//     "Performance Optimization",
-//     "Troubleshooting and Solutions Deployment",
-//     "Analytical Thinking Skills",
-//     "Software Design and Development",
-//     "Coding and Scripting",
-//   ],
-//   languages: ["English", "French"],
-//   sections: [
-//     {
-//       id: "profile",
-//       title: "PROFILE",
-//       items: [
-//         {
-//           editorHTML: `<p>Innovative Programmer and Internet Entrepreneur striving to make the world a more unified and connected place. A creative thinker, adept in software development and working with various data structures.</p>`,
-//         },
-//       ],
-//     },
-//     {
-//       id: "experience",
-//       title: "EMPLOYMENT HISTORY",
-//       items: [
-//         {
-//           title: "Programmer",
-//           subtitle: "Johannes Initiative",
-//           location: "Palo Alto",
-//           meta: "Dec 2015 --- Present",
-//           editorHTML: `<ul><li>Worked to enhance software systems to help educators, scientists, and policy experts already working on some of humanity's greatest challenges.</li><li>Developed and enhances programs to increase accuracy and lower costs.</li><li>Developed strategies to ensure compliance with new standards.</li></ul>`,
-//         },
-//         {
-//           title: "Programmer",
-//           subtitle: "Kindlinks, Inc.",
-//           location: "Menlo Park, CA",
-//           meta: "Feb 2004 - Sep 2015",
-//           editorHTML: `<ul><li>Since founding Kindlinks, Inc. in 2004 I continue to work to build and improve it's infrastructure, offerings, product strategy, and design.</li><li>Work to continuously lead developments helping people to create, share, and discover in new ways.</li></ul>`,
-//         },
-//       ],
-//     },
-//     {
-//       id: "education",
-//       title: "EDUCATION",
-//       items: [
-//         {
-//           title: "Master of Computer Science",
-//           subtitle: "Boston College",
-//           location: "Boston",
-//           meta: "Aug 2001 --- Jun 2004",
-//         },
-//       ],
-//     },
-//   ],
-// };
 
 // --- HELPER COMPONENTS (For clean, reusable sections) ---
 const LeftColumnSection: FC<{ title: string; children: React.ReactNode }> = ({
@@ -151,11 +63,12 @@ export const ResumeBerlin = ({ data }: { data: ResumeData }) => {
   );
 
   const langFields = langsection?.items?.[0]?.fields ?? [];
+  const resumeColor = useAtomValue(resumeColorAtom);
 
   return (
     <div className="bg-white font-sans text-gray-900 flex shadow-lg">
       {/* Left Column */}
-      <aside className="w-[36%] bg-gray-50 p-8">
+      <aside className={`w-[36%] ${resumeColor} p-8`}>
         <header className="mb-12">
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-800">
             {data.name}
