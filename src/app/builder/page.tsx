@@ -13,7 +13,7 @@ import { GoTypography } from "react-icons/go";
 
 export default function Page() {
   return (
-    <div className="flex h-screen w-full overflow-hidden">
+    <div className="flex h-screen w-full overflow-hidden max-[1230px]:bg-red-100">
       {/* LEFT SECTION — Scrollable form */}
       <aside className="w-[30%] border-r">
         <ScrollArea className="h-full px-6 py-3">
