@@ -15,45 +15,45 @@ const resumeColors = [
     swatchClass: "border-gray-100 bg-gray-100", // The unique class for this swatch
   },
   {
-    value: "bg-blue-500",
+    value: "bg-blue-200",
     label: "Blue",
-    swatchClass: "border-blue-500 bg-blue-500",
+    swatchClass: "border-blue-200 bg-blue-200",
   },
   {
-    value: "bg-indigo-500",
+    value: "bg-indigo-200",
     label: "Indigo",
-    swatchClass: "border-indigo-500 bg-indigo-500",
+    swatchClass: "border-indigo-200 bg-indigo-200",
   },
   {
-    value: "bg-pink-500",
+    value: "bg-pink-200",
     label: "Pink",
-    swatchClass: "border-pink-500 bg-pink-500",
+    swatchClass: "border-pink-200 bg-pink-200",
   },
   {
-    value: "bg-red-500",
+    value: "bg-red-200",
     label: "Red",
-    swatchClass: "border-red-500 bg-red-500",
+    swatchClass: "border-red-200 bg-red-200",
   },
   {
-    value: "bg-orange-500",
+    value: "bg-orange-200",
     label: "Orange",
-    swatchClass: "border-orange-500 bg-orange-500",
+    swatchClass: "border-orange-200 bg-orange-200",
   },
   {
-    value: "bg-amber-500",
+    value: "bg-amber-200",
     label: "Amber",
-    swatchClass: "border-amber-500 bg-amber-500",
+    swatchClass: "border-amber-200 bg-amber-200",
   },
   {
-    value: "bg-emerald-500",
+    value: "bg-emerald-200",
     label: "Emerald",
-    swatchClass: "border-emerald-500 bg-emerald-500",
+    swatchClass: "border-emerald-200 bg-emerald-200",
   },
 ];
 
 const getSwatchClassName = (swatchClass: string) => {
   const baseClasses = `size-6 shadow-none ${swatchClass}`;
-  // "border-blue-500 bg-blue-500" -> "data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-500"
+  // "border-blue-200 bg-blue-200" -> "data-[state=checked]:border-blue-200 data-[state=checked]:bg-blue-200"
   const checkedClasses = swatchClass
     .split(" ")
     .map((cls) => `data-[state=checked]:${cls}`)
