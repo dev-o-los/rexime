@@ -7,19 +7,21 @@ import {
   TransformWrapper,
   useControls,
 } from "react-zoom-pan-pinch";
-import Resume from "./templates/Resume";
-import { ResumeAmsterdam } from "./templates/ResumeAmsterdam";
-import { ResumeBerlin } from "./templates/ResumeBerlin";
-import { ResumeTimeLine } from "./templates/ResumeTimeline";
+import Resume from "../templates/Resume";
+import { ResumeAmsterdam } from "../templates/ResumeAmsterdam";
+import { ResumeBerlin } from "../templates/ResumeBerlin";
+import { ResumeTimeLine } from "../templates/ResumeTimeline";
+import { Button } from "../ui/button";
+import { ResumeControlBar } from "./ResumeControlBar";
 
 const Controls = () => {
   const { zoomIn, zoomOut, resetTransform } = useControls();
 
   return (
-    <div className="tools">
-      <button onClick={() => zoomIn()}>+</button>
-      <button onClick={() => zoomOut()}>-</button>
-      <button onClick={() => resetTransform()}>x</button>
+    <div className="tools absolute z-10">
+      <Button onClick={() => zoomIn()}>+</Button>
+      <Button onClick={() => zoomOut()}>-</Button>
+      <Button onClick={() => resetTransform()}>x</Button>
     </div>
   );
 };
@@ -44,10 +46,10 @@ export default function TemplateShowcase() {
       limitToBounds={false}
     >
       {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-        <>
-          {/* <Controls /> */}
+        <div className="relative">
+          <ResumeControlBar />
           <TransformComponent>{resumes[resumeShowCaseIdx]}</TransformComponent>
-        </>
+        </div>
       )}
     </TransformWrapper>
   );

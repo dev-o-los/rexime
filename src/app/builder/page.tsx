@@ -1,9 +1,9 @@
 import { PrintPdfBtn } from "@/components/buttons/PrintPdfBtn";
 import ColorPicker from "@/components/ColorPicker";
+import TemplateShowcase from "@/components/resume-view/TemplateShowcase";
 import { ResumeForm } from "@/components/resume/ResumeForm";
 import { ResumeHeading } from "@/components/resume/ResumeHeading";
 import TemplateSelector from "@/components/TemplateSelector";
-import TemplateShowcase from "@/components/TemplateShowcase";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CiPalette } from "react-icons/ci";
 

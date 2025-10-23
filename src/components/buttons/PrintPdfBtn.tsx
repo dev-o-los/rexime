@@ -3,6 +3,8 @@ import { Button } from "../ui/button";
 
 export function PrintPdfBtn() {
   function printDiv() {
+    window.location.reload();
+
     const printContents = document.getElementById("resume-section")?.innerHTML;
     if (!printContents) return;
 
@@ -17,7 +19,6 @@ export function PrintPdfBtn() {
     document.body.innerHTML = originalContents;
 
     // Optional: reload React app to restore JS functionality
-    window.location.reload();
   }
 
   return (

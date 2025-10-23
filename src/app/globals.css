@@ -190,3 +190,21 @@
 button {
   @apply cursor-pointer;
 }
+
+@media print {
+  @page {
+    margin: 0; /* removes default print margin */
+  }
+
+  body {
+    margin: 0; /* remove body margin */
+    padding: 0; /* remove body padding */
+  }
+
+  #resume-section {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
