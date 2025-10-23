@@ -16,15 +16,14 @@ import {
   serif,
   sourceSans3,
 } from "@/app/fonts";
-import { resumeShowCaseIdxAtom, selectedFontAtom } from "@/app/store";
+import { selectedFontAtom } from "@/app/store";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useSetAtom } from "jotai";
 
 export default function FontSelection() {
   const id = useId();
   const setSelectedFont = useSetAtom(selectedFontAtom);
-  const resumeIdx = useAtomValue(resumeShowCaseIdxAtom);
 
   const items = [
     // --- Generic Tailwind Fonts ---
@@ -49,10 +48,7 @@ export default function FontSelection() {
 
   return (
     <fieldset className="space-y-4">
-      <RadioGroup
-        className="grid grid-cols-2 gap-2"
-        defaultValue={(resumeIdx + 1).toString()}
-      >
+      <RadioGroup className="grid grid-cols-2 gap-2" defaultValue={"1"}>
         {items.map((item) => (
           <div
             key={`${id}-${item.value}`}
