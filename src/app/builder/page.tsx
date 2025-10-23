@@ -1,5 +1,5 @@
-import { PrintPdfBtn } from "@/components/buttons/PrintPdfBtn";
 import ColorPicker from "@/components/ColorPicker";
+import FontSelection from "@/components/FontSelection";
 import TemplateShowcase from "@/components/resume-view/TemplateShowcase";
 import { ResumeForm } from "@/components/resume/ResumeForm";
 import { ResumeHeading } from "@/components/resume/ResumeHeading";
@@ -24,17 +24,23 @@ export default function Page() {
 
       {/* RIGHT SECTION — Scrollable color + template picker */}
       <aside className="w-1/4 border-l">
-        <ScrollArea className="h-full p-4 space-y-8">
-          <PrintPdfBtn />
+        <ScrollArea className="h-full px-4 py-3">
           <TemplateSelector />
           <div className="mt-5">
             <ResumeHeading
-              heading={"Theme"}
+              heading={"Typography"}
               icon={<CiPalette />}
               showMore={false}
             />
-            <ColorPicker />
+            <FontSelection />
           </div>
+          <div className="my-12"></div>
+          <ResumeHeading
+            heading={"Theme"}
+            icon={<CiPalette />}
+            showMore={false}
+          />
+          <ColorPicker />
         </ScrollArea>
       </aside>
     </div>
