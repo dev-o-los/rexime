@@ -13,3 +13,5 @@ export function isEmptyObject(obj: Record<string, any>): boolean {
 
 export const isDiffDialog = (id: string) =>
   id === "skills" || id === "languages" || id == "achievements";
+
+export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));

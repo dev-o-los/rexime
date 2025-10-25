@@ -26,7 +26,7 @@ export default function Page() {
         className={`
           border-r
           transition-all duration-300 ease-in-out
-          w-0 md:w-[400px] overflow-hidden
+          w-0 md:w-[200px] overflow-hidden
           ${desktopBreakpoint}:w-[30%]
           shrink-0
         `}
@@ -40,7 +40,7 @@ export default function Page() {
       </aside>
 
       {/* MIDDLE SECTION */}
-      <main className="h-full w-full block flex-1">
+      <main className="w-[46%] overflow-hidden">
         <TemplateShowcase />
       </main>
 
@@ -50,6 +50,7 @@ export default function Page() {
           border-l
           transition-all duration-300 ease-in-out
           w-0 overflow-hidden
+          md:w-[400px]
           xl:w-[24%]
           shrink-0
         `}

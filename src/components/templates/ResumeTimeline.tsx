@@ -1,4 +1,5 @@
 import { ResumeData, ResumeEntry } from "@/lib/resume-types";
+import { RefObject } from "react";
 import { BsFillDiamondFill } from "react-icons/bs";
 import { FaEnvelope, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
@@ -124,9 +125,11 @@ const AchievementItem = ({ item }: { item: ResumeEntry }) => (
 export const ResumeTimeLine = ({
   data,
   font,
+  ref,
 }: {
   data: ResumeData;
   font: string | null;
+  ref: RefObject<HTMLDivElement | null>;
 }) => {
   const { name, title, summary, phone, email, linkedin, location, sections } =
     data;
@@ -146,7 +149,8 @@ export const ResumeTimeLine = ({
     // (w-[210mm] h-[297mm]) but max-w-4xl is better for web.
     // Use `font-sans` as a good default.
     <div
-      className={`max-w-4xl max-xl:w-[690px] mx-auto p-10 bg-white shadow-lg ${
+      ref={ref}
+      className={`w-[794px] mx-auto p-10 bg-white shadow-lg ${
         font ? font : "font-sans"
       } text-gray-900`}
     >

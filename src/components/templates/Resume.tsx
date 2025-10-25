@@ -1,17 +1,23 @@
 "use client";
 
 import { ResumeData, ResumeEntry, ResumeSection } from "@/lib/resume-types";
+import { RefObject } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { MdLocationOn } from "react-icons/md";
 import TiptapHTML from "../editor/TiptapHTML";
 
-type Props = { data: ResumeData; font: string | null };
+type Props = {
+  data: ResumeData;
+  font: string | null;
+  ref: RefObject<HTMLDivElement | null>;
+};
 
-export default function Resume({ data, font }: Props) {
+export default function Resume({ data, font, ref }: Props) {
   return (
     <div
-      className={`bg-white max-xl:w-[690px] text-black max-w-4xl mx-auto p-10 text-[13px] ${
+      ref={ref}
+      className={`bg-white w-[794px] text-black mx-auto p-10 text-[13px] ${
         font ? font : "font-serif"
       }`}
     >

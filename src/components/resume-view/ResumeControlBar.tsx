@@ -45,70 +45,80 @@ export function ResumeControlBar({
     elementRef: RefObject<HTMLDivElement | null>,
     fileName: string
   ): Promise<void> => {
-    // 1. Get the DOM element from the ref.
-    const element = elementRef.current;
-
-    if (!element) {
-      toast.error("Cannot find pdf file");
-      return;
-    }
-
     try {
-      // 2. Use html2canvas-pro to capture the element.
-      // We use a high scale for better resolution.
-      const canvas = await html2canvas(element, {
-        scale: 2, // Higher scale = better quality
-        useCORS: true, // For external images
-        logging: false, // Disables console logging from html2canvas
+      const element = elementRef.current;
+      if (!element) {
+        toast.error("Cannot find resume element to export");
+        return;
+      }
+
+      // -----------------------
+      // 1️⃣ Clone the element
+      // -----------------------
+      const clone = element.cloneNode(true) as HTMLDivElement;
+
+      // Create a hidden fixed A4 wrapper
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "fixed";
+      wrapper.style.left = "-9999px";
+      wrapper.style.top = "0";
+      wrapper.style.width = "794px"; // A4 width in px at 96 DPI
+      wrapper.style.height = "1123px"; // A4 height in px at 96 DPI
+      wrapper.style.overflow = "hidden";
+      wrapper.style.background = "#fff";
+
+      // Make sure cloned content fits perfectly inside A4
+      clone.style.width = "100%";
+      clone.style.height = "100%";
+      clone.style.transform = "scale(1)";
+      clone.style.transformOrigin = "top left";
+
+      wrapper.appendChild(clone);
+      document.body.appendChild(wrapper);
+
+      // -----------------------
+      // 2️⃣ Capture as image
+      // -----------------------
+      const canvas = await html2canvas(wrapper, {
+        scale: 2, // for high quality
+        useCORS: true,
+        logging: false,
+        backgroundColor: "#ffffff",
       });
 
-      // 3. Get the image data and dimensions from the canvas.
-      const imgData = canvas.toDataURL("image/png");
-      const canvasWidth = canvas.width;
-      const canvasHeight = canvas.height;
+      // Cleanup
+      document.body.removeChild(wrapper);
 
-      // 4. Create a jsPDF instance for A4 size.
-      // unit: 'mm', format: 'a4', orientation: 'portrait'
+      // -----------------------
+      // 3️⃣ Prepare image for PDF
+      // -----------------------
+      const imgData = canvas.toDataURL("image/png");
+
+      // A4 dimensions in mm
+      const pdfWidth = 210;
+      const pdfHeight = 297;
+
       const pdf = new jsPDF({
         orientation: "portrait",
         unit: "mm",
-        format: "a4",
+        format: [pdfWidth, pdfHeight],
       });
 
-      // 5. Calculate dimensions to fit A4 width.
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = pdf.internal.pageSize.getHeight();
+      // Add image to fill A4 exactly
+      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-      // Calculate the aspect ratio
-      const ratio = pdfWidth / canvasWidth;
-      const imgHeight = canvasHeight * ratio; // Total height of the image in mm
-
-      // 6. Add image, handling multiple pages if content is too long.
-      let heightLeft = imgHeight;
-      let position = 0; // Top Y-coordinate of the image on the PDF
-
-      // Add the first page (or part of the image)
-      pdf.addImage(imgData, "PNG", 0, position, pdfWidth, imgHeight);
-      heightLeft -= pdfHeight;
-
-      // Add new pages as needed
-      while (heightLeft > 0) {
-        pdf.addPage();
-        position -= pdfHeight; // Move the image "up" by one page height
-        pdf.addImage(imgData, "PNG", 0, position, pdfWidth, imgHeight);
-        heightLeft -= pdfHeight;
-      }
-
-      // 7. Save the PDF.
+      // -----------------------
+      // 4️⃣ Save file
+      // -----------------------
       pdf.save(fileName);
-      return Promise.resolve();
     } catch (error) {
-      return Promise.reject(error);
+      console.error(error);
+      toast.error("Failed to generate PDF");
     }
   };
 
   return (
-    <div className="flex absolute z-10 top-[90dvh] left-[35%] flex-col items-start gap-8">
+    <div className="flex absolute z-10 top-[90dvh] left-[38%] flex-col items-start gap-8">
       <ButtonGroup>
         <ControlBtn
           onClick={() => zoomIn()}

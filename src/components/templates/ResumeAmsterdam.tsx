@@ -1,6 +1,7 @@
 import { resumeColorAtom } from "@/app/store";
 import { ResumeData, ResumeEntry } from "@/lib/resume-types";
 import { useAtomValue } from "jotai";
+import { RefObject } from "react";
 import TiptapHTML from "../editor/TiptapHTML";
 
 const SidebarHeader = ({ title }: { title: string }) => (
@@ -120,9 +121,11 @@ const EducationEntry = ({ item }: { item: ResumeEntry }) => (
 export const ResumeAmsterdam = ({
   data,
   font,
+  ref,
 }: {
   data: ResumeData;
   font: string | null;
+  ref: RefObject<HTMLDivElement | null>;
 }) => {
   const {
     name,
@@ -145,7 +148,8 @@ export const ResumeAmsterdam = ({
   return (
     // 1. Main wrapper must be 'relative' to contain the absolute header
     <div
-      className={`relative max-xl:w-[690px] max-w-4xl mx-auto bg-white shadow-lg ${
+      ref={ref}
+      className={`relative w-[794px] mx-auto bg-white shadow-lg ${
         font ? font : "font-sans"
       }`}
     >

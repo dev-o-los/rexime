@@ -19,13 +19,13 @@ export default function TemplateShowcase() {
   const font = useAtomValue(selectedFontAtom);
 
   const resumeShowCaseIdx = useAtomValue(resumeShowCaseIdxAtom);
-  const pdfRef = useRef<HTMLDivElement>(null);
+  const pdfRef = useRef<HTMLDivElement | null>(null);
 
   const resumes: Record<number, React.ReactElement> = {
-    0: <Resume data={data} font={font} />,
-    1: <ResumeBerlin data={data} font={font} />,
-    2: <ResumeTimeLine data={data} font={font} />,
-    3: <ResumeAmsterdam data={data} font={font} />,
+    0: <Resume data={data} font={font} ref={pdfRef} />,
+    1: <ResumeBerlin data={data} font={font} ref={pdfRef} />,
+    2: <ResumeTimeLine data={data} font={font} ref={pdfRef} />,
+    3: <ResumeAmsterdam data={data} font={font} ref={pdfRef} />,
   };
 
   return (
@@ -40,15 +40,9 @@ export default function TemplateShowcase() {
         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
           <div className="relative">
             <ResumeControlBar pdfRef={pdfRef} />
-            <div
-              id="resume-section"
-              ref={pdfRef}
-              style={{ boxSizing: "border-box" }}
-            >
-              <TransformComponent>
-                {resumes[resumeShowCaseIdx]}
-              </TransformComponent>
-            </div>
+            <TransformComponent>
+              {resumes[resumeShowCaseIdx]}
+            </TransformComponent>
           </div>
         )}
       </TransformWrapper>

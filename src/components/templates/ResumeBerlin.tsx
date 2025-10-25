@@ -2,7 +2,7 @@
 import { resumeColorAtom } from "@/app/store";
 import { ResumeData, ResumeSection } from "@/lib/resume-types";
 import { useAtomValue } from "jotai";
-import { FC } from "react";
+import { FC, RefObject } from "react";
 import TiptapHTML from "../editor/TiptapHTML";
 
 // --- HELPER COMPONENTS (For clean, reusable sections) ---
@@ -55,9 +55,11 @@ const RightColumnSection: FC<{ section: ResumeSection }> = ({ section }) => (
 export const ResumeBerlin = ({
   data,
   font,
+  ref,
 }: {
   data: ResumeData;
   font: string | null;
+  ref: RefObject<HTMLDivElement | null>;
 }) => {
   const skillsSection = data.sections?.find(
     (section) => section.id === "skills"
@@ -73,7 +75,8 @@ export const ResumeBerlin = ({
 
   return (
     <div
-      className={`bg-white max-xl:w-[690px] text-gray-900 flex ${
+      ref={ref}
+      className={`bg-white w-[794px] text-gray-900 flex ${
         font ? font : "font-sans"
       } shadow-lg`}
     >
