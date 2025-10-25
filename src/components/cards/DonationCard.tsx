@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { FaHeart } from "react-icons/fa";
+import { Button } from "../ui/button";
+import { CardDescription, CardHeader, CardTitle } from "../ui/card";
 import SpotlightCard from "./SpotlightCard";
-import { Button } from "./ui/button";
-import { CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 export default function DonationCard() {
   return (

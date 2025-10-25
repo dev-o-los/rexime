@@ -1,6 +1,6 @@
 import FontResetBtn from "@/components/buttons/FontResetBtn";
+import DonationCard from "@/components/cards/DonationCard";
 import ColorPicker from "@/components/ColorPicker";
-import DonationCard from "@/components/DonationCard";
 import FontSelection from "@/components/FontSelection";
 import TemplateShowcase from "@/components/resume-view/TemplateShowcase";
 import { ResumeForm } from "@/components/resume/ResumeForm";
