@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
+import html2canvas from "html2canvas-pro";
+import jsPDF from "jspdf";
 import { RefObject } from "react";
 import { FaRegFilePdf } from "react-icons/fa6";
 import {
@@ -8,6 +10,7 @@ import {
   MdOutlineZoomOutMap,
 } from "react-icons/md";
 import { useControls } from "react-zoom-pan-pinch";
+import { toast } from "sonner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 function ControlBtn({
@@ -38,50 +41,70 @@ export function ResumeControlBar({
 }) {
   const { zoomIn, zoomOut, resetTransform } = useControls();
 
-  const cleanColors = (element: HTMLDivElement) => {
-    const elements = element.querySelectorAll("*");
-    elements.forEach((el) => {
-      const style = getComputedStyle(el);
-      if (
-        style.color.includes("lab(") ||
-        style.backgroundColor.includes("lab(")
-      ) {
-        (el as HTMLDivElement).style.color = "black";
-        (el as HTMLDivElement).style.backgroundColor = "white";
-      }
-    });
-  };
+  const generatePdfFromRef = async (
+    elementRef: RefObject<HTMLDivElement | null>,
+    fileName: string
+  ): Promise<void> => {
+    // 1. Get the DOM element from the ref.
+    const element = elementRef.current;
 
-  const handleDownloadPDF = async () => {
-    const element = pdfRef.current;
-    if (!element) return;
+    if (!element) {
+      toast.success("Cannot find pdf file");
+      return;
+    }
 
-    // ✅ Dynamically import (only runs in browser)
-    const html2pdf = (await import("html2pdf.js")).default;
+    try {
+      // 2. Use html2canvas-pro to capture the element.
+      // We use a high scale for better resolution.
+      const canvas = await html2canvas(element, {
+        scale: 2, // Higher scale = better quality
+        useCORS: true, // For external images
+        logging: false, // Disables console logging from html2canvas
+      });
 
-    cleanColors(element);
+      // 3. Get the image data and dimensions from the canvas.
+      const imgData = canvas.toDataURL("image/png");
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
 
-    const options: any = {
-      margin: 0.5,
-      filename: "resume.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: {
-        scale: 2, // Higher = better quality
-        useCORS: true,
-        logging: false,
-      },
-      jsPDF: {
-        unit: "in",
-        format: "a4",
+      // 4. Create a jsPDF instance for A4 size.
+      // unit: 'mm', format: 'a4', orientation: 'portrait'
+      const pdf = new jsPDF({
         orientation: "portrait",
-      },
-    };
+        unit: "mm",
+        format: "a4",
+      });
 
-    (html2pdf as any)()
-      .from(element)
-      .set(options)
-      .save()
-      .catch((err: any) => console.error("PDF generation error:", err));
+      // 5. Calculate dimensions to fit A4 width.
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+
+      // Calculate the aspect ratio
+      const ratio = pdfWidth / canvasWidth;
+      const imgHeight = canvasHeight * ratio; // Total height of the image in mm
+
+      // 6. Add image, handling multiple pages if content is too long.
+      let heightLeft = imgHeight;
+      let position = 0; // Top Y-coordinate of the image on the PDF
+
+      // Add the first page (or part of the image)
+      pdf.addImage(imgData, "PNG", 0, position, pdfWidth, imgHeight);
+      heightLeft -= pdfHeight;
+
+      // Add new pages as needed
+      while (heightLeft > 0) {
+        pdf.addPage();
+        position -= pdfHeight; // Move the image "up" by one page height
+        pdf.addImage(imgData, "PNG", 0, position, pdfWidth, imgHeight);
+        heightLeft -= pdfHeight;
+      }
+
+      // 7. Save the PDF.
+      pdf.save(fileName);
+      return Promise.resolve();
+    } catch (error) {
+      return Promise.reject(error);
+    }
   };
 
   return (
@@ -103,7 +126,7 @@ export function ResumeControlBar({
           tooltip={"Re center"}
         />
         <ControlBtn
-          onClick={handleDownloadPDF}
+          onClick={async () => await generatePdfFromRef(pdfRef, "resume")}
           icon={<FaRegFilePdf />}
           tooltip={"Download pdf"}
         />

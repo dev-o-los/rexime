@@ -21,7 +21,7 @@ const SectionTitle = ({ title }: { title: string }) => (
     <h2 className="text-sm font-bold text-gray-600 uppercase tracking-wider">
       {title}
     </h2>
-    <div className="w-full h-[2px] bg-gray-800 mt-1"></div>
+    <div className="w-full h-[0.5] bg-gray-800 mt-1"></div>
   </div>
 );
 
@@ -70,14 +70,14 @@ const ExperienceItem = ({
   <div className="flex">
     {/* 2. Left Column (Dates & Location) */}
     {/* Given a fixed width and padding on the right for spacing */}
-    <div className="w-32 flex-shrink-0 text-sm pr-4">
+    <div className="w-32 shrink-0 text-sm pr-4">
       {item.meta && <p className="font-semibold text-gray-800">{item.meta}</p>}
       {item.location && <p className="text-gray-600 mt-1">{item.location}</p>}
     </div>
 
     {/* 3. Center Column (Timeline) */}
     {/* This column just holds the dot and line */}
-    <div className="relative w-4 flex-shrink-0">
+    <div className="relative w-4 shrink-0">
       {/* Timeline vertical line */}
       {!isLast && (
         <div className="absolute left-1/2 top-2 bottom-0 w-0.5 bg-gray-300 -translate-x-1/2"></div>
@@ -105,7 +105,7 @@ const ExperienceItem = ({
  */
 const AchievementItem = ({ item }: { item: ResumeEntry }) => (
   <div className="flex gap-3">
-    <div className="flex-shrink-0">
+    <div className="shrink-0">
       <BsFillDiamondFill className="w-4 h-4 text-gray-800 mt-1" />
     </div>
     <div>

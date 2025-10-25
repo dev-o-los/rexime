@@ -27,7 +27,7 @@ const RightColumnSection: FC<{ section: ResumeSection }> = ({ section }) => (
       {section.items.map((item, index) => (
         <div key={index}>
           <div className="flex justify-between items-start mb-1">
-            <div className="flex-grow">
+            <div className="grow">
               <h3 className="text-lg font-semibold leading-tight">
                 {item.title}
                 {item.subtitle && (
@@ -36,7 +36,7 @@ const RightColumnSection: FC<{ section: ResumeSection }> = ({ section }) => (
               </h3>
             </div>
             {item.location && (
-              <p className="text-sm text-gray-600 flex-shrink-0 ml-4">
+              <p className="text-sm text-gray-600 shrink-0 ml-4">
                 {item.location}
               </p>
             )}

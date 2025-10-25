@@ -16,7 +16,7 @@ export default function Resume({ data, font }: Props) {
       }`}
     >
       {/* ---------------- Header ---------------- */}
-      <header className="text-center border-b border-gray-400 pb-2 mb-4">
+      <header className="text-center border-b border-gray-400 pb-2 print:pb-2 mb-4">
         <h1 className="text-3xl font-bold tracking-wide">{data.name}</h1>
         {data.title && (
           <p className="text-lg font-medium text-gray-700 mt-1">{data.title}</p>

@@ -28,7 +28,7 @@ export default function Page() {
           transition-all duration-300 ease-in-out
           w-0 md:w-[400px] overflow-hidden
           ${desktopBreakpoint}:w-[30%]
-          flex-shrink-0
+          shrink-0
         `}
       >
         {/* Padding is now also responsive */}
@@ -40,7 +40,7 @@ export default function Page() {
       </aside>
 
       {/* MIDDLE SECTION */}
-      <main className="h-full w-full block flex-1" id="resume-section">
+      <main className="h-full w-full block flex-1">
         <TemplateShowcase />
       </main>
 
@@ -51,7 +51,7 @@ export default function Page() {
           transition-all duration-300 ease-in-out
           w-0 overflow-hidden
           xl:w-[24%]
-          flex-shrink-0
+          shrink-0
         `}
       >
         {/* Padding is now also responsive */}

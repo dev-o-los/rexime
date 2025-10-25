@@ -40,7 +40,11 @@ export default function TemplateShowcase() {
         {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
           <div className="relative">
             <ResumeControlBar pdfRef={pdfRef} />
-            <div ref={pdfRef}>
+            <div
+              id="resume-section"
+              ref={pdfRef}
+              style={{ boxSizing: "border-box" }}
+            >
               <TransformComponent>
                 {resumes[resumeShowCaseIdx]}
               </TransformComponent>
