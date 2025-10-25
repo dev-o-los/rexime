@@ -49,7 +49,7 @@ export function ResumeControlBar({
     const element = elementRef.current;
 
     if (!element) {
-      toast.success("Cannot find pdf file");
+      toast.error("Cannot find pdf file");
       return;
     }
 

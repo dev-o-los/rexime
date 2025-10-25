@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Slider as SliderPrimitive } from "radix-ui"
+import { Slider as SliderPrimitive } from "radix-ui";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 function Slider({
   className,
@@ -21,50 +21,50 @@ function Slider({
   tooltipContent,
   ...props
 }: React.ComponentProps<typeof SliderPrimitive.Root> & {
-  showTooltip?: boolean
-  tooltipContent?: (value: number) => React.ReactNode
+  showTooltip?: boolean;
+  tooltipContent?: (value: number) => React.ReactNode;
 }) {
   const [internalValues, setInternalValues] = React.useState<number[]>(
     Array.isArray(value)
       ? value
       : Array.isArray(defaultValue)
-        ? defaultValue
-        : [min, max]
-  )
+      ? defaultValue
+      : [min, max]
+  );
 
   React.useEffect(() => {
     if (value !== undefined) {
-      setInternalValues(Array.isArray(value) ? value : [value])
+      setInternalValues(Array.isArray(value) ? value : [value]);
     }
-  }, [value])
+  }, [value]);
 
   const handleValueChange = (newValue: number[]) => {
-    setInternalValues(newValue)
-    props.onValueChange?.(newValue)
-  }
+    setInternalValues(newValue);
+    props.onValueChange?.(newValue);
+  };
 
-  const [showTooltipState, setShowTooltipState] = React.useState(false)
+  const [showTooltipState, setShowTooltipState] = React.useState(false);
 
   const handlePointerDown = () => {
     if (showTooltip) {
-      setShowTooltipState(true)
+      setShowTooltipState(true);
     }
-  }
+  };
 
   const handlePointerUp = React.useCallback(() => {
     if (showTooltip) {
-      setShowTooltipState(false)
+      setShowTooltipState(false);
     }
-  }, [showTooltip])
+  }, [showTooltip]);
 
   React.useEffect(() => {
     if (showTooltip) {
-      document.addEventListener("pointerup", handlePointerUp)
+      document.addEventListener("pointerup", handlePointerUp);
       return () => {
-        document.removeEventListener("pointerup", handlePointerUp)
-      }
+        document.removeEventListener("pointerup", handlePointerUp);
+      };
     }
-  }, [showTooltip, handlePointerUp])
+  }, [showTooltip, handlePointerUp]);
 
   const renderThumb = (value: number) => {
     const thumb = (
@@ -73,9 +73,9 @@ function Slider({
         className="block size-4 shrink-0 rounded-full border border-primary bg-background shadow-sm ring-ring/50 transition-[color,box-shadow] outline-none hover:ring-4 focus-visible:ring-4 disabled:pointer-events-none disabled:opacity-50"
         onPointerDown={handlePointerDown}
       />
-    )
+    );
 
-    if (!showTooltip) return thumb
+    if (!showTooltip) return thumb;
 
     return (
       <TooltipProvider>
@@ -90,8 +90,8 @@ function Slider({
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-    )
-  }
+    );
+  };
 
   return (
     <SliderPrimitive.Root
@@ -101,7 +101,7 @@ function Slider({
       min={min}
       max={max}
       className={cn(
-        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+        "relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
         className
       )}
       onValueChange={handleValueChange}
@@ -126,7 +126,7 @@ function Slider({
         </React.Fragment>
       ))}
     </SliderPrimitive.Root>
-  )
+  );
 }
 
-export { Slider }
+export { Slider };
