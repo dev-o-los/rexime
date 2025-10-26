@@ -13,11 +13,6 @@ import { GoTypography } from "react-icons/go";
 
 export default function Page() {
   // --- RESPONSIVE BREAKPOINTS ---
-  // Adjust these values to match your design system.
-  // These can be 'sm', 'md', 'lg', 'xl', '2xl', or custom breakpoints
-  // from your tailwind.config.js file.
-  const tabletBreakpoint = "md"; // The point where the left panel appears
-  const desktopBreakpoint = "xl"; // The point where the right panel appears
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
@@ -27,14 +22,12 @@ export default function Page() {
           border-r
           transition-all duration-300 ease-in-out
           w-0 md:w-[200px] overflow-hidden
-          ${desktopBreakpoint}:w-[30%]
+          xl:w-[30%]
           shrink-0
         `}
       >
         {/* Padding is now also responsive */}
-        <ScrollArea
-          className={`h-full ${tabletBreakpoint}:px-6 ${tabletBreakpoint}:py-3`}
-        >
+        <ScrollArea className={`h-full md:px-6 xl:py-3`}>
           <ResumeForm />
         </ScrollArea>
       </aside>
