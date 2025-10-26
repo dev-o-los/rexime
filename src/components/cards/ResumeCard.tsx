@@ -36,6 +36,11 @@ export default function ResumeCard() {
           Edit Resume
         </DropdownMenuItem>
 
+        <DropdownMenuItem>
+          <VscEdit size={16} className="opacity-60" aria-hidden="true" />
+          Edit Title
+        </DropdownMenuItem>
+
         <DropdownMenuItem className="text-destructive">
           <MdOutlineRemoveCircleOutline
             size={16}

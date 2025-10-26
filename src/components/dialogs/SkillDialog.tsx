@@ -7,26 +7,25 @@ import {
 } from "@/components/ui/dialog";
 import { SiReaddotcv } from "react-icons/si";
 import { SkillDialogForm } from "../form/SkillDialogForm";
-import { Field, FieldControl, FieldLabel } from "../ui/field";
 
-export function DialogField({
-  label,
-  placeholder,
-  value,
-  name,
-}: {
-  label: string;
-  placeholder: string;
-  value?: string;
-  name: string;
-}) {
-  return (
-    <Field name={name} className="w-full">
-      <FieldLabel>{label}</FieldLabel>
-      <FieldControl placeholder={placeholder} value={value} />
-    </Field>
-  );
-}
+// export function DialogField({
+//   label,
+//   placeholder,
+//   value,
+//   name,
+// }: {
+//   label: string;
+//   placeholder: string;
+//   value?: string;
+//   name: string;
+// }) {
+//   return (
+//     <Field name={name} className="w-full">
+//       <FieldLabel>{label}</FieldLabel>
+//       <FieldControl placeholder={placeholder} value={value} />
+//     </Field>
+//   );
+// }
 
 export default function SkillDialog() {
   return (

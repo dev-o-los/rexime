@@ -114,7 +114,7 @@ export function TiltCard({
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       style={dynamicStyle}
-      className={`w-full h-80 min-w-[250px] p-0 m-0 rounded-2xl shadow-2xl ${className}`}
+      className={`h-80 w-full p-0 m-0 rounded-2xl shadow-2xl ${className}`}
     >
       {/* Inner container for background image and content padding */}
       <div

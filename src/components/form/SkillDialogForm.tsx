@@ -1,3 +1,5 @@
+"use client";
+
 import { useUpdateResume } from "@/hooks/useUpdateResume";
 import { ResumeField } from "@/lib/resume-types";
 import { isEmptyObject } from "@/lib/utils";
