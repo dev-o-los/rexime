@@ -47,3 +47,8 @@ export type SectionFields = {
   title4: string;
   placeholder4: string;
 };
+
+export type ResumeCardDetails = {
+  name: string;
+  data: string;
+};

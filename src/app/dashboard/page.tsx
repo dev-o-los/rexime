@@ -1,7 +1,7 @@
-import ResumeCard from "@/components/cards/ResumeCard";
 import { TiltCard } from "@/components/cards/TiltCard";
 import NashBarDash from "@/components/navbar/NavBarDash";
-import { IoAddOutline } from "react-icons/io5";
+import ResumeList from "@/components/resume-dash/ResumeList";
+import { Plus } from "lucide-react";
 import { ibmplexmono } from "../fonts";
 
 export default function Page() {
@@ -10,12 +10,17 @@ export default function Page() {
       <div className="sticky top-0 z-50">
         <NashBarDash />
       </div>
-      <div className="p-7 flex flex-wrap gap-4">
-        <TiltCard className="">
-          <div className="pl-16">
-            <IoAddOutline size={70} />
-          </div>
+      <div
+        className="
+        p-7
+        grid gap-6 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]
+        "
+      >
+        <TiltCard>
           <div>
+            <div className="text-center ml-[37%]">
+              <Plus size={60} />
+            </div>
             <h2
               className={`text-lg font-semibold text-center mb-1 ${ibmplexmono.className}`}
             >
@@ -30,7 +35,7 @@ export default function Page() {
           </div>
         </TiltCard>
 
-        <ResumeCard />
+        <ResumeList />
       </div>
     </div>
   );
