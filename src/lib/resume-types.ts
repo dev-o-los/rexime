@@ -59,6 +59,7 @@ export type Resume = {
   id: string;
   title: string;
   user_id: string;
-  data: string;
+  image: string;
+  data: ResumeData | null;
   created_at: Timestamp;
 };

@@ -11,9 +11,7 @@ import { BiDonateHeart } from "react-icons/bi";
 import { CiPalette } from "react-icons/ci";
 import { GoTypography } from "react-icons/go";
 
-export default function Page() {
-  // --- RESPONSIVE BREAKPOINTS ---
-
+export default function Page({ params }: { params: { data: string } }) {
   return (
     <div className="flex h-screen w-full overflow-hidden">
       {/* LEFT SECTION */}

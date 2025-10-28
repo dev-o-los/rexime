@@ -1,8 +1,11 @@
 "use client";
 
 import { ibmplexmono } from "@/app/fonts";
+import { resumeAtom } from "@/app/store";
+import { sampleData } from "@/lib/constants";
 import { Resume } from "@/lib/resume-types";
-import Link from "next/link";
+import { useSetAtom } from "jotai";
+import { useRouter } from "next/navigation";
 import { MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { VscEdit } from "react-icons/vsc";
 import {
@@ -14,6 +17,14 @@ import {
 import { TiltCard } from "./TiltCard";
 
 export default function ResumeCard({ resume }: { resume: Resume }) {
+  const setResume = useSetAtom(resumeAtom);
+  const router = useRouter();
+
+  const handleResumeEdit = () => {
+    setResume(resume.data ?? sampleData);
+    router.push("/builder");
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -33,12 +44,10 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
         sideOffset={-100}
         alignOffset={-45}
       >
-        <Link href="/builder">
-          <DropdownMenuItem>
-            <VscEdit size={16} className="opacity-60" aria-hidden="true" />
-            Edit Resume
-          </DropdownMenuItem>
-        </Link>
+        <DropdownMenuItem onClick={handleResumeEdit}>
+          <VscEdit size={16} className="opacity-60" aria-hidden="true" />
+          Edit Resume
+        </DropdownMenuItem>
 
         <DropdownMenuItem>
           <VscEdit size={16} className="opacity-60" aria-hidden="true" />
