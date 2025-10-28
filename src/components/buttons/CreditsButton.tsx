@@ -1,6 +1,6 @@
 "use client";
 
-import { getUser } from "@/lib/users/getUserClient";
+import { getUser } from "@/lib/supabase/getUserClient";
 import {
   PaymentCreateResponse,
   ProductListResponse,

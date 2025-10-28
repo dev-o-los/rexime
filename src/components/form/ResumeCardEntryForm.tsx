@@ -1,18 +1,26 @@
 "use client";
 
+import { createResume } from "@/lib/supabase/createResume";
+import { toast } from "sonner";
 import { SaveChangesBtn } from "../buttons/SaveChangesBtn";
 import { DialogField } from "../inputs/DialogField";
 import { Form } from "../ui/form";
 
 export function ResumeCardEntryForm() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    try {
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
 
-    const resumeDetails = {
-      label: formData.get("resume-entry-card")?.toString(),
-      json: null,
-    };
+      const resume = {
+        title: formData.get("resume-title")?.toString(),
+        data: null,
+      };
+
+      await createResume(resume.title ?? "Resume", resume.data);
+    } catch (error) {
+      toast.error((error as Error).message);
+    }
   };
 
   return (
@@ -20,7 +28,7 @@ export function ResumeCardEntryForm() {
       <DialogField
         label={"Write a title for this resume"}
         placeholder={"Google, Meta, X"}
-        name="resume-entry-card"
+        name="resume-title"
       />
       <SaveChangesBtn />
     </Form>

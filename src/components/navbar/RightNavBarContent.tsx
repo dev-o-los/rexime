@@ -1,4 +1,4 @@
-import { getUser } from "@/lib/users/getUser";
+import { getUser } from "@/lib/supabase/getUser";
 import { UserInfoButton } from "../buttons/UserInfoButton";
 import SignUpDialog from "../dialogs/SignUpDialog";
 

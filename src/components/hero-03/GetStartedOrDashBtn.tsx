@@ -1,4 +1,4 @@
-import { getUser } from "@/lib/users/getUser";
+import { getUser } from "@/lib/supabase/getUser";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import SignUpDialog from "../dialogs/SignUpDialog";

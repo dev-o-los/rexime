@@ -48,7 +48,7 @@ export async function UserInfoButton() {
           <span>{credits ?? "Error"}</span>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href="/plans">Buy Credits</Link>
+          <Link href="/plans">Donate project</Link>
         </DropdownMenuItem>
         <SignOutButton />
       </DropdownMenuContent>
