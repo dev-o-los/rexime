@@ -49,7 +49,6 @@ export const POST = async (request: NextRequest) => {
 
       //! add code here/
 
-      console.log(`Added ${creditsToAdd} credits to user ${userId}`);
       return NextResponse.json({ success: true });
     }
 

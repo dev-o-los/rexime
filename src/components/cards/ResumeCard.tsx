@@ -22,7 +22,7 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
 
   const handleResumeEdit = () => {
     setResume(resume.data ?? sampleData);
-    router.push(`/builder?id=${resume.id}`);
+    router.push(`/builder/${resume.id}`);
   };
 
   return (

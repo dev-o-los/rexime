@@ -8,7 +8,6 @@ import { ResumeHeading } from "../resume/ResumeHeading";
 export default function FormTextArea({ content }: { content: string }) {
   const { handleChange } = useUpdateResume("summary");
 
-  console.log(content);
   return (
     <div className="summary">
       <ResumeHeading heading="Summary" icon={<BsTextParagraph />} />

@@ -1,3 +1,5 @@
+"use client";
+
 import FontResetBtn from "@/components/buttons/FontResetBtn";
 import DonationCard from "@/components/cards/DonationCard";
 import ColorPicker from "@/components/ColorPicker";
@@ -7,15 +9,18 @@ import { ResumeForm } from "@/components/resume/ResumeForm";
 import { ResumeHeading } from "@/components/resume/ResumeHeading";
 import TemplateSelector from "@/components/TemplateSelector";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useResumeSync } from "@/hooks/useResumeSync";
+import React from "react";
 import { BiDonateHeart } from "react-icons/bi";
 import { CiPalette } from "react-icons/ci";
 import { GoTypography } from "react-icons/go";
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = React.use(params);
+  const { resumeData, isLoading } = useResumeSync(id);
+
+  if (isLoading || !resumeData) return <div>load</div>;
+
   return (
     <div className="flex h-screen w-full overflow-hidden">
       {/* LEFT SECTION */}

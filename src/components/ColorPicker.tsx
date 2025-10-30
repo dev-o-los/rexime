@@ -73,7 +73,6 @@ export default function ColorPicker() {
         className="flex gap-1.5"
         defaultValue={resumeColors[0].value}
         onValueChange={function (val) {
-          console.log("Color changed to:", val);
           setResumeColor(val);
         }}
       >

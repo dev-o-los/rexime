@@ -13,8 +13,6 @@ interface PlanDetails {
   features: string[];
 }
 
-// console.log(products);
-
 const extraDetails: Record<number, PlanDetails> = {
   0: {
     buttonText: "Get 5 credits now",
@@ -48,7 +46,7 @@ export default async function Page() {
   const products = (await response.json()) as ProductListResponse[];
 
   return (
-    <div id="pricing" className="max-w-screen-lg mx-auto py-12 xs:py-20 px-6">
+    <div id="pricing" className="max-w-5xl mx-auto py-12 xs:py-20 px-6">
       <h1 className="text-4xl xs:text-5xl font-bold text-center tracking-tight">
         Pricing
       </h1>
@@ -59,7 +57,7 @@ export default async function Page() {
             className={cn(
               "relative bg-accent/50 border p-7 rounded-xl lg:rounded-none lg:first:rounded-l-xl lg:last:rounded-r-xl",
               {
-                "bg-background border-[2px] border-primary py-12 !rounded-xl":
+                "bg-background border-2 border-primary py-12 rounded-xl!":
                   idx == 1,
               }
             )}

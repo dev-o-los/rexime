@@ -12,22 +12,16 @@ export function useResumeSync(resumeId: string) {
   const [resumeData, setResumeData] = useAtom(resumeAtom);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Ref to hold the ID of the debounce timer
   const debounceTimer = useRef<NodeJS.Timeout | undefined>(undefined);
-  // Ref to hold the string of the last *successfully* synced data
   const lastSyncedData = useRef<string>("");
 
-  // ✅ Fetch from cache or Supabase on mount
-  // This logic was already excellent.
   useEffect(() => {
     (async () => {
-      // 1. Try to load from fast, local cache first
       const cached = localStorage.getItem(`resume-${resumeId}`);
       if (cached) {
         try {
           const parsed = JSON.parse(cached);
           setResumeData(parsed as ResumeData);
-          console.log(parsed);
         } catch {
           toast.error("Invalid cached data");
           localStorage.removeItem(`resume-${resumeId}`); // Clear bad data
@@ -35,7 +29,6 @@ export function useResumeSync(resumeId: string) {
           setIsLoading(false);
         }
       } else {
-        // 2. If no cache, fetch from database
         const data = await fetchFromSupabase(resumeId);
         if (data) {
           setResumeData(data);
@@ -45,7 +38,6 @@ export function useResumeSync(resumeId: string) {
         setIsLoading(false);
       }
     })();
-    console.log("runn1");
     // Adding setResumeData to dependency array
   }, [resumeId, setResumeData]);
 
@@ -70,7 +62,6 @@ export function useResumeSync(resumeId: string) {
       saveToSupabase(resumeId, resumeData, jsonString, lastSyncedData);
     }, SAVE_DELAY);
 
-    console.log("runn2");
     // Cleanup: Clear the timer if the component unmounts
     return () => {
       if (debounceTimer.current) {
@@ -96,7 +87,6 @@ export function useResumeSync(resumeId: string) {
         }
       }
     };
-    console.log("runn3");
     window.addEventListener("online", handleOnline);
     return () => window.removeEventListener("online", handleOnline);
   }, [resumeId]);

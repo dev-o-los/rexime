@@ -35,7 +35,6 @@ export function ResumeSection({
   return (
     <div>
       <ResumeHeading heading={heading} icon={icon} />
-
       {(isEditorOpen && id === "skills") || id === "achievements" ? (
         <TiptapEditor
           onContentChange={(content) =>

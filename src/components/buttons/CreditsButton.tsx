@@ -43,7 +43,6 @@ export default function CreditsButton({
     });
 
     const body = (await response.json()) as PaymentCreateResponse;
-    console.log(body);
 
     if (body.payment_link) {
       router.push(body.payment_link);
