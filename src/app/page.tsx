@@ -1,3 +1,6 @@
+import Faq from "@/components/faq";
+import Features from "@/components/features";
+import Footer from "@/components/footer";
 import Hero03 from "@/components/hero-03/hero-03";
 import LogoCloud from "@/components/logos-07/LogoCloud";
 
@@ -25,6 +28,9 @@ export default async function Home() {
         /> */}
       </div>
       <LogoCloud />
+      <Features />
+      <Faq />
+      <Footer />
     </div>
   );
 }
