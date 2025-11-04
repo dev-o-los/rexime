@@ -118,7 +118,7 @@ export function ResumeControlBar({
   };
 
   return (
-    <div className="flex absolute z-10 top-[90dvh] left-[38%] flex-col items-start gap-8">
+    <div className="flex absolute z-10 max-sm:top-[85dvh] top-[88dvh] left-[32%] flex-col items-start gap-8">
       <ButtonGroup>
         <ControlBtn
           onClick={() => zoomIn()}
