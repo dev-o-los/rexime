@@ -1,48 +1,54 @@
 import {
-  Blocks,
-  Bot,
-  ChartPie,
-  Film,
-  MessageCircle,
-  Settings2,
+  FileText,
+  LayoutDashboard,
+  Palette,
+  Type,
+  Users,
+  Zap,
 } from "lucide-react";
 
 const features = [
   {
-    icon: Settings2,
-    title: "Customizable Layouts",
+    icon: LayoutDashboard,
+    title: "Real-Time Editing",
     description:
-      "Design your space with drag-and-drop simplicity—create grids, lists, or galleries in seconds.",
+      "Instantly see your changes reflected in your resume. Update details and preview them live in real-time.",
   },
   {
-    icon: Blocks,
-    title: "Interactive Widgets",
+    icon: Palette,
+    title: "Custom Themes & Colors",
     description:
-      "Embed polls, quizzes, or forms to keep your audience engaged.",
+      "Personalize your resume with beautiful color palettes and modern templates to match your professional vibe.",
   },
   {
-    icon: Bot,
-    title: "AI-Powered Tools",
+    icon: Type,
+    title: "Font Variety",
     description:
-      "Generate summaries, auto-format content, or translate into multiple languages seamlessly.",
+      "Choose from a wide range of elegant and professional font faces to make your resume stand out.",
   },
   {
-    icon: Film,
-    title: "Media Integrations",
+    icon: FileText,
+    title: "Smart Resume Layouts",
     description:
-      "Connect with Spotify, Instagram, or your own media library for dynamic visuals and sound.",
+      "Multiple layout options — from minimalist to creative — built to impress recruiters and optimize readability.",
+  },
+  // {
+  //   icon: Download,
+  //   title: "One-Click PDF Export",
+  //   description:
+  //     "Download your resume as a polished PDF instantly with pixel-perfect formatting and no design breakage.",
+  // },
+  {
+    icon: Zap,
+    title: "Lightning-Fast & Reactive",
+    description:
+      "Experience a smooth and responsive interface powered by React — no reloads, no delays, just pure productivity.",
   },
   {
-    icon: ChartPie,
-    title: "Advanced Analytics",
+    icon: Users,
+    title: "User-Friendly Design",
     description:
-      "Track engagement, clicks, and user activity with intuitive charts and reports.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Seamless Collaboration",
-    description:
-      "Comment, tag, and assign tasks directly within your documents.",
+      "An intuitive interface built for everyone — from students crafting their first resume to professionals refining their next opportunity.",
   },
 ];
 
