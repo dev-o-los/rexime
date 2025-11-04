@@ -4,32 +4,52 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Download,
+  FileText,
+  HelpCircle,
+  Palette,
+  ShieldCheck,
+  Type,
+} from "lucide-react";
 
 const faq = [
   {
-    question: "What is your return policy?",
+    icon: FileText,
+    question: "What is this resume builder all about?",
     answer:
-      "You can return unused items in their original packaging within 30 days for a refund or exchange. Contact support for assistance.",
+      "It’s a live, reactive resume builder designed to make a professional resume effortless. As you edit your details, your resume updates instantly — no need to refresh or reformat.",
+  },
+
+  {
+    icon: Palette,
+    question: "Can I customize the resume design?",
+    answer:
+      "Absolutely! You can choose from multiple color themes, adjust layouts, and apply unique styles to match your personal or professional branding.",
   },
   {
-    question: "How do I track my order?",
+    icon: Type,
+    question: "Are different font styles available?",
     answer:
-      "Track your order using the link provided in your confirmation email, or log into your account to view tracking details.",
+      "Yes, you can switch between various elegant and professional font faces to give your resume a distinctive look while maintaining readability.",
   },
   {
-    question: "Do you ship internationally?",
+    icon: Download,
+    question: "Can I download my resume as a PDF?",
     answer:
-      "Yes, we ship worldwide. Shipping fees and delivery times vary by location, and customs duties may apply for some countries.",
+      "Yes, with just one click you can download a high-quality, print-ready PDF version of your resume — perfectly formatted and ready to share anywhere.",
   },
   {
-    question: "What payment methods do you accept?",
+    icon: ShieldCheck,
+    question: "Is my personal data secure?",
     answer:
-      "We accept Visa, MasterCard, American Express, PayPal, Apple Pay, and Google Pay, ensuring secure payment options for all customers.",
+      "Your data stays private and secure. We don’t share or sell user information — everything you create remains accessible only to you.",
   },
   {
-    question: "What if I receive a damaged item?",
+    icon: HelpCircle,
+    question: "Do I need any design or coding experience?",
     answer:
-      "Please contact our support team within 48 hours of delivery with photos of the damaged item. We’ll arrange a replacement or refund.",
+      "Not at all! The interface is built for everyone. Whether you’re a student or a working professional, you can create a stunning resume in minutes — no design skills required.",
   },
 ];
 
