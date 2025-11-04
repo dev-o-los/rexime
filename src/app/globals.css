@@ -217,4 +217,17 @@ button {
   .animate-marquee-vertical {
     animation: marquee-vertical var(--duration) linear infinite;
   }
+
+  @keyframes logo-cloud {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 4rem));
+    }
+  }
+
+  .animate-logo-cloud {
+    animation: logo-cloud 30s linear infinite;
+  }
 }

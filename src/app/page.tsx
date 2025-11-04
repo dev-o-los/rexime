@@ -2,7 +2,7 @@ import Faq from "@/components/faq";
 import Features from "@/components/features";
 import Footer from "@/components/footer";
 import Hero03 from "@/components/hero-03/hero-03";
-import LogoCloud from "@/components/logos-07/LogoCloud";
+import LogoCloudNew from "@/components/logos-07/LogoCloudNew";
 
 export default async function Home() {
   return (
@@ -27,7 +27,7 @@ export default async function Home() {
           autoRampDuration={0.6}
         /> */}
       </div>
-      <LogoCloud />
+      <LogoCloudNew />
       <Features />
       <Faq />
       <Footer />
