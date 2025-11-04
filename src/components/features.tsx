@@ -54,7 +54,10 @@ const features = [
 
 const Features = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center py-12">
+    <div
+      id="features"
+      className="min-h-screen flex items-center justify-center py-12"
+    >
       <div>
         <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-center">
           Unleash Your Creativity
