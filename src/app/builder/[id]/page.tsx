@@ -14,7 +14,8 @@ import React, { useState } from "react";
 import { BiDonateHeart } from "react-icons/bi";
 import { CiPalette } from "react-icons/ci";
 import { GoTypography } from "react-icons/go";
-import { MdMenu, MdMenuOpen } from "react-icons/md";
+import { LuPanelLeft, LuPanelRight } from "react-icons/lu";
+import { MdClose } from "react-icons/md";
 import LoadingPage from "../LoadingPage";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
@@ -32,7 +33,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
       {/* ✅ MOBILE NAVBAR (Visible Only on Small Screens) */}
       <div className="md:hidden fixed top-0 left-0 w-full h-12 border-b z-50 flex items-center justify-between px-4">
         <button onClick={() => setShowLeft(true)}>
-          <MdMenu size={26} />
+          <LuPanelLeft size={26} />
         </button>
 
         <p className="font-medium text-base truncate max-w-[55%] text-center">
@@ -40,7 +41,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
         </p>
 
         <button onClick={() => setShowRight(true)}>
-          <MdMenuOpen size={26} />
+          <LuPanelRight size={26} />
         </button>
       </div>
 
@@ -65,7 +66,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
               className="text-sm underline"
               onClick={() => setShowLeft(false)}
             >
-              Close
+              <MdClose size={26} />
             </button>
           </div>
 
@@ -99,7 +100,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
               className="text-sm underline"
               onClick={() => setShowRight(false)}
             >
-              Close
+              <MdClose size={26} />
             </button>
           </div>
 
