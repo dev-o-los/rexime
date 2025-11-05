@@ -14,7 +14,7 @@ export default function AddResumeDialog() {
     <Dialog>
       <DialogTrigger className="w-full" asChild>
         <div>
-          <TiltCard className="w-[250px]">
+          <TiltCard className="w-[250px] max-sm:w-full">
             <div>
               <div className="text-center ml-[37%]">
                 <Plus size={60} />

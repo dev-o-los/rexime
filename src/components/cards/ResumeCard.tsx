@@ -2,6 +2,7 @@
 
 import { ibmplexmono } from "@/app/fonts";
 import { resumeAtom } from "@/app/store";
+import { useMobile } from "@/hooks/useMobile";
 import { sampleData } from "@/lib/constants";
 import { Resume } from "@/lib/resume-types";
 import { updateResume } from "@/lib/supabase/createResume";
@@ -34,6 +35,7 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [newTitle, setNewTitle] = useState(resume.title);
+  const isMobile = useMobile();
 
   const handleResumeEdit = () => {
     setResume(resume.data ?? sampleData);
@@ -104,8 +106,8 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
         <DropdownMenuContent
           side="right"
           align="end"
-          sideOffset={-100}
-          alignOffset={-45}
+          sideOffset={isMobile ? -200 : -100}
+          alignOffset={isMobile ? 0 : -45}
         >
           <DropdownMenuItem onClick={handleResumeEdit}>
             <VscEdit size={16} className="opacity-60" aria-hidden="true" />
