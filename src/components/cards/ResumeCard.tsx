@@ -5,6 +5,7 @@ import { resumeAtom } from "@/app/store";
 import { sampleData } from "@/lib/constants";
 import { Resume } from "@/lib/resume-types";
 import { updateResume } from "@/lib/supabase/createResume";
+import { deleteResume } from "@/lib/supabase/deleteResume";
 import { useSetAtom } from "jotai";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -40,7 +41,7 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
   };
 
   const handleEditTitle = () => {
-    if (resume.id) {
+    if (!resume.id) {
       toastManager.add({
         title: "User id not found",
         type: "error",
@@ -58,12 +59,31 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
       });
       return;
     }
+    if (newTitle.trim().toLowerCase() === resume.title.trim().toLowerCase()) {
+      toastManager.add({
+        title: "Title cannot be same as before",
+        type: "error",
+      });
+      return;
+    }
+
     await updateResume(resume.id, { title: newTitle });
     toastManager.add({
       title: "Title updated!",
       type: "success",
     });
     setOpen(false);
+    router.refresh();
+  };
+
+  const handleDelete = async () => {
+    if (!resume.id) {
+      toastManager.add({
+        title: "User id not found",
+        type: "error",
+      });
+    }
+    await deleteResume(resume.id);
     router.refresh();
   };
 
@@ -97,7 +117,7 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
             Edit Title
           </DropdownMenuItem>
 
-          <DropdownMenuItem className="text-destructive">
+          <DropdownMenuItem className="text-destructive" onClick={handleDelete}>
             <MdOutlineRemoveCircleOutline
               size={16}
               color="red"
