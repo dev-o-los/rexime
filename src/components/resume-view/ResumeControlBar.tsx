@@ -10,7 +10,7 @@ import {
   MdOutlineZoomOutMap,
 } from "react-icons/md";
 import { useControls } from "react-zoom-pan-pinch";
-import { toast } from "sonner";
+import { toastManager } from "../ui/toast";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 function ControlBtn({
@@ -48,7 +48,10 @@ export function ResumeControlBar({
     try {
       const element = elementRef.current;
       if (!element) {
-        toast.error("Cannot find resume element to export");
+        toastManager.add({
+          title: "Cannot find resume element to export",
+          type: "error",
+        });
         return;
       }
 
@@ -113,7 +116,10 @@ export function ResumeControlBar({
       pdf.save(fileName);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to generate PDF");
+      toastManager.add({
+        title: "Failed to generate PDF",
+        type: "error",
+      });
     }
   };
 

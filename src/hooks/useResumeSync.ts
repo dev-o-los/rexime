@@ -1,10 +1,10 @@
 import { resumeAtom } from "@/app/store";
+import { toastManager } from "@/components/ui/toast";
 import { createClient } from "@/lib/client";
 import { ResumeData } from "@/lib/resume-types";
 // No longer need to import throttle
 import { useAtom } from "jotai";
 import { RefObject, useEffect, useRef, useState } from "react";
-import { toast } from "sonner";
 
 const SAVE_DELAY = 2000; // 2 seconds debounce
 
@@ -23,7 +23,10 @@ export function useResumeSync(resumeId: string) {
           const parsed = JSON.parse(cached);
           setResumeData(parsed as ResumeData);
         } catch {
-          toast.error("Invalid cached data");
+          toastManager.add({
+            title: "Invalid cached data",
+            type: "error",
+          });
           localStorage.removeItem(`resume-${resumeId}`); // Clear bad data
         } finally {
           setIsLoading(false);
@@ -83,7 +86,10 @@ export function useResumeSync(resumeId: string) {
           // We pass 'cached' (the jsonString) directly
           saveToSupabase(resumeId, data, cached, lastSyncedData);
         } catch {
-          toast.error("Failed to re-sync corrupt cached data.");
+          toastManager.add({
+            title: "Failed to re-sync corrupt cached data.",
+            type: "error",
+          });
         }
       }
     };
@@ -106,7 +112,10 @@ async function fetchFromSupabase(resumeId: string): Promise<ResumeData | null> {
     .single();
 
   if (error) {
-    toast.error(error.message);
+    toastManager.add({
+      title: error.message,
+      type: "error",
+    });
     return null;
   }
 
@@ -135,7 +144,10 @@ async function saveToSupabase(
       .eq("id", resumeId);
 
     if (error) {
-      toast.error(error.message);
+      toastManager.add({
+        title: error.message,
+        type: "error",
+      });
       return;
     }
 
@@ -144,6 +156,9 @@ async function saveToSupabase(
     // Optional: Add a subtle success toast
     // toast.success("Changes saved to cloud");
   } catch (err) {
-    toast.error((err as Error).message);
+    toastManager.add({
+      title: (err as Error).message,
+      type: "error",
+    });
   }
 }

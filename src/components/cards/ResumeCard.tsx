@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { VscEdit } from "react-icons/vsc";
-import { toast } from "sonner";
 import { Button } from "../ui/button";
 import {
   Dialog,
@@ -26,6 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
+import { toastManager } from "../ui/toast";
 import { TiltCard } from "./TiltCard";
 
 export default function ResumeCard({ resume }: { resume: Resume }) {
@@ -40,8 +40,11 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
   };
 
   const handleEditTitle = () => {
-    if (!resume.id) {
-      toast.error("User id not found");
+    if (resume.id) {
+      toastManager.add({
+        title: "User id not found",
+        type: "error",
+      });
     }
     setNewTitle(resume.title);
     setOpen(true);
@@ -49,11 +52,17 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
 
   const handleSaveTitle = async () => {
     if (!newTitle || newTitle.trim().length === 0) {
-      toast.error("Title cannot be empty");
+      toastManager.add({
+        title: "Title cannot be empty",
+        type: "error",
+      });
       return;
     }
     await updateResume(resume.id, { title: newTitle });
-    toast.success("Title updated!");
+    toastManager.add({
+      title: "Title updated!",
+      type: "success",
+    });
     setOpen(false);
     router.refresh();
   };

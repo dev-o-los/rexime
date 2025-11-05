@@ -1,8 +1,8 @@
 "use client";
 
 import { signOutGooogle } from "@/lib/actions";
-import { toast } from "sonner";
 import { DropdownMenuItem } from "../ui/dropdown-menu";
+import { toastManager } from "../ui/toast";
 
 export function SignOutButton() {
   return (
@@ -13,7 +13,10 @@ export function SignOutButton() {
         try {
           signOutGooogle();
         } catch (error) {
-          toast.error((error as Error).message);
+          toastManager.add({
+            title: (error as Error).message,
+            type: "error",
+          });
         }
       }}
     >

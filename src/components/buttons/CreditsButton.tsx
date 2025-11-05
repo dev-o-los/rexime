@@ -6,8 +6,8 @@ import {
   ProductListResponse,
 } from "dodopayments/resources/index.mjs";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 import { Button } from "../ui/button";
+import { toastManager } from "../ui/toast";
 
 export default function CreditsButton({
   product,
@@ -24,8 +24,10 @@ export default function CreditsButton({
     const user = await getUser();
 
     if (!user) {
-      toast.error("User Error", {
+      toastManager.add({
+        title: "User Error",
         description: "No user id found",
+        type: "error",
       });
       return;
     }
@@ -47,7 +49,10 @@ export default function CreditsButton({
     if (body.payment_link) {
       router.push(body.payment_link);
     } else {
-      toast.error("Something went wrong");
+      toastManager.add({
+        title: "Something went wrong",
+        type: "error",
+      });
     }
   };
 

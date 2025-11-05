@@ -1,8 +1,8 @@
 "use client";
 
 import { signInWithGoogle } from "@/lib/actions";
-import { toast } from "sonner";
 import { Button } from "../ui/button";
+import { toastManager } from "../ui/toast";
 
 export default function SignInWithGoogleBtn({
   isLogin = false,
@@ -16,7 +16,10 @@ export default function SignInWithGoogleBtn({
         try {
           signInWithGoogle("/dashboard");
         } catch (error) {
-          toast.error((error as Error).message);
+          toastManager.add({
+            title: (error as Error).message,
+            type: "error",
+          });
         }
       }}
     >

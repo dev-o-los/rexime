@@ -2,10 +2,10 @@
 
 import { createResume } from "@/lib/supabase/createResume";
 import { useRouter } from "next/navigation";
-import { toast } from "sonner";
 import { SaveChangesBtn } from "../buttons/SaveChangesBtn";
 import { DialogField } from "../inputs/DialogField";
 import { Form } from "../ui/form";
+import { toastManager } from "../ui/toast";
 
 export function ResumeCardEntryForm() {
   const router = useRouter();
@@ -25,7 +25,10 @@ export function ResumeCardEntryForm() {
         "/resume-simple.png"
       ).then(() => router.refresh());
     } catch (error) {
-      toast.error((error as Error).message);
+      toastManager.add({
+        title: (error as Error).message,
+        type: "error",
+      });
     }
   };
 

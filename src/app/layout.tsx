@@ -1,4 +1,4 @@
-import { Toaster } from "@/components/ui/sonner";
+import { ToastProvider } from "@/components/ui/toast";
 import { Analytics } from "@vercel/analytics/next";
 import { Provider } from "jotai";
 import { Metadata } from "next";
@@ -50,18 +50,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} antialiased selection:bg-white/40 not-dark:selection:bg-black/55`}
       >
-        <Provider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem={false}
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster position="top-center" richColors />
-          </ThemeProvider>
-          <Analytics />
-        </Provider>
+        <ToastProvider>
+          <Provider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem={false}
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+            <Analytics />
+          </Provider>
+        </ToastProvider>
       </body>
     </html>
   );
