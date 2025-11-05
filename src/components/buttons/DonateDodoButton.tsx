@@ -1,7 +1,9 @@
 "use client";
 
+import { selectedDonationAmountAtom } from "@/app/store";
 import { getUser } from "@/lib/supabase/getUserClient";
 import { PaymentCreateResponse } from "dodopayments/resources/index.mjs";
+import { useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { toastManager } from "../ui/toast";
@@ -16,6 +18,7 @@ export default function DonateDodoButton({
   product: string;
 }) {
   const router = useRouter();
+  const donationAmt = useAtomValue(selectedDonationAmountAtom);
 
   const handlePayClick = async (product: string) => {
     const user = await getUser();
@@ -29,27 +32,26 @@ export default function DonateDodoButton({
       return;
     }
 
-    try {
-      const response = await fetch("/api/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: user.email,
-          productId: product,
-          id: user.id, //"0ca17b23-e0a7-4de6-8aa8-b35ce275abf9",
-        }),
-      });
+    const response = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: user.email,
+        productId: product,
+        id: user.id, //"0ca17b23-e0a7-4de6-8aa8-b35ce275abf9",
+        amt: donationAmt * 100,
+      }),
+    });
 
-      const body = (await response.json()) as PaymentCreateResponse;
+    const body = (await response.json()) as PaymentCreateResponse;
 
-      if (body.payment_link) {
-        router.push(body.payment_link);
-      }
-    } catch (error) {
+    if (body.payment_link) {
+      router.push(body.payment_link);
+    } else {
       toastManager.add({
-        title: `${error}`,
+        title: "Something went wrong",
         type: "error",
       });
     }
@@ -60,7 +62,7 @@ export default function DonateDodoButton({
       onClick={() => handlePayClick(product)}
       variant={isPopular ? "default" : "outline"}
       size="lg"
-      className="w-full mt-[54%]"
+      className="w-full mt-4"
     >
       {buttonText}
     </Button>

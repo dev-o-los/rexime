@@ -1,4 +1,5 @@
 import DonateDodoButton from "@/components/buttons/DonateDodoButton";
+import DonationAmountSelection from "@/components/DonationAmtSelection";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CircleCheck } from "lucide-react";
@@ -27,7 +28,6 @@ const donations = [
       "Fast & secure payment",
       "International payments supported",
       "Credit / Debit cards accepted",
-      "Secure encryption by default",
     ],
     buttonText: "Donate with Dodo Payments",
     dodoLink: "/donate/dodo",
@@ -91,6 +91,8 @@ const Pricing = () => {
                 </Button>
               </div>
             )}
+
+            {donation.isPopular && <DonationAmountSelection />}
 
             {/* Dodo Payments Button */}
             {donation.dodoLink && (
