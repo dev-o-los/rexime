@@ -7,26 +7,35 @@ import { geistSans } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rexime",
+  title: "Rexime — Modern Resume Builder",
   description:
-    "Create, edit, and visualize mind maps with ease. No data stored on our servers.",
-  keywords: ["mind mapping", "visual thinking", "productivity", "AI mind map"],
+    "Create stunning, professional resumes effortlessly with Rexime. Choose modern templates, edit in real time, and download instantly. No data stored on servers.",
+  keywords: [
+    "resume builder",
+    "cv builder",
+    "professional resume",
+    "job application",
+    "resume templates",
+    "ATS friendly resume",
+    "online resume creator",
+  ],
   authors: [{ name: "Utkarsh" }],
   icons: {
-    icon: "/favicon.ico", // default favicon
-    apple: "/apple-touch-icon.png", // for iOS
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Mind Mapping Tool",
-    description: "Easily create mind maps and boost productivity.",
-    url: `${process.env.SITE_URL}/og-image.png`,
-    siteName: "Mind Mapping Tool",
+    title: "Rexime — Create Your Professional Resume Online",
+    description:
+      "Design modern, ATS-friendly resumes in minutes. Fully responsive, sleek templates, and instant downloads.",
+    url: process.env.SITE_URL,
+    siteName: "Rexime",
     images: [
       {
         url: `${process.env.SITE_URL}/og-image.png`,
-        width: 1915,
-        height: 837,
-        alt: "Mind map example",
+        width: 1200,
+        height: 630,
+        alt: "Rexime Resume Builder Preview",
       },
     ],
     locale: "en_US",
@@ -34,8 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mind Mapping Tool",
-    description: "Create and visualize mind maps instantly.",
+    title: "Rexime — Modern Resume Builder",
+    description:
+      "Create beautiful, job-winning resumes instantly with responsive templates and real-time editing.",
     images: [`${process.env.SITE_URL}/og-image.png`],
   },
 };

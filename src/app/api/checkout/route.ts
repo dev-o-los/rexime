@@ -18,6 +18,7 @@ export const POST = async (request: NextRequest) => {
 
   if (parser.success) {
     const { email, productId, id } = parser.data;
+
     try {
       const payment = await dodopayments.payments.create({
         billing: {
@@ -36,7 +37,7 @@ export const POST = async (request: NextRequest) => {
         },
         payment_link: true,
         return_url: process.env.DODO_PAYMENTS_RETURN_URL,
-        product_cart: [{ product_id: productId, quantity: 1 }],
+        product_cart: [{ product_id: productId, quantity: 1, amount: 200 }],
       });
 
       return NextResponse.json(payment, { status: 200 });

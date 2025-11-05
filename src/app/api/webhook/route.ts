@@ -38,8 +38,6 @@ export const POST = async (request: NextRequest) => {
         return NextResponse.json({ success: true }); // respond 2xx to prevent retries
       }
 
-      const creditsToAdd = PRODUCT_CREDITS[product_id];
-
       // Extract user ID safely from payload (make sure your payload has it)
       const userId = payload.data.metadata?.supabaseid;
       if (!userId) {

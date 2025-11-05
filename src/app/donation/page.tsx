@@ -1,3 +1,4 @@
+import DonateDodoButton from "@/components/buttons/DonateDodoButton";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { CircleCheck } from "lucide-react";
@@ -93,13 +94,10 @@ const Pricing = () => {
 
             {/* Dodo Payments Button */}
             {donation.dodoLink && (
-              <Button
-                size="lg"
-                className="w-full mt-[54%]"
-                // onClick={() => (window.location.href = donation.dodoLink!)}
-              >
-                {donation.buttonText}
-              </Button>
+              <DonateDodoButton
+                buttonText={donation.buttonText}
+                product="pdt_leOBapVoCxopJCxwlqByR"
+              />
             )}
           </div>
         ))}

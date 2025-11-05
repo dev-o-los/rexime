@@ -1,4 +1,3 @@
-import CreditsButton from "@/components/buttons/CreditsButton";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { globalFetch } from "@/lib/payments/globalFetch";
@@ -83,11 +82,6 @@ export default async function Page() {
                 </li>
               ))}
             </ul>
-            <CreditsButton
-              buttonText={extraDetails[idx].buttonText}
-              isPopular={idx == 1}
-              product={plan}
-            />
           </div>
         ))}
       </div>
