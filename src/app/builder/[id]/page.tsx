@@ -59,7 +59,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
           }
         `}
       >
-        <ScrollArea className="h-full md:px-6 xl:py-3 px-4 py-3">
+        <ScrollArea className="h-full md:px-6 xl:py-3 py-3">
           {/* Close button only on mobile */}
           <div className="md:hidden mb-4">
             <button
