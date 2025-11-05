@@ -17,7 +17,7 @@ const donations = [
       "Instant payment confirmation",
     ],
     buttonText: "Pay using UPI ID",
-    qrImage: "/qrcode.png", // <-- REPLACE LATER
+    qrImage: "/qrcode.png",
   },
   {
     name: "Dodo Payments",
