@@ -228,3 +228,21 @@ button {
     animation: logo-cloud 30s linear infinite;
   }
 }
+
+/* Hide scrollbar but keep scroll functionality */
+
+/* For Chrome, Safari, Opera */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* For Internet Explorer and Edge (legacy) */
+* {
+  -ms-overflow-style: none;
+}
