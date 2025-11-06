@@ -37,7 +37,7 @@ export default function YouTubeBtn() {
           {open && (
             <iframe
               className="w-full h-full rounded-b-lg"
-              src="https://youtu.be/i1Hqv9Sh7mo"
+              src="https://www.youtube.com/embed/i1Hqv9Sh7mo?autoplay=1"
               title="YouTube video"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
