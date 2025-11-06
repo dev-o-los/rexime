@@ -96,7 +96,7 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
           <div>
             <TiltCard imageUrl={resume.image}>
               <h1
-                className={`text-center text-3xl font-semibold ${ibmplexmono.className}`}
+                className={`text-center text-3xl max-w-[200px] text-ellipsis line-clamp-2 font-semibold ${ibmplexmono.className}`}
               >
                 {resume.title}
               </h1>
