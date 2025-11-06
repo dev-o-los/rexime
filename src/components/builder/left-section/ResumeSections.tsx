@@ -9,7 +9,7 @@ import { GrProjects } from "react-icons/gr";
 import { MdAssuredWorkload, MdWorkOutline } from "react-icons/md";
 import { PiCertificateLight } from "react-icons/pi";
 import { SiHyperskill } from "react-icons/si";
-import FormTextArea from "../text/ResumeTextArea";
+import FormTextArea from "../../text/ResumeTextArea";
 import { ResumeSection } from "./ResumeSection";
 
 export function ResumeSections() {

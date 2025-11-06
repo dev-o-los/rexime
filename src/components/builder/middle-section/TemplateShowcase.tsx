@@ -8,10 +8,10 @@ import {
 import { useAtomValue } from "jotai";
 import { useRef } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
-import Resume from "../templates/Resume";
-import { ResumeAmsterdam } from "../templates/ResumeAmsterdam";
-import { ResumeBerlin } from "../templates/ResumeBerlin";
-import { ResumeTimeLine } from "../templates/ResumeTimeline";
+import Resume from "../../templates/Resume";
+import { ResumeAmsterdam } from "../../templates/ResumeAmsterdam";
+import { ResumeBerlin } from "../../templates/ResumeBerlin";
+import { ResumeTimeLine } from "../../templates/ResumeTimeline";
 import { ResumeControlBar } from "./ResumeControlBar";
 
 export default function TemplateShowcase() {

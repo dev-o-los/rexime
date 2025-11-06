@@ -1,5 +1,5 @@
 import DonateDodoButton from "@/components/buttons/DonateDodoButton";
-import DonationAmountSelection from "@/components/DonationAmtSelection";
+import DonationAmountSelection from "@/components/selection/DonationAmtSelection";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { PRODUCT_ID_PROD } from "@/lib/payments/product-credits";

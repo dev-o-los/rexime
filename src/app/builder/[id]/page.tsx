@@ -1,13 +1,13 @@
 "use client";
 
+import { ResumeForm } from "@/components/builder/left-section/ResumeForm";
+import { ResumeHeading } from "@/components/builder/left-section/ResumeHeading";
+import TemplateShowcase from "@/components/builder/middle-section/TemplateShowcase";
+import ColorPicker from "@/components/builder/right-section/ColorPicker";
+import TemplateSelector from "@/components/builder/right-section/TemplateSelector";
 import FontResetBtn from "@/components/buttons/FontResetBtn";
 import DonationCard from "@/components/cards/DonationCard";
-import ColorPicker from "@/components/ColorPicker";
-import FontSelection from "@/components/FontSelection";
-import TemplateShowcase from "@/components/resume-view/TemplateShowcase";
-import { ResumeForm } from "@/components/resume/ResumeForm";
-import { ResumeHeading } from "@/components/resume/ResumeHeading";
-import TemplateSelector from "@/components/TemplateSelector";
+import FontSelection from "@/components/selection/FontSelection";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useResumeSync } from "@/hooks/useResumeSync";
 import React, { useState } from "react";

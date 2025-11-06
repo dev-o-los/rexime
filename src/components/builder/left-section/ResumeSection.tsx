@@ -6,9 +6,9 @@ import { ResumeEntry } from "@/lib/resume-types";
 import { isDiffDialog } from "@/lib/utils";
 import { useAtom } from "jotai";
 import { useEffect } from "react";
-import AddOrEditItemDialog from "../dialogs/AddOrEditItemDialog";
-import SkillDialog from "../dialogs/SkillDialog";
-import TiptapEditor from "../editor/TiptapEditor";
+import AddOrEditItemDialog from "../../dialogs/AddOrEditItemDialog";
+import SkillDialog from "../../dialogs/SkillDialog";
+import TiptapEditor from "../../editor/TiptapEditor";
 import { ResumeHeading } from "./ResumeHeading";
 
 export function ResumeSection({

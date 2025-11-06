@@ -1,6 +1,6 @@
 // import { CgMoreVertical } from "react-icons/cg";
 
-import FormHeadingMoreBtn from "../buttons/FormHeadingMoreBtn";
+import FormHeadingMoreBtn from "../../buttons/FormHeadingMoreBtn";
 
 export function ResumeHeading({
   heading,

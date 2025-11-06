@@ -1,6 +1,6 @@
+import ResumeList from "@/components/dashboard/ResumeList";
 import AddResumeDialog from "@/components/dialogs/AddResumeDialog";
 import NashBarDash from "@/components/navbar/NavBarDash";
-import ResumeList from "@/components/resume-dash/ResumeList";
 
 export default function Page() {
   return (

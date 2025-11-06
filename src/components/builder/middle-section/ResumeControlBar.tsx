@@ -10,8 +10,8 @@ import {
   MdOutlineZoomOutMap,
 } from "react-icons/md";
 import { useControls } from "react-zoom-pan-pinch";
-import { toastManager } from "../ui/toast";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { toastManager } from "../../ui/toast";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../../ui/tooltip";
 
 function ControlBtn({
   icon,

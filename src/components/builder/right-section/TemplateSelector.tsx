@@ -12,7 +12,7 @@ import { useAtom } from "jotai";
 import Image from "next/image";
 import { MouseEventHandler } from "react";
 import { GrTemplate } from "react-icons/gr";
-import { ResumeHeading } from "./resume/ResumeHeading";
+import { ResumeHeading } from "../left-section/ResumeHeading";
 
 function ResumeImage({
   src,

@@ -1,9 +1,9 @@
-import Banner from "@/components/Banner";
-import Faq from "@/components/faq";
-import Features from "@/components/features";
-import Footer from "@/components/footer";
 import Hero03 from "@/components/hero-03/hero-03";
-import LiquidEther from "@/components/LiquidEther";
+import Banner from "@/components/home/Banner";
+import Faq from "@/components/home/faq";
+import Features from "@/components/home/features";
+import Footer from "@/components/home/footer";
+import LiquidEther from "@/components/home/LiquidEther";
 import LogoCloudNew from "@/components/logos-07/LogoCloudNew";
 
 export default async function Home() {

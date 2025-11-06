@@ -2,8 +2,8 @@
 
 import { useUpdateResume } from "@/hooks/useUpdateResume";
 import { BsTextParagraph } from "react-icons/bs";
+import { ResumeHeading } from "../builder/left-section/ResumeHeading";
 import TiptapEditor from "../editor/TiptapEditor";
-import { ResumeHeading } from "../resume/ResumeHeading";
 
 export default function FormTextArea({ content }: { content: string }) {
   const { handleChange } = useUpdateResume("summary");

@@ -2,7 +2,7 @@ import { ibmplexmono } from "@/app/fonts";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { BsTwitterX } from "react-icons/bs";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 const footerLinks = [
   {

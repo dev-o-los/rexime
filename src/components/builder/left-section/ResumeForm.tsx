@@ -1,5 +1,5 @@
 import { GoPerson } from "react-icons/go";
-import { ResumeField } from "../inputs/ResumeField";
+import { ResumeField } from "../../inputs/ResumeField";
 import { ResumeHeading } from "./ResumeHeading";
 import { ResumeSections } from "./ResumeSections";
 
