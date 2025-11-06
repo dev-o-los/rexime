@@ -2,7 +2,7 @@ import DonateDodoButton from "@/components/buttons/DonateDodoButton";
 import DonationAmountSelection from "@/components/selection/DonationAmtSelection";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { PRODUCT_ID_PROD } from "@/lib/payments/product-credits";
+import { PRODUCT_ID, PRODUCT_ID_PROD } from "@/lib/payments/product-credits";
 import { CircleCheck } from "lucide-react";
 import Image from "next/image";
 
@@ -99,7 +99,11 @@ const Pricing = () => {
             {donation.dodoLink && (
               <DonateDodoButton
                 buttonText={donation.buttonText}
-                product={PRODUCT_ID_PROD} //! change when in devlopment
+                product={
+                  process.env.NODE_ENV === "development"
+                    ? PRODUCT_ID
+                    : PRODUCT_ID_PROD
+                } //! change when in devlopment
               />
             )}
           </div>
