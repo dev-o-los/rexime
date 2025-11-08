@@ -8,8 +8,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL ?? "https://rexime.vercel.app"),
-  title:
-    "Rexime — Modern Resume Builder | Create ATS-Friendly Professional Resumes Online",
+  title: {
+    default:
+      "Rexime — Modern Resume Builder | Create ATS-Friendly Professional Resumes Online",
+    template: "%s | Rexime",
+  },
+
   description:
     "Build a job-winning resume in minutes with Rexime. Fully customizable, modern templates, ATS-friendly formatting, real-time editing, and instant PDF download. No login required.",
   keywords: [
