@@ -459,3 +459,390 @@ export const sectionData: Record<string, SectionFields> = {
     placeholder4: "2022 – 2023",
   },
 };
+
+
+import type { ResumeData } from "./resume-types";
+
+export const sampleData: ResumeData = {
+  name: "John Doe",
+  phone: "+91-8989898989",
+  email: "Johndoe@gmail.com",
+  linkedin: "https://www.linkedin.com/in/johndoe",
+  summary:
+    "<p>Innovative Programmer and Internet Entrepreneur striving to make the world a more unified and connected place. A creative thinker, adept in software development and working with various data structures.</p>",
+  sections: [
+    // ---------------- Education ----------------
+    {
+      id: "education",
+      title: "Education",
+      displayOrder: 1,
+      items: [
+        {
+          title: "Bachelor of Technology in Computer Science",
+          subtitle: "Indian Institute of Technology (IIT) Bombay",
+          meta: "Aug 2018 – May 2022 | Mumbai, India",
+          gpa: "8.26 GPA",
+          editorHTML:
+            "<ul><li>Graduated with distinction, majoring in Computer Science.</li><li>Led a student team in building a cloud-hosted IoT data analysis platform.</li></ul>",
+        },
+      ],
+    },
+
+    // ---------------- Experience ----------------
+    {
+      id: "experience",
+      title: "Experience",
+      displayOrder: 2,
+      items: [
+        {
+          title: "Software Development Engineer - I",
+          subtitle: "Amazon India",
+          meta: "July 2022 – Present",
+          location: "Bangalore, India",
+          editorHTML:
+            "<ul><li>Developed a microservices-based order tracking system, improving latency by 30%.</li><li>Implemented DynamoDB and Redis caching to reduce database queries by 40%.</li></ul>",
+        },
+        {
+          title: "Software Engineer Intern",
+          subtitle: "Amazon India",
+          meta: "Jan 2022 – June 2022",
+          location: "Hyderabad, India",
+          editorHTML:
+            "<ul><li>Built an automated anomaly detection tool using Python and AWS, reducing manual checks by 60%.</li><li>Developed an internal debugging dashboard for the supply chain team, reducing incident resolution time.</li></ul>",
+        },
+      ],
+    },
+    // ---------------- Projects ----------------
+    {
+      id: "projects",
+      title: "Projects",
+      displayOrder: 3,
+      items: [
+        {
+          title: "Scalable URL Shortener",
+          meta: "Oct 2021 – Jan 2022",
+          website: "https://urlshortener.com",
+          subtitle: "Lead Developer",
+          editorHTML:
+            "<ul><li>Built a distributed URL shortening service handling 5M+ requests/day.</li><li>Implemented consistent hashing for even load balancing.</li></ul>",
+        },
+        {
+          title: "AI-Powered Resume Parser",
+          meta: "July 2021 – Sep 2021",
+          website: "https://resumeparser.com",
+          subtitle: "System Design Architect",
+          editorHTML:
+            "<ul><li>Developed a machine-learning-powered resume parser achieving 92% accuracy.</li><li>Used spaCy and Named Entity Recognition (NER) for key detail extraction.</li></ul>",
+        },
+      ],
+    },
+
+    // ---------------- Achievements ----------------
+    {
+      id: "achievements",
+      title: "Achievements",
+      displayOrder: 4,
+      items: [
+        {
+          editorHTML:
+            "<ul><li>Secured Rank 200 in Google Kick Start coding competition among 10,000+ participants.</li><li>Won 1st place in Amazon SDE Hackathon 2021 for building a real-time fraud detection system.</li><li>Published 3 research papers on distributed computing and ML in IEEE conferences.</li></ul>",
+        },
+      ],
+    },
+
+    //-----------------------Skills--------------------
+    {
+      id: "skills",
+      title: "Skills",
+      displayOrder: 5,
+      items: [
+        {
+          editorHTML: `<div>
+  <p>Languages: Java, Python, C++, JavaScript, SQL</p>
+  <p>Frameworks: Spring Boot, Node.js, React.js, Flask</p>
+  <p>Databases: PostgreSQL, DynamoDB, MongoDB</p>
+  <p>Cloud: AWS (Lambda, S3, EC2, API Gateway)</p>
+  <p>Tools: Git, Docker, Kubernetes, Jenkins</p>
+</div>`,
+        },
+      ],
+    },
+  ],
+};
+
+export const mockBerlinData: ResumeData = {
+  name: "TAYLOR COOK",
+  title: "Programmer",
+  location: "1600 Amphitheatre Road\nPalo Alto, CA 94304\nUnited States",
+  phone: "(315) 802-8179",
+  email: "taylor.cook@gmail.com",
+  nationality: "American",
+  summary:
+    "<p>Innovative Programmer and Internet Entrepreneur striving to make the world a more unified and connected place. A creative thinker, adept in software development and working with various data structures.</p>",
+  languages: ["English", "French"],
+  sections: [
+    {
+      id: "experience",
+      title: "EMPLOYMENT HISTORY",
+      items: [
+        {
+          title: "Programmer",
+          subtitle: "Johannes Initiative",
+          location: "Palo Alto",
+          meta: "Dec 2015 --- Present",
+          editorHTML: `<ul><li>Worked to enhance software systems to help educators, scientists, and policy experts already working on some of humanity's greatest challenges.</li><li>Developed and enhances programs to increase accuracy and lower costs.</li><li>Developed strategies to ensure compliance with new standards.</li></ul>`,
+        },
+        {
+          title: "Programmer",
+          subtitle: "Kindlinks, Inc.",
+          location: "Menlo Park, CA",
+          meta: "Feb 2004 - Sep 2015",
+          editorHTML: `<ul><li>Since founding Kindlinks, Inc. in 2004 I continue to work to build and improve it's infrastructure, offerings, product strategy, and design.</li><li>Work to continuously lead developments helping people to create, share, and discover in new ways.</li></ul>`,
+        },
+      ],
+    },
+    {
+      id: "education",
+      title: "EDUCATION",
+      items: [
+        {
+          title: "Master of Computer Science",
+          subtitle: "Boston University",
+          location: "Boston, MA",
+          meta: "2002 - 2004",
+          editorHTML: `<ul><li>Specialized in algorithms and data structures.</li></ul>`,
+        },
+      ],
+    },
+  ],
+};
+
+// --- New Sample Data for New Templates ---
+export const sampleModernCorporateData: ResumeData = {
+  name: "Alice Johnson",
+  title: "Senior Product Manager",
+  phone: "+1 (555) 123-4567",
+  email: "alice.j@example.com",
+  linkedin: "linkedin.com/in/alicejohnson",
+  location: "San Francisco, CA",
+  summary: "<p>Results-driven Product Manager with 10+ years of experience leading cross-functional teams in developing innovative software products from concept to launch. Proven ability to drive product strategy, roadmaps, and execution in fast-paced environments.</p>",
+  sections: [
+    {
+      id: "experience",
+      title: "Experience",
+      displayOrder: 1,
+      items: [
+        {
+          title: "Senior Product Manager",
+          subtitle: "Tech Innovations Inc.",
+          meta: "Jan 2020 – Present | San Francisco, CA",
+          editorHTML: "<ul><li>Led product development for a flagship SaaS platform, increasing user engagement by 25% and revenue by 15% YoY.</li><li>Managed a team of 5 product owners and collaborated with engineering, design, and marketing teams.</li></ul>",
+        },
+        {
+          title: "Product Analyst",
+          subtitle: "Startup X",
+          meta: "Jun 2017 – Dec 2019 | San Francisco, CA",
+          editorHTML: "<ul><li>Conducted market research and competitive analysis to identify new product opportunities.</li><li>Assisted in defining product requirements and user stories for mobile and web applications.</li></ul>",
+        },
+      ],
+    },
+    {
+      id: "education",
+      title: "Education",
+      displayOrder: 2,
+      items: [
+        {
+          title: "MBA",
+          subtitle: "Stanford Graduate School of Business",
+          meta: "2018 | Stanford, CA",
+        },
+        {
+          title: "B.S. in Computer Science",
+          subtitle: "University of California, Berkeley",
+          meta: "2013 | Berkeley, CA",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Skills",
+      displayOrder: 3,
+      items: [
+        {
+          editorHTML: `<div>
+  <p>Product Management: Agile, Scrum, Product Roadmapping, Market Research, User Stories, A/B Testing</p>
+  <p>Tools: Jira, Confluence, Figma, Google Analytics, Salesforce</p>
+  <p>Languages: SQL, Python (Basic)</p>
+</div>`,
+        },
+      ],
+    },
+  ],
+};
+
+export const sampleCreativeProfessionalData: ResumeData = {
+  name: "Ben Carter",
+  title: "Graphic Designer",
+  phone: "+1 (555) 987-6543",
+  email: "ben.c@example.com",
+  linkedin: "linkedin.com/in/bencarterdesign",
+  location: "New York, NY",
+  summary: "<p>Award-winning Graphic Designer with 7 years of experience in branding, UI/UX, and print media. Passionate about creating visually stunning and effective designs that captivate audiences and achieve client objectives.</p>",
+  sections: [
+    {
+      id: "portfolio",
+      title: "Portfolio",
+      displayOrder: 1,
+      items: [
+        {
+          title: "Brand Identity for 'AquaFlow'",
+          subtitle: "Lead Designer",
+          meta: "2023",
+          website: "https://aquaflow.design",
+          editorHTML: "<ul><li>Developed comprehensive brand guidelines, logo, and marketing collateral for a new eco-friendly water bottle company.</li><li>Collaborated with marketing team to ensure visual consistency across all customer touchpoints.</li></ul>",
+        },
+        {
+          title: "Website Redesign for 'City Eats'",
+          subtitle: "UI/UX Designer",
+          meta: "2022",
+          website: "https://cityeats.com",
+          editorHTML: "<ul><li>Redesigned a food delivery platform, improving user flow and visual appeal, resulting in a 15% increase in conversion rates.</li></ul>",
+        },
+      ],
+    },
+    {
+      id: "experience",
+      title: "Experience",
+      displayOrder: 2,
+      items: [
+        {
+          title: "Senior Graphic Designer",
+          subtitle: "Creative Solutions Agency",
+          meta: "Mar 2020 – Present | New York, NY",
+          editorHTML: "<ul><li>Managed and executed design projects from concept to completion for diverse clients in tech, retail, and hospitality.</li><li>Mentored junior designers and contributed to team's creative strategy.</li></ul>",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Skills",
+      displayOrder: 3,
+      items: [
+        {
+          editorHTML: `<div>
+  <p>Software: Adobe Creative Suite (Photoshop, Illustrator, InDesign, XD), Figma, Sketch, Canva</p>
+  <p>Design Principles: Branding, UI/UX Design, Print Design, Typography, Illustration, Motion Graphics</p>
+</div>`,
+        },
+      ],
+    },
+  ],
+};
+
+export const sampleStudentEntryLevelData: ResumeData = {
+  name: "Chloe Davis",
+  title: "Computer Science Student",
+  phone: "+1 (555) 234-5678",
+  email: "chloe.d@university.edu",
+  linkedin: "linkedin.com/in/chloedavis",
+  location: "Boston, MA",
+  summary: "<p>Highly motivated Computer Science student with a strong foundation in programming and problem-solving. Eager to apply academic knowledge and practical skills to a challenging entry-level software development role.</p>",
+  sections: [
+    {
+      id: "education",
+      title: "Education",
+      displayOrder: 1,
+      items: [
+        {
+          title: "Bachelor of Science in Computer Science",
+          subtitle: "Boston University",
+          meta: "Sep 2021 – May 2025 | Boston, MA",
+          gpa: "3.9 GPA",
+          editorHTML: "<ul><li>Relevant Coursework: Data Structures, Algorithms, Object-Oriented Programming, Web Development, Database Systems.</li><li>Dean's List (Fall 2021, Spring 2022, Fall 2022).</li></ul>",
+        },
+      ],
+    },
+    {
+      id: "projects",
+      title: "Projects",
+      displayOrder: 2,
+      items: [
+        {
+          title: "Personal Portfolio Website",
+          subtitle: "React.js, Node.js, Express",
+          meta: "Fall 2023",
+          website: "https://chloedavis.dev",
+          editorHTML: "<ul><li>Developed a responsive portfolio website to showcase academic projects and coding skills.</li><li>Implemented user authentication and a custom content management system.</li></ul>",
+        },
+        {
+          title: "Automated Course Scheduler",
+          subtitle: "Python, Flask, SQLite",
+          meta: "Spring 2023",
+          editorHTML: "<ul><li>Created a web application that helps students generate optimal course schedules based on preferences and availability.</li><li>Utilized a backtracking algorithm for schedule optimization.</li></ul>",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Skills",
+      displayOrder: 3,
+      items: [
+        {
+          editorHTML: `<div>
+  <p>Languages: Python, Java, JavaScript, C++, SQL</p>
+  <p>Frameworks: React.js, Node.js, Flask, Spring Boot</p>
+  <p>Tools: Git, Docker, VS Code</p>
+  <p>Databases: MySQL, PostgreSQL, SQLite</p>
+</div>`,
+        },
+      ],
+    },
+  ],
+};
+
+export const sampleTechOrientedData: ResumeData = {
+  name: "David Lee",
+  title: "DevOps Engineer",
+  phone: "+1 (555) 345-6789",
+  email: "david.lee@example.com",
+  linkedin: "linkedin.com/in/davidleeops",
+  location: "Austin, TX",
+  summary: "<p>Experienced DevOps Engineer with a passion for automating infrastructure, optimizing CI/CD pipelines, and ensuring high availability of systems. Proficient in cloud platforms, containerization, and configuration management.</p>",
+  sections: [
+    {
+      id: "experience",
+      title: "Experience",
+      displayOrder: 1,
+      items: [
+        {
+          title: "DevOps Engineer",
+          subtitle: "Cloud Solutions Corp.",
+          meta: "Aug 2021 – Present | Austin, TX",
+          editorHTML: "<ul><li>Automated deployment processes using Kubernetes and Helm, reducing deployment time by 50%.</li><li>Implemented monitoring and alerting with Prometheus and Grafana, improving system uptime to 99.99%.</li></ul>",
+        },
+        {
+          title: "Systems Administrator",
+          subtitle: "Data Centric LLC",
+          meta: "Jun 2018 – Jul 2021 | Austin, TX",
+          editorHTML: "<ul><li>Managed on-premise servers and migrated services to AWS, improving scalability and reducing costs.</li><li>Wrote Ansible playbooks for configuration management.</li></ul>",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Technical Skills",
+      displayOrder: 2,
+      items: [
+        {
+          editorHTML: `<div>
+  <p>Cloud: AWS (EC2, S3, RDS, EKS), GCP</p>
+  <p>CI/CD: Jenkins, GitLab CI, GitHub Actions</p>
+  <p>Containerization: Docker, Kubernetes, Helm</p>
+  <p>Infrastructure as Code: Terraform, Ansible</p>
+  <p>Scripting: Bash, Python</p>
+</div>`,
+        },
+      ],
+    },
+  ],
+};
