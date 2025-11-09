@@ -1,3 +1,4 @@
+import CircularGallery from "@/components/CircularGallery";
 import Hero03 from "@/components/hero-03/hero-03";
 import Banner from "@/components/home/Banner";
 import Faq from "@/components/home/faq";
@@ -31,6 +32,14 @@ export default async function Home() {
         />
       </div>
       <LogoCloudNew />
+      <div style={{ height: "600px", position: "relative" }} className="mb-64">
+        <CircularGallery
+          bend={3}
+          textColor="#ffffff"
+          borderRadius={0.05}
+          scrollEase={0.02}
+        />
+      </div>
       <Features />
       <Faq />
       <Footer />
