@@ -33,7 +33,7 @@ export default function Component({
       )}
       <DialogContent className="w-md">
         <div className="flex flex-col items-center gap-2">
-          <div className={`h-12 ${ibmplexmono.className} `}>MinoMap AI</div>
+          <div className={`h-12 ${ibmplexmono.className} `}>Rexime</div>
           {/* <div
             className="flex size-11 shrink-0 items-center justify-center rounded-full border"
             aria-hidden="true"
