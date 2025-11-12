@@ -473,6 +473,14 @@ export const DUMMY_STUDENT_ENTRY_DATA: ResumeData = {
           gpa: "3.85/4.0",
           editorHTML: sampleEducationHTML,
         },
+        {
+          title: "M.S. in Computer Science",
+          subtitle: "San Jose State University",
+          meta: "Expected May 2027",
+          location: "San Jose, CA",
+          gpa: "3.85/4.0",
+          editorHTML: sampleEducationHTML,
+        },
       ],
     },
     {
@@ -516,14 +524,12 @@ export const DUMMY_STUDENT_ENTRY_DATA: ResumeData = {
       title: "Technical Skills",
       items: [
         {
-          title: "Programming Languages",
-          editorHTML: "Python, C++, Java, JavaScript, SQL",
-          fields: [],
-        },
-        {
-          title: "Frameworks & Tools",
-          editorHTML: "React, Node.js, TensorFlow, Git, Docker, AWS",
-          fields: [],
+          editorHTML: `<p><strong>Programming Languages</strong></p>
+<p>Python, C++, Java, JavaScript, SQL</p>
+
+<p><strong>Frameworks & Tools</strong></p>
+<p>React, Node.js, TensorFlow, Git, Docker, AWS</p>
+`,
         },
       ],
     },
