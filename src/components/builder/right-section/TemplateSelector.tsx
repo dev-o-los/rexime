@@ -1,10 +1,14 @@
 "use client";
 import { resumeShowCaseIdxAtom } from "@/app/store";
 import {
-  mockBerlinData,
-  sampleData,
-  sampleDataAmsterDam,
-  sampleDataTimeLine,
+  DUMMY_AMSTERDAM_DATA,
+  DUMMY_BERLIN_DATA,
+  DUMMY_CREATIVE_PROFESSIONAL_DATA,
+  DUMMY_MODERN_CORPORATE_DATA,
+  DUMMY_STANDARD_DATA,
+  DUMMY_STUDENT_ENTRY_DATA,
+  DUMMY_TECH_ORIENTED_DATA,
+  DUMMY_TIMELINE_DATA,
 } from "@/lib/constants";
 import { ResumeData } from "@/lib/resume-types";
 import { updateResume } from "@/lib/supabase/createResume";
@@ -42,15 +46,30 @@ function ResumeImage({
 export default function TemplateSelector({ id }: { id: string }) {
   const [index, setIdx] = useAtom(resumeShowCaseIdxAtom);
   const images = [
-    { imagePath: "/resume-simple.png", defaultResume: sampleData },
-    { imagePath: "/resume-berlin.jpg", defaultResume: mockBerlinData },
-    { imagePath: "/resume-timeline.png", defaultResume: sampleDataTimeLine },
-    { imagePath: "/resume-amsterdam.jpg", defaultResume: sampleDataAmsterDam },
+    { imagePath: "/resume-simple.png", defaultResume: DUMMY_STANDARD_DATA },
+    { imagePath: "/resume-berlin.jpg", defaultResume: DUMMY_BERLIN_DATA },
+    { imagePath: "/resume-timeline.png", defaultResume: DUMMY_TIMELINE_DATA },
+    { imagePath: "/resume-amsterdam.jpg", defaultResume: DUMMY_AMSTERDAM_DATA },
+    {
+      imagePath: "/resume-amsterdam.jpg",
+      defaultResume: DUMMY_CREATIVE_PROFESSIONAL_DATA,
+    },
+    {
+      imagePath: "/resume-amsterdam.jpg",
+      defaultResume: DUMMY_MODERN_CORPORATE_DATA,
+    },
+    {
+      imagePath: "/resume-amsterdam.jpg",
+      defaultResume: DUMMY_STUDENT_ENTRY_DATA,
+    },
+    {
+      imagePath: "/resume-amsterdam.jpg",
+      defaultResume: DUMMY_TECH_ORIENTED_DATA,
+    },
   ];
 
   const handleClick = async (index: number, resume: ResumeData) => {
     setIdx(index);
-    // setResume(resume);
     await updateResume(id, {
       image: images[index].imagePath,
     });
