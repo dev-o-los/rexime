@@ -3,13 +3,16 @@
 import { resumeColorAtom } from "@/app/store";
 import { ResumeData, ResumeEntry } from "@/lib/resume-types";
 import { useAtomValue } from "jotai";
-import { RefObject, FC } from "react";
+import { FC, RefObject } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
 import { MdLocationOn } from "react-icons/md";
 import TiptapHTML from "../editor/TiptapHTML";
 
-const MainSectionTitle: FC<{ title: string; colorClass: string }> = ({ title, colorClass }) => (
+const MainSectionTitle: FC<{ title: string; colorClass: string }> = ({
+  title,
+  colorClass,
+}) => (
   <div className="mt-6 mb-3">
     <h2 className="text-xl font-bold uppercase text-gray-800 tracking-wide mb-1">
       {title}
@@ -45,22 +48,23 @@ const MainContentEntry: FC<{ item: ResumeEntry }> = ({ item }) => (
       {item.gpa && <span>GPA: {item.gpa}</span>}
     </div>
 
-    {item.editorHTML && <TiptapHTML className="text-sm mt-1" html={item.editorHTML} />}
+    {item.editorHTML && (
+      <TiptapHTML className="text-sm mt-1" html={item.editorHTML} />
+    )}
   </div>
 );
 
-const SidebarItem: FC<{ icon: React.ReactNode; value?: string | null }> = ({ icon, value }) => {
-    if (!value) return null;
-    return (
-        <div className="flex items-center gap-3 mb-2">
-            <div className="shrink-0 w-4 h-4 text-white print:text-gray-700">
-                {icon}
-            </div>
-            <span className="text-sm text-white opacity-90 print:text-gray-700">
-                {value}
-            </span>
-        </div>
-    );
+const SidebarItem: FC<{ icon: React.ReactNode; value?: string | null }> = ({
+  icon,
+  value,
+}) => {
+  if (!value) return null;
+  return (
+    <div className="flex items-center gap-3 mb-2">
+      <div className="shrink-0 w-4 h-4  print:text-gray-700">{icon}</div>
+      <span className="text-sm opacity-90 print:text-gray-700">{value}</span>
+    </div>
+  );
 };
 
 export const ResumeCreativeProfessional = ({
@@ -77,9 +81,9 @@ export const ResumeCreativeProfessional = ({
 
   const skillsSection = sections?.find((s) => s.id === "skills");
   const mainSections = sections?.filter((s) => s.id !== "skills");
-  
-  const sidebarClasses = 'w-[35%] print:w-full print:order-2';
-  const contentClasses = 'w-[65%] print:w-full print:order-1';
+
+  const sidebarClasses = "w-[35%] print:w-full print:order-2";
+  const contentClasses = "w-[65%] print:w-full print:order-1";
 
   return (
     <div
@@ -89,36 +93,56 @@ export const ResumeCreativeProfessional = ({
       } print:shadow-none print:p-0 print:text-[12px]`}
     >
       <div className="flex print:flex-col">
-        
-        <aside 
-            className={`${sidebarClasses} ${resumeColor} p-8 text-white print:bg-white print:text-black print:p-6 print:border-b-2 print:border-gray-300`}
+        <aside
+          className={`${sidebarClasses} ${resumeColor} p-8 print:bg-white print:text-black print:p-6 print:border-b-2 print:border-gray-300`}
         >
-          
           <header className="mb-8">
-            <h1 className="text-3xl font-light uppercase tracking-widest print:text-gray-900">{name}</h1>
-            {title && <h2 className="text-lg font-medium opacity-90 mt-1 print:text-gray-600">{title}</h2>}
+            <h1 className="text-3xl font-light uppercase tracking-widest print:text-gray-900">
+              {name}
+            </h1>
+            {title && (
+              <h2 className="text-lg font-medium opacity-90 mt-1 print:text-gray-600">
+                {title}
+              </h2>
+            )}
           </header>
 
           <div className="mt-8">
-            <h3 className="text-lg font-bold uppercase tracking-wider mb-3 print:text-gray-800">Contact</h3>
+            <h3 className="text-lg font-bold uppercase tracking-wider mb-3 print:text-gray-800">
+              Contact
+            </h3>
             <div className="space-y-2">
-                <SidebarItem icon={<FaPhoneAlt />} value={data.phone} />
-                <SidebarItem icon={<FaEnvelope />} value={data.email} />
-                <SidebarItem icon={<MdLocationOn />} value={data.location} />
-                <SidebarItem icon={<FaLinkedin />} value={data.linkedin} />
-                <SidebarItem icon={<FaGithub />} value={data.github} />
-                <SidebarItem icon={<FaLink />} value={data.website} />
+              <SidebarItem icon={<FaPhoneAlt />} value={data.phone} />
+              <SidebarItem icon={<FaEnvelope />} value={data.email} />
+              <SidebarItem icon={<MdLocationOn />} value={data.location} />
+              <SidebarItem icon={<FaLinkedin />} value={data.linkedin} />
+              <SidebarItem icon={<FaGithub />} value={data.github} />
+              <SidebarItem icon={<FaLink />} value={data.website} />
             </div>
           </div>
 
           {skillsSection && (
             <div className="mt-10">
-              <h3 className="text-lg font-bold uppercase tracking-wider mb-3 print:text-gray-800">{skillsSection.title}</h3>
+              <h3 className="text-lg font-bold uppercase tracking-wider mb-3 print:text-gray-800">
+                {skillsSection.title}
+              </h3>
               <ul className="space-y-1.5 list-disc list-inside">
                 {skillsSection.items.map((item, index) => (
-                  <li key={index} className="text-sm font-medium text-white print:text-gray-800">
-                    {item.fields?.map(field => `${field.label}${field.value ? ` (${field.value})` : ''}`).join(', ') || item.editorHTML}
-                    {item.editorHTML && <TiptapHTML className="text-sm" html={item.editorHTML} />}
+                  <li
+                    key={index}
+                    className="text-sm font-medium print:text-gray-800"
+                  >
+                    {item.fields
+                      ?.map(
+                        (field) =>
+                          `${field.label}${
+                            field.value ? ` (${field.value})` : ""
+                          }`
+                      )
+                      .join(", ") || item.editorHTML}
+                    {item.editorHTML && (
+                      <TiptapHTML className="text-sm" html={item.editorHTML} />
+                    )}
                   </li>
                 ))}
               </ul>
@@ -126,8 +150,9 @@ export const ResumeCreativeProfessional = ({
           )}
         </aside>
 
-        <main className={`${contentClasses} p-8 bg-white print:p-6 border-l-2 border-gray-200`}> 
-          
+        <main
+          className={`${contentClasses} p-8 bg-white print:p-6 border-l-2 border-gray-200`}
+        >
           {summary && (
             <section className="mb-6">
               <MainSectionTitle title="Summary" colorClass={resumeColor} />
@@ -137,7 +162,10 @@ export const ResumeCreativeProfessional = ({
 
           {mainSections?.map((section) => (
             <section key={section.id} className="mb-6">
-              <MainSectionTitle title={section.title} colorClass={resumeColor} />
+              <MainSectionTitle
+                title={section.title}
+                colorClass={resumeColor}
+              />
               {section.items.map((item, index) => (
                 <MainContentEntry key={index} item={item} />
               ))}
