@@ -5,7 +5,6 @@ import {
   resumeShowCaseIdxAtom,
   selectedFontAtom,
 } from "@/app/store";
-import ResumeCreativeProfessional from "@/components/templates/ResumeCreativeProfessional";
 import ResumeModernCorporate from "@/components/templates/ResumeModernCorporate";
 import ResumeStudentEntry from "@/components/templates/ResumeStudentEntry";
 import ResumeTechOriented from "@/components/templates/ResumeTechOriented";
@@ -30,10 +29,9 @@ export default function TemplateShowcase() {
     1: <ResumeBerlin data={data} font={font} ref={pdfRef} />,
     2: <ResumeTimeLine data={data} font={font} ref={pdfRef} />,
     3: <ResumeAmsterdam data={data} font={font} ref={pdfRef} />,
-    4: <ResumeCreativeProfessional data={data} font={font} ref={pdfRef} />,
-    5: <ResumeModernCorporate data={data} font={font} ref={pdfRef} />,
-    6: <ResumeStudentEntry data={data} font={font} ref={pdfRef} />,
-    7: <ResumeTechOriented data={data} font={font} ref={pdfRef} />,
+    4: <ResumeModernCorporate data={data} font={font} ref={pdfRef} />,
+    5: <ResumeStudentEntry data={data} font={font} ref={pdfRef} />,
+    6: <ResumeTechOriented data={data} font={font} ref={pdfRef} />,
   };
 
   return (

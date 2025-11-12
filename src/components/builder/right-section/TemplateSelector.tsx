@@ -3,7 +3,6 @@ import { resumeAtom, resumeShowCaseIdxAtom } from "@/app/store";
 import {
   DUMMY_AMSTERDAM_DATA,
   DUMMY_BERLIN_DATA,
-  DUMMY_CREATIVE_PROFESSIONAL_DATA,
   DUMMY_MODERN_CORPORATE_DATA,
   DUMMY_STANDARD_DATA,
   DUMMY_STUDENT_ENTRY_DATA,
@@ -53,10 +52,6 @@ export default function TemplateSelector({ id }: { id: string }) {
     { imagePath: "/resume-amsterdam.jpg", defaultResume: DUMMY_AMSTERDAM_DATA },
     {
       imagePath: "/resume-amsterdam.jpg",
-      defaultResume: DUMMY_CREATIVE_PROFESSIONAL_DATA,
-    },
-    {
-      imagePath: "/resume-amsterdam.jpg",
       defaultResume: DUMMY_MODERN_CORPORATE_DATA,
     },
     {
@@ -70,7 +65,7 @@ export default function TemplateSelector({ id }: { id: string }) {
   ];
 
   const handleClick = async (index: number, resume: ResumeData) => {
-    // setResumeData(resume);
+    setResumeData(resume);
     setIdx(index);
     await updateResume(id, {
       image: images[index].imagePath,

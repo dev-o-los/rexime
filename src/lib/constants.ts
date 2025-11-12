@@ -384,78 +384,6 @@ export const DUMMY_AMSTERDAM_DATA: ResumeData = {
   ],
 };
 
-export const DUMMY_CREATIVE_PROFESSIONAL_DATA: ResumeData = {
-  name: "Jordan Michaels",
-  title: "UI/UX Design Specialist",
-  phone: "(555) 123-4567",
-  email: "jordan.michaels@design.com",
-  location: "San Francisco, CA",
-  linkedin: "linkedin.com/in/jordanmichaels",
-  // REMOVED: github: null,
-  website: "jordanmichaels.com/portfolio",
-  summary:
-    "Highly creative and results-driven UI/UX specialist with 8 years of experience leading design projects from concept through launch. Expertise in user research, high-fidelity prototyping, and maintaining large-scale design systems.",
-  sections: [
-    {
-      id: "experience",
-      title: "Experience",
-      items: [
-        {
-          title: "Senior Product Designer",
-          subtitle: "Innovatech Solutions",
-          meta: "2020 — Present",
-          location: "San Francisco, CA",
-          editorHTML: `
-            <ul>
-              <li>Led the redesign of the main mobile application, increasing user engagement by 25% and app store ratings by 0.6 stars.</li>
-              <li>Collaborated directly with engineering and product teams to define user stories and ensure design feasibility.</li>
-              <li>Created and maintained the company's comprehensive component library in Figma.</li>
-            </ul>
-          `,
-        },
-        {
-          title: "UX Consultant",
-          subtitle: "Studio 88 Design Agency",
-          meta: "2017 — 2020",
-          location: "New York, NY",
-          editorHTML: `
-            <ul>
-              <li>Managed 15+ client projects focusing on SaaS platforms and e-commerce conversion optimization.</li>
-              <li>Conducted A/B testing and user interviews to inform design decisions, improving checkout flow efficiency by 18%.</li>
-            </ul>
-          `,
-        },
-      ],
-    },
-    {
-      id: "skills",
-      title: "Skills",
-      items: [
-        {
-          title: "Software",
-          // REMOVED: editorHTML: null,
-          fields: [
-            { label: "Figma", value: "Expert" },
-            { label: "Sketch", value: "Advanced" },
-            { label: "Adobe Suite", value: "Advanced" },
-            { label: "Maze/UserTesting" /* REMOVED: , value: null */ },
-          ],
-        },
-        {
-          title: "Core Competencies",
-          // REMOVED: editorHTML: null,
-          fields: [
-            { label: "Prototyping" /* REMOVED: , value: null */ },
-            { label: "Design Systems" /* REMOVED: , value: null */ },
-            { label: "Information Architecture" /* REMOVED: , value: null */ },
-            { label: "User Research" /* REMOVED: , value: null */ },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
 export const DUMMY_MODERN_CORPORATE_DATA: ResumeData = {
   name: "Alexandra Vance",
   title: "Director of Business Operations",
@@ -463,8 +391,6 @@ export const DUMMY_MODERN_CORPORATE_DATA: ResumeData = {
   email: "alexandra.vance@corp.net",
   location: "Chicago, IL",
   linkedin: "linkedin.com/in/alexandravance",
-  // REMOVED: github: null,
-  // REMOVED: website: null,
   summary:
     "Seasoned operations executive with 15 years of experience optimizing global business processes and leading high-stakes strategic initiatives. Proven ability to drive efficiency, manage complex budgets, and foster cross-functional collaboration at the executive level.",
   sections: [
@@ -503,7 +429,6 @@ export const DUMMY_MODERN_CORPORATE_DATA: ResumeData = {
           meta: "2011",
           location: "Philadelphia, PA",
           gpa: "3.9/4.0",
-          // REMOVED: editorHTML: null,
         },
       ],
     },
@@ -512,14 +437,12 @@ export const DUMMY_MODERN_CORPORATE_DATA: ResumeData = {
       title: "Key Skills",
       items: [
         {
-          // REMOVED: title: null,
-          // REMOVED: editorHTML: null,
           fields: [
-            { label: "Financial Modeling" /* REMOVED: , value: null */ },
-            { label: "Strategic Planning" /* REMOVED: , value: null */ },
-            { label: "Process Optimization" /* REMOVED: , value: null */ },
-            { label: "Executive Leadership" /* REMOVED: , value: null */ },
-            { label: "SAP / Oracle" /* REMOVED: , value: null */ },
+            { label: "Financial Modeling", value: "3" },
+            { label: "Strategic Planning", value: "3" },
+            { label: "Process Optimization", value: "3" },
+            { label: "Executive Leadership", value: "3" },
+            { label: "SAP / Oracle", value: "3" },
           ],
         },
       ],
@@ -535,7 +458,6 @@ export const DUMMY_STUDENT_ENTRY_DATA: ResumeData = {
   location: "San Jose, CA",
   linkedin: "linkedin.com/in/mariarodriguez",
   github: "github.com/mariacodes",
-  // REMOVED: website: null,
   summary:
     "Motivated Computer Science student with a strong foundation in data structures and algorithms, seeking a challenging internship to apply theoretical knowledge in a professional environment. Proven ability to quickly master new technologies.",
   sections: [
