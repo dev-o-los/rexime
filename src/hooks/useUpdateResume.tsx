@@ -70,6 +70,7 @@ export const useUpdateResume = (field?: keyof ResumeData) => {
 
   const updateFieldInResumeEntry = (
     sectionId: string,
+    itemIndex: number,
     fieldIndex: number,
     updatedField: ResumeField
   ) => {
@@ -77,17 +78,25 @@ export const useUpdateResume = (field?: keyof ResumeData) => {
       const updatedSections = (prev.sections ?? []).map((section) => {
         if (section.id !== sectionId) return section;
 
-        const singleItem = section.items[0]; // only one item in skills section
-        if (!singleItem?.fields || fieldIndex >= singleItem.fields.length)
-          return section;
+        // Make sure the itemIndex exists
+        const items = [...section.items];
+        if (!items[itemIndex]) return section;
 
-        const updatedFields = singleItem.fields.map((field, idx) =>
+        const item = items[itemIndex];
+
+        // Make sure the fields array exists and fieldIndex is valid
+        if (!item.fields || fieldIndex >= item.fields.length) return section;
+
+        // Update only the specific field
+        const updatedFields = item.fields.map((field, idx) =>
           idx === fieldIndex ? updatedField : field
         );
 
-        const updatedItem = { ...singleItem, fields: updatedFields };
+        // Replace only the modified item
+        const updatedItem = { ...item, fields: updatedFields };
+        items[itemIndex] = updatedItem;
 
-        return { ...section, items: [updatedItem] };
+        return { ...section, items };
       });
 
       return { ...prev, sections: updatedSections };

@@ -21,15 +21,17 @@ export default function AddOrEditItemDialog({
   id,
   entryFields,
   index,
+  fIndex,
 }: {
   entry?: ResumeEntry;
   id: string;
   entryFields?: ResumeField;
   index?: number;
+  fIndex?: number;
 }) {
   let data = sectionData[id];
   if (data == undefined) data = sectionData["experience"];
-  const isCreateMode = index == 0 ? false : !index && !entry;
+  const isCreateMode = fIndex == 0 ? false : !fIndex && !entry;
 
   return (
     <Dialog>
@@ -72,9 +74,14 @@ export default function AddOrEditItemDialog({
           )}
         </DialogTitle>
         {isDiffDialog(id) && entryFields ? (
-          <SkillDialogForm skill={entryFields} entryIndex={index} />
+          <SkillDialogForm
+            skill={entryFields}
+            entryIndex={index}
+            fieldIndex={fIndex}
+            id={id}
+          />
         ) : (
-          <DialogForm data={data} entry={entry} id={id} index={index} />
+          <DialogForm data={data} entry={entry} id={id} index={fIndex} />
         )}
       </DialogContent>
     </Dialog>

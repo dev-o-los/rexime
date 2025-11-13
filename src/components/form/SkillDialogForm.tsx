@@ -12,9 +12,13 @@ import { Form } from "../ui/form";
 export function SkillDialogForm({
   skill,
   entryIndex,
+  fieldIndex,
+  id,
 }: {
   skill?: ResumeField;
   entryIndex?: number | undefined;
+  fieldIndex?: number | undefined;
+  id: string;
 }) {
   const [level, setlevel] = useState(0);
   const { addFieldToResumeEntry, updateFieldInResumeEntry } = useUpdateResume();
@@ -28,11 +32,11 @@ export function SkillDialogForm({
       value: level.toString(),
     } as ResumeField;
 
-    if (entryIndex != undefined) {
-      updateFieldInResumeEntry("skills", entryIndex, skill);
+    if (entryIndex != undefined && fieldIndex != undefined) {
+      updateFieldInResumeEntry(id, entryIndex, fieldIndex, skill);
     } else {
       if (isEmptyObject(skill)) return;
-      addFieldToResumeEntry("skills", skill);
+      addFieldToResumeEntry(id, skill);
     }
   };
 

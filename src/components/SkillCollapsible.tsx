@@ -12,28 +12,13 @@ import { Separator } from "@/components/ui/separator";
 import { ResumeEntry } from "@/lib/resume-types";
 import AddOrEditItemDialog from "./dialogs/AddOrEditItemDialog";
 
-const SkillCollapsible = ({ items }: { items: ResumeEntry[] }) => {
-  //   const items = [
-  //     {
-  //       value: "1",
-  //       label: "Standard 3-5 Days",
-  //       description: "Friday, 15 June - Tuesday, 19 June",
-  //       price: "Free",
-  //     },
-  //     {
-  //       value: "2",
-  //       label: "Express",
-  //       description: "Friday, 15 June - Sunday, 17 June",
-  //       price: "$5.00",
-  //     },
-  //     {
-  //       value: "3",
-  //       label: "Overnight",
-  //       description: "Tomorrow",
-  //       price: "$10.00",
-  //     },
-  //   ];
-
+const SkillCollapsible = ({
+  items,
+  id,
+}: {
+  items: ResumeEntry[];
+  id: string;
+}) => {
   return (
     <div className="w-full max-w-md space-y-3 rounded-md border py-4 bg-background">
       {items &&
@@ -43,7 +28,7 @@ const SkillCollapsible = ({ items }: { items: ResumeEntry[] }) => {
               <div className="flex items-center justify-between gap-4 px-4">
                 {/* Section title */}
                 <div className="text-sm font-semibold">
-                  {group.title ?? "Update Skills"}
+                  {group.title ?? "Update " + id}
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -62,10 +47,11 @@ const SkillCollapsible = ({ items }: { items: ResumeEntry[] }) => {
                 {group.fields &&
                   group.fields.map((field, fIndex) => (
                     <AddOrEditItemDialog
-                      index={fIndex}
+                      fIndex={fIndex}
+                      index={index}
                       entryFields={field}
                       key={fIndex}
-                      id={"skills"}
+                      id={id}
                     />
                   ))}
               </CollapsibleContent>

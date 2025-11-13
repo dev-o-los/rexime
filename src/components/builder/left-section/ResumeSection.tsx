@@ -33,8 +33,6 @@ export function ResumeSection({
     }
   }, [id]);
 
-  const isTrue = true;
-
   return (
     <div>
       <ResumeHeading heading={heading} icon={icon} />
@@ -45,10 +43,8 @@ export function ResumeSection({
           }
           content={entries[0].editorHTML ?? ""}
         />
-      ) : id == "skills" ? (
-        <div>
-          <SkillCollapsible items={entries} />
-        </div>
+      ) : isDiffDialog(id) ? (
+        <SkillCollapsible items={entries} id={id} />
       ) : (
         <div>
           {
