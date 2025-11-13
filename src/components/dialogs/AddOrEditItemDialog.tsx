@@ -29,7 +29,7 @@ export default function AddOrEditItemDialog({
 }) {
   let data = sectionData[id];
   if (data == undefined) data = sectionData["experience"];
-  const isCreateMode = !index && !entry;
+  const isCreateMode = index == 0 ? false : !index && !entry;
 
   return (
     <Dialog>
@@ -47,7 +47,7 @@ export default function AddOrEditItemDialog({
             <AiOutlineHolder />
             <div className="flex flex-col text-start pl-2">
               <div className="overflow-ellipsis text-wrap line-clamp-1">
-                {entry?.title ?? entryFields?.label ?? "Update " + id}
+                {entry?.title ?? entryFields?.label ?? "Update item"}
               </div>
               <div className="text-xs font-normal overflow-ellipsis text-wrap line-clamp-1">
                 {entry?.subtitle}

@@ -1,6 +1,7 @@
 "use client";
 
 import { openCustomEditorAtom } from "@/app/store";
+import SkillCollapsible from "@/components/SkillCollapsible";
 import { useUpdateResume } from "@/hooks/useUpdateResume";
 import { ResumeEntry } from "@/lib/resume-types";
 import { isDiffDialog } from "@/lib/utils";
@@ -32,6 +33,8 @@ export function ResumeSection({
     }
   }, [id]);
 
+  const isTrue = true;
+
   return (
     <div>
       <ResumeHeading heading={heading} icon={icon} />
@@ -42,30 +45,37 @@ export function ResumeSection({
           }
           content={entries[0].editorHTML ?? ""}
         />
+      ) : id == "skills" ? (
+        <div>
+          <SkillCollapsible items={entries} />
+        </div>
       ) : (
         <div>
-          {isDiffDialog(id)
-            ? entries.map((entry, key) => (
-                <div key={key}>
-                  {entry.fields?.map((entryFields, index) => (
-                    <AddOrEditItemDialog
-                      index={index}
-                      entry={entry}
-                      entryFields={entryFields}
-                      key={key}
-                      id={id}
-                    />
-                  ))}
-                </div>
-              ))
-            : entries.map((entry, index) => (
-                <AddOrEditItemDialog
-                  index={index}
-                  entry={entry}
-                  key={index}
-                  id={id}
-                />
-              ))}
+          {
+            // isDiffDialog(id)
+            //   ? entries.map((entry, key) => (
+            //       <div key={key}>
+            //         {entry.fields?.map((entryFields, index) => (
+            //           <AddOrEditItemDialog
+            //             index={index}
+            //             entry={entry}
+            //             entryFields={entryFields}
+            //             key={key}
+            //             id={id}
+            //           />
+            //         ))}
+            //       </div>
+            //     ))
+
+            entries.map((entry, index) => (
+              <AddOrEditItemDialog
+                index={index}
+                entry={entry}
+                key={index}
+                id={id}
+              />
+            ))
+          }
           <div className="mb-5"></div>
           {isDiffDialog(id) ? <SkillDialog /> : <AddOrEditItemDialog id={id} />}
         </div>
