@@ -21,15 +21,17 @@ export default function AddOrEditItemDialog({
   id,
   entryFields,
   index,
+  fIndex,
 }: {
   entry?: ResumeEntry;
   id: string;
   entryFields?: ResumeField;
   index?: number;
+  fIndex?: number;
 }) {
   let data = sectionData[id];
   if (data == undefined) data = sectionData["experience"];
-  const isCreateMode = !index && !entry;
+  const isCreateMode = fIndex == 0 ? false : !fIndex && !entry;
 
   return (
     <Dialog>
@@ -47,7 +49,7 @@ export default function AddOrEditItemDialog({
             <AiOutlineHolder />
             <div className="flex flex-col text-start pl-2">
               <div className="overflow-ellipsis text-wrap line-clamp-1">
-                {entry?.title ?? entryFields?.label ?? "Update " + id}
+                {entry?.title ?? entryFields?.label ?? "Update item"}
               </div>
               <div className="text-xs font-normal overflow-ellipsis text-wrap line-clamp-1">
                 {entry?.subtitle}
@@ -72,9 +74,14 @@ export default function AddOrEditItemDialog({
           )}
         </DialogTitle>
         {isDiffDialog(id) && entryFields ? (
-          <SkillDialogForm skill={entryFields} entryIndex={index} />
+          <SkillDialogForm
+            skill={entryFields}
+            entryIndex={index}
+            fieldIndex={fIndex}
+            id={id}
+          />
         ) : (
-          <DialogForm data={data} entry={entry} id={id} index={index} />
+          <DialogForm data={data} entry={entry} id={id} index={fIndex} />
         )}
       </DialogContent>
     </Dialog>

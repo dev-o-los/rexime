@@ -1,14 +1,21 @@
 "use client";
-import { resumeShowCaseIdxAtom } from "@/app/store";
 import {
-  mockBerlinData,
-  sampleData,
-  sampleDataAmsterDam,
-  sampleDataTimeLine,
+  isEditedResumeAtom,
+  resumeAtom,
+  resumeShowCaseIdxAtom,
+} from "@/app/store";
+import {
+  DUMMY_AMSTERDAM_DATA,
+  DUMMY_BERLIN_DATA,
+  DUMMY_MODERN_CORPORATE_DATA,
+  DUMMY_STANDARD_DATA,
+  DUMMY_STUDENT_ENTRY_DATA,
+  DUMMY_TECH_ORIENTED_DATA,
+  DUMMY_TIMELINE_DATA,
 } from "@/lib/constants";
 import { ResumeData } from "@/lib/resume-types";
 import { updateResume } from "@/lib/supabase/createResume";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import Image from "next/image";
 import { MouseEventHandler } from "react";
 import { GrTemplate } from "react-icons/gr";
@@ -41,16 +48,32 @@ function ResumeImage({
 
 export default function TemplateSelector({ id }: { id: string }) {
   const [index, setIdx] = useAtom(resumeShowCaseIdxAtom);
+  const setResumeData = useSetAtom(resumeAtom);
+  const isEditedResume = useAtomValue(isEditedResumeAtom);
   const images = [
-    { imagePath: "/resume-simple.png", defaultResume: sampleData },
-    { imagePath: "/resume-berlin.jpg", defaultResume: mockBerlinData },
-    { imagePath: "/resume-timeline.png", defaultResume: sampleDataTimeLine },
-    { imagePath: "/resume-amsterdam.jpg", defaultResume: sampleDataAmsterDam },
+    { imagePath: "/resume-simple.png", defaultResume: DUMMY_STANDARD_DATA },
+    { imagePath: "/resume-berlin.jpg", defaultResume: DUMMY_BERLIN_DATA },
+    { imagePath: "/resume-timeline.png", defaultResume: DUMMY_TIMELINE_DATA },
+    { imagePath: "/resume-amsterdam.jpg", defaultResume: DUMMY_AMSTERDAM_DATA },
+    {
+      imagePath: "/resume-aetherfall.png",
+      defaultResume: DUMMY_MODERN_CORPORATE_DATA,
+    },
+    {
+      imagePath: "/resume-lumora.png",
+      defaultResume: DUMMY_STUDENT_ENTRY_DATA,
+    },
+    {
+      imagePath: "/resume-kyoto.jpg",
+      defaultResume: DUMMY_TECH_ORIENTED_DATA,
+    },
   ];
 
   const handleClick = async (index: number, resume: ResumeData) => {
+    if (!isEditedResume) {
+      setResumeData(resume);
+    }
     setIdx(index);
-    // setResume(resume);
     await updateResume(id, {
       image: images[index].imagePath,
     });

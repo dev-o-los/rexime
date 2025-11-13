@@ -1,6 +1,25 @@
 import type { ResumeData, SectionFields } from "./resume-types";
 
-export const sampleData: ResumeData = {
+const sampleExperienceHTML = `
+<ul>
+  <li>Managed a high-performing team of 10 developers, successfully delivering four major product releases on time and under budget.</li>
+  <li>Spearheaded the migration of legacy services to a modern microservices architecture using Kubernetes and AWS ECS, resulting in a 30% reduction in operational costs.</li>
+  <li>Developed and maintained key API endpoints that processed over 1 million requests daily.</li>
+</ul>
+`;
+
+const sampleEducationHTML = `
+<ul>
+  <li>Thesis: Advanced Neural Network Optimizations for Time-Series Forecasting.</li>
+  <li>Relevant Coursework: Advanced Algorithms, Distributed Systems, Data Science.</li>
+</ul>
+`;
+
+// =================================================================
+// DUMMY DATA FOR ALL 8 ORIGINAL TEMPLATES
+// =================================================================
+
+export const DUMMY_STANDARD_DATA: ResumeData = {
   name: "John Doe",
   phone: "+91-8989898989",
   email: "Johndoe@gmail.com",
@@ -8,7 +27,6 @@ export const sampleData: ResumeData = {
   summary:
     "<p>Innovative Programmer and Internet Entrepreneur striving to make the world a more unified and connected place. A creative thinker, adept in software development and working with various data structures.</p>",
   sections: [
-    // ---------------- Education ----------------
     {
       id: "education",
       title: "Education",
@@ -24,8 +42,6 @@ export const sampleData: ResumeData = {
         },
       ],
     },
-
-    // ---------------- Experience ----------------
     {
       id: "experience",
       title: "Experience",
@@ -49,7 +65,6 @@ export const sampleData: ResumeData = {
         },
       ],
     },
-    // ---------------- Projects ----------------
     {
       id: "projects",
       title: "Projects",
@@ -73,8 +88,6 @@ export const sampleData: ResumeData = {
         },
       ],
     },
-
-    // ---------------- Achievements ----------------
     {
       id: "achievements",
       title: "Achievements",
@@ -86,8 +99,6 @@ export const sampleData: ResumeData = {
         },
       ],
     },
-
-    //-----------------------Skills--------------------
     {
       id: "skills",
       title: "Skills",
@@ -107,22 +118,14 @@ export const sampleData: ResumeData = {
   ],
 };
 
-export const mockBerlinData: ResumeData = {
+export const DUMMY_BERLIN_DATA: ResumeData = {
   name: "TAYLOR COOK",
   title: "Programmer",
   location: "1600 Amphitheatre Road\nPalo Alto, CA 94304\nUnited States",
   phone: "(315) 802-8179",
   email: "taylor.cook@gmail.com",
-  nationality: "American",
   summary:
     "<p>Innovative Programmer and Internet Entrepreneur striving to make the world a more unified and connected place. A creative thinker, adept in software development and working with various data structures.</p>",
-  // skillsBerlin: [
-  //   "Performance Optimization",
-  //   "Troubleshooting and Solutions Deployment",
-  //   "Analytical Thinking Skills",
-  //   "Software Design and Development",
-  //   "Coding and Scripting",
-  // ],
   languages: ["English", "French"],
   sections: [
     {
@@ -204,7 +207,7 @@ export const mockBerlinData: ResumeData = {
   ],
 };
 
-export const sampleDataTimeLine: ResumeData = {
+export const DUMMY_TIMELINE_DATA: ResumeData = {
   name: "Johnatan Alexander Carillo",
   title: "Operations Manager",
   phone: "+1 204 555 5555",
@@ -292,7 +295,7 @@ export const sampleDataTimeLine: ResumeData = {
   ],
 };
 
-export const sampleDataAmsterDam: ResumeData = {
+export const DUMMY_AMSTERDAM_DATA: ResumeData = {
   name: "Wes Turner",
   title: "Sales Manager",
   phone: "(719) 555-8237",
@@ -381,6 +384,256 @@ export const sampleDataAmsterDam: ResumeData = {
   ],
 };
 
+export const DUMMY_MODERN_CORPORATE_DATA: ResumeData = {
+  name: "Alexandra Vance",
+  title: "Director of Business Operations",
+  phone: "+1 (999) 765-4321",
+  email: "alexandra.vance@corp.net",
+  location: "Chicago, IL",
+  linkedin: "linkedin.com/in/alexandravance",
+  summary:
+    "Seasoned operations executive with 15 years of experience optimizing global business processes and leading high-stakes strategic initiatives. Proven ability to drive efficiency, manage complex budgets, and foster cross-functional collaboration at the executive level.",
+  sections: [
+    {
+      id: "experience",
+      title: "Professional Experience",
+      items: [
+        {
+          title: "Director of Business Operations",
+          subtitle: "Global Dynamics Inc.",
+          meta: "2018 — Present",
+          location: "Chicago, IL",
+          editorHTML: sampleExperienceHTML,
+        },
+        {
+          title: "Senior Manager, Strategy & Planning",
+          subtitle: "Apex Consulting Group",
+          meta: "2013 — 2018",
+          location: "New York, NY",
+          editorHTML: `
+            <ul>
+              <li>Advised Fortune 500 clients on post-merger integration strategies and operational efficiency, generating $50M in annualized savings for key clients.</li>
+              <li>Developed quantitative models for market entry and competitive analysis.</li>
+            </ul>
+          `,
+        },
+      ],
+    },
+    {
+      id: "education",
+      title: "Education",
+      items: [
+        {
+          title: "M.B.A., Finance",
+          subtitle: "Wharton School, University of Pennsylvania",
+          meta: "2011",
+          location: "Philadelphia, PA",
+          gpa: "3.9/4.0",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Key Skills",
+      items: [
+        {
+          fields: [
+            { label: "Financial Modeling", value: "3" },
+            { label: "Strategic Planning", value: "3" },
+            { label: "Process Optimization", value: "3" },
+            { label: "Executive Leadership", value: "3" },
+            { label: "SAP / Oracle", value: "3" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const DUMMY_STUDENT_ENTRY_DATA: ResumeData = {
+  name: "Maria Rodriguez",
+  title: "Computer Science Undergraduate",
+  phone: "(408) 777-1001",
+  email: "mrodriguez@university.edu",
+  location: "San Jose, CA",
+  linkedin: "linkedin.com/in/mariarodriguez",
+  github: "github.com/mariacodes",
+  summary:
+    "Motivated Computer Science student with a strong foundation in data structures and algorithms, seeking a challenging internship to apply theoretical knowledge in a professional environment. Proven ability to quickly master new technologies.",
+  sections: [
+    {
+      id: "education",
+      title: "Education",
+      items: [
+        {
+          title: "B.S. in Computer Science",
+          subtitle: "San Jose State University",
+          meta: "Expected May 2026",
+          location: "San Jose, CA",
+          gpa: "3.85/4.0",
+          editorHTML: sampleEducationHTML,
+        },
+        {
+          title: "M.S. in Computer Science",
+          subtitle: "San Jose State University",
+          meta: "Expected May 2027",
+          location: "San Jose, CA",
+          gpa: "3.85/4.0",
+          editorHTML: sampleEducationHTML,
+        },
+      ],
+    },
+    {
+      id: "experience",
+      title: "Relevant Experience",
+      items: [
+        {
+          title: "Software Engineering Intern",
+          subtitle: "Startup X (Part-time)",
+          meta: "Jan 2025 - May 2025",
+          location: "Remote",
+          editorHTML: `
+              <ul>
+                <li>Contributed to the front-end development of the company's dashboard using React and Tailwind CSS.</li>
+                <li>Implemented unit tests using Jest, achieving 90% code coverage for the main API utility functions.</li>
+              </ul>
+            `,
+        },
+      ],
+    },
+    {
+      id: "projects",
+      title: "Projects",
+      items: [
+        {
+          title: "E-Commerce Recommendation Engine",
+          subtitle: "Personal Project",
+          meta: "Python, Pandas, Sci-kit Learn",
+          location: "github.com/reco-engine",
+          editorHTML: `
+              <ul>
+                <li>Developed a collaborative filtering model to suggest products, reducing cold start issues by 40%.</li>
+                <li>Containerized the solution using Docker for easy deployment.</li>
+              </ul>
+            `,
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Technical Skills",
+      items: [
+        {
+          editorHTML: `<p><strong>Programming Languages</strong></p>
+<p>Python, C++, Java, JavaScript, SQL</p>
+
+<p><strong>Frameworks & Tools</strong></p>
+<p>React, Node.js, TensorFlow, Git, Docker, AWS</p>
+`,
+        },
+      ],
+    },
+  ],
+};
+
+export const DUMMY_TECH_ORIENTED_DATA: ResumeData = {
+  name: "Kenji Tanaka",
+  title: "Full Stack Software Engineer",
+  phone: "(333) 444-5555",
+  email: "kenji.tanaka@dev.com",
+  location: "Seattle, WA",
+  linkedin: "linkedin.com/in/kenjitanaka",
+  github: "github.com/kenjidev",
+  website: "kenjitanaka.io",
+  summary:
+    "Experienced Full Stack Engineer specializing in robust, scalable systems using modern cloud infrastructure. Four years of professional experience driving deployment and automation initiatives in high-traffic production environments.",
+  sections: [
+    {
+      id: "experience",
+      title: "Professional Experience",
+      items: [
+        {
+          title: "Lead Backend Developer",
+          subtitle: "CloudScale Technologies",
+          meta: "2022 — Present",
+          location: "Seattle, WA",
+          editorHTML: sampleExperienceHTML,
+        },
+        {
+          title: "Software Engineer I",
+          subtitle: "DevOps Solutions LLC",
+          meta: "2020 — 2022",
+          location: "Remote",
+          editorHTML: `
+              <ul>
+                <li>Implemented CI/CD pipelines using GitHub Actions, reducing deployment time from 45 minutes to 10 minutes.</li>
+                <li>Managed PostgreSQL databases and performed query optimization for high concurrency.</li>
+              </ul>
+            `,
+        },
+      ],
+    },
+    {
+      id: "projects",
+      title: "Key Projects",
+      items: [
+        {
+          title: "Real-Time Stock Tracker API",
+          subtitle: "Go, Redis, WebSocket",
+          meta: "2023",
+          location: "View on GitHub",
+          editorHTML: `
+              <ul>
+                <li>Built a high-throughput API to stream real-time stock data to over 5,000 concurrent users.</li>
+              </ul>
+            `,
+        },
+      ],
+    },
+    {
+      id: "education",
+      title: "Education",
+      items: [
+        {
+          title: "M.S. in Computer Engineering",
+          subtitle: "University of Washington",
+          meta: "2020",
+          location: "Seattle, WA",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Skills",
+      items: [
+        {
+          title: "Backend",
+          fields: [
+            { label: "Go", value: "1" },
+            { label: "Node.js", value: "2" },
+            { label: "Python", value: "2" },
+            { label: "PostgreSQL" },
+            { label: "MongoDB" },
+          ],
+        },
+        {
+          title: "Cloud & DevOps",
+          fields: [
+            { label: "Kubernetes" },
+            { label: "AWS" },
+            { label: "Docker" },
+            { label: "Terraform" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+// =================================================================
+// SECTION FIELD DEFINITIONS
+// =================================================================
+
 export const sectionData: Record<string, SectionFields> = {
   experience: {
     title1: "Position",
@@ -394,7 +647,7 @@ export const sectionData: Record<string, SectionFields> = {
   },
 
   skills: {
-    title1: "Skill",
+    title1: "Skill Category",
     placeholder1: "Languages",
     title2: "Values",
     placeholder2: "React, Tailwind, ...",
@@ -448,6 +701,17 @@ export const sectionData: Record<string, SectionFields> = {
     placeholder4: "March 2024",
   },
 
+  achievements: {
+    title1: "Achievement Summary",
+    placeholder1: "Secured Rank 200 in Google Kick Start",
+    title2: "Detail / Context",
+    placeholder2: "Among 10,000+ participants",
+    title3: "",
+    placeholder3: "",
+    title4: "",
+    placeholder4: "",
+  },
+
   extracurricular: {
     title1: "Activity Name",
     placeholder1: "Public Speaking Club",
@@ -458,4 +722,12 @@ export const sectionData: Record<string, SectionFields> = {
     title4: "Duration",
     placeholder4: "2022 – 2023",
   },
+};
+
+export const skillLevelMap: Record<string, string> = {
+  "1": "Beginner",
+  "2": "Intermediate",
+  "3": "Skilled",
+  "4": "Advanced",
+  "5": "Expert",
 };

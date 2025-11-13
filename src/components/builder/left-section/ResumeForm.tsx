@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
 import { GoPerson } from "react-icons/go";
-import { RiAiGenerate2 } from "react-icons/ri";
 import { ResumeField } from "../../inputs/ResumeField";
 import { ResumeHeading } from "./ResumeHeading";
 import { ResumeSections } from "./ResumeSections";
@@ -13,11 +11,11 @@ export function ResumeForm() {
           heading="Basics"
           icon={<GoPerson />}
           showMore={false}
-          extraBtn={
-            <Button size="sm" variant="secondary">
-              <RiAiGenerate2 /> Generate With AI
-            </Button>
-          }
+          // extraBtn={
+          //   <Button size="sm" variant="secondary">
+          //     <RiAiGenerate2 /> Generate With AI
+          //   </Button>
+          // }
         />
         <ResumeField label="Full Name" placeholder="Enter name" field="name" />
         <ResumeField

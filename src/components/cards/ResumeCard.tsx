@@ -3,7 +3,7 @@
 import { ibmplexmono } from "@/app/fonts";
 import { resumeAtom } from "@/app/store";
 import { useMobile } from "@/hooks/useMobile";
-import { sampleData } from "@/lib/constants";
+import { DUMMY_STANDARD_DATA } from "@/lib/constants";
 import { Resume } from "@/lib/resume-types";
 import { updateResume } from "@/lib/supabase/createResume";
 import { deleteResume } from "@/lib/supabase/deleteResume";
@@ -38,7 +38,7 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
   const isMobile = useMobile();
 
   const handleResumeEdit = () => {
-    setResume(resume.data ?? sampleData);
+    setResume(resume.data ?? DUMMY_STANDARD_DATA);
     router.push(`/builder/${resume.id}`);
   };
 

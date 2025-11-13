@@ -1,6 +1,6 @@
-import CircularGallery from "@/components/CircularGallery";
 import Hero03 from "@/components/hero-03/hero-03";
 import Banner from "@/components/home/Banner";
+import CircularGallery from "@/components/home/CircularGallery";
 import Faq from "@/components/home/faq";
 import Features from "@/components/home/features";
 import Footer from "@/components/home/footer";

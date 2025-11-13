@@ -19,7 +19,7 @@ export default function SkillDialog() {
       </DialogTrigger>
       <DialogContent className="gap-2 sm:w-[500px]">
         <DialogTitle>New Item</DialogTitle>
-        <SkillDialogForm />
+        <SkillDialogForm id="skills" />
       </DialogContent>
     </Dialog>
   );
