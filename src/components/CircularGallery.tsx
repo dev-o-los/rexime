@@ -533,6 +533,18 @@ class App {
         image: `/resume-timeline.png`,
         text: "Timeline",
       },
+      {
+        image: `/resume-aetherfall.png`,
+        text: "Aetherfall",
+      },
+      {
+        image: `/resume-lumora.png`,
+        text: "Lumora",
+      },
+      {
+        image: `/resume-kyoto.jpg`,
+        text: "Kyoto",
+      },
     ];
 
     const galleryItems = items && items.length ? items : defaultItems;
