@@ -56,15 +56,15 @@ export default function TemplateSelector({ id }: { id: string }) {
     { imagePath: "/resume-timeline.png", defaultResume: DUMMY_TIMELINE_DATA },
     { imagePath: "/resume-amsterdam.jpg", defaultResume: DUMMY_AMSTERDAM_DATA },
     {
-      imagePath: "/resume-amsterdam.jpg",
+      imagePath: "/resume-aetherfall.png",
       defaultResume: DUMMY_MODERN_CORPORATE_DATA,
     },
     {
-      imagePath: "/resume-amsterdam.jpg",
+      imagePath: "/resume-lumora.png",
       defaultResume: DUMMY_STUDENT_ENTRY_DATA,
     },
     {
-      imagePath: "/resume-amsterdam.jpg",
+      imagePath: "/resume-kyoto.jpg",
       defaultResume: DUMMY_TECH_ORIENTED_DATA,
     },
   ];
