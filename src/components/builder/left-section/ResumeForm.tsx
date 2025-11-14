@@ -1,3 +1,4 @@
+import AIGenerateDialog from "@/components/dialogs/AIGenerateDialog";
 import { GoPerson } from "react-icons/go";
 import { ResumeField } from "../../inputs/ResumeField";
 import { ResumeHeading } from "./ResumeHeading";
@@ -11,11 +12,7 @@ export function ResumeForm() {
           heading="Basics"
           icon={<GoPerson />}
           showMore={false}
-          // extraBtn={
-          //   <Button size="sm" variant="secondary">
-          //     <RiAiGenerate2 /> Generate With AI
-          //   </Button>
-          // }
+          extraBtn={<AIGenerateDialog />}
         />
         <ResumeField label="Full Name" placeholder="Enter name" field="name" />
         <ResumeField
