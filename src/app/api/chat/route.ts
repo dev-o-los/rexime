@@ -9,26 +9,106 @@ const openai = new OpenAI({
 export async function POST(req: NextRequest) {
   try {
     const { userMessage } = await req.json();
-    // const user = await getUser();
 
     const completion = await openai.chat.completions.create({
       model: process.env.OPENAI_API_PROVIDER!,
       messages: [
         {
           role: "system",
-          content: `You are an experienced HR professional and expert resume writer who has reviewed thousands of resumes across different industries and job levels. You know how to make a resume summary sound professional, natural, and impactful.
-When a user provides a raw text (like a summary or about section from their resume), your task is to rewrite it into a single, concise paragraph that feels human, confident, and elegant — as if written by a skilled candidate.
-Rules:
-- Output only one improved paragraph.
-- Do not invent new facts, skills, or experiences that weren’t in the input.
-- Make it sound polished and professional but easy to read.
-- Use clear, engaging language with a positive and confident tone.
-- Keep it concise: around 40–60 words.
-- No explanations, no formatting, just the paragraph text.`,
+          content: `You are an expert resume generator.
+
+I will provide some user information in JSON format under the key "userdata". 
+Using ONLY that minimal information, generate a complete, professional, ATS-friendly resume in the EXACT JSON structure provided below.
+
+Requirements:
+- Use userdata to fill in fields wherever possible.
+- If userdata is missing something, make reasonable professional assumptions.
+- ALWAYS generate a *complete* resume.
+- Fill every field with strong, polished, professional content.
+- All descriptive or list content must be placed inside editorHTML fields.
+- OUTPUT ONLY the final resume JSON — no explanations, no markdown, no extra text.
+- STRICTLY follow this template:
+
+{
+  "name": "",
+  "dummyimage": "/resume-simple.png",
+  "phone": "",
+  "email": "",
+  "linkedin": "",
+  "summary": "",
+  "sections": [
+    {
+      "id": "education",
+      "title": "Education",
+      "displayOrder": 1,
+      "items": [
+        {
+          "title": "",
+          "subtitle": "",
+          "meta": "",
+          "gpa": "",
+          "editorHTML": ""
+        }
+      ]
+    },
+    {
+      "id": "experience",
+      "title": "Experience",
+      "displayOrder": 2,
+      "items": [
+        {
+          "title": "",
+          "subtitle": "",
+          "meta": "",
+          "location": "",
+          "editorHTML": ""
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "displayOrder": 3,
+      "items": [
+        {
+          "title": "",
+          "meta": "",
+          "website": "",
+          "subtitle": "",
+          "editorHTML": ""
+        }
+      ]
+    },
+    {
+      "id": "achievements",
+      "title": "Achievements",
+      "displayOrder": 4,
+      "items": [
+        {
+          "editorHTML": ""
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "displayOrder": 5,
+      "items": [
+        {
+          "editorHTML": ""
+        }
+      ]
+    }
+  ]
+}
+
+Here is the userdata to build the resume from (may be partial; fill missing pieces yourself):
+${userMessage}
+`,
         },
         {
           role: "user",
-          content: `Create an enhanced resume summary for: ${userMessage}`,
+          content: `Generate the final JSON now`,
         },
       ],
     });
@@ -37,6 +117,9 @@ Rules:
       reply: completion.choices[0].message.content,
     });
   } catch (error) {
-    return NextResponse.json({ error: error }, { status: 500 });
+    return NextResponse.json(
+      { message: (error as Error).message },
+      { status: 500 }
+    );
   }
 }

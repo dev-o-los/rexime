@@ -10,9 +10,35 @@ import { useState } from "react";
 import { RiAiGenerate2 } from "react-icons/ri";
 import { SpinnerInfinity } from "spinners-react";
 import { Textarea } from "../ui/textarea";
+import { toastManager } from "../ui/toast";
 
 export default function AIGenerateDialog() {
   const [isLoading, setisLoading] = useState(false);
+
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    try {
+      setisLoading(true);
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userMessage: e.currentTarget.value.trim() }),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.message || "Something went wrong");
+      }
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      toastManager.add({
+        title: (error as Error).message,
+        type: "error",
+      });
+    } finally {
+      setisLoading(false);
+    }
+  };
 
   return (
     <Dialog>
@@ -32,7 +58,7 @@ export default function AIGenerateDialog() {
           className="pe-9 h-[20dvh] focus-visible:ring-0"
         />
         <br />
-        <Button className="w-full">
+        <Button className="w-full" onClick={handleClick}>
           {isLoading ? (
             <div className="flex items-center">
               <SpinnerInfinity color="black" /> Generating...
