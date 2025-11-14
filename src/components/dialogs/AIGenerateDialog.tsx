@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { RiAiGenerate2 } from "react-icons/ri";
 import { SpinnerInfinity } from "spinners-react";
 import { Textarea } from "../ui/textarea";
@@ -14,14 +14,20 @@ import { toastManager } from "../ui/toast";
 
 export default function AIGenerateDialog() {
   const [isLoading, setisLoading] = useState(false);
+  const textRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = async () => {
     try {
       setisLoading(true);
+
+      if (!textRef.current?.value) {
+        throw new Error("Input is empty");
+      }
+
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userMessage: e.currentTarget.value.trim() }),
+        body: JSON.stringify({ userMessage: textRef.current?.value.trim() }),
       });
 
       if (!res.ok) {
@@ -29,7 +35,7 @@ export default function AIGenerateDialog() {
         throw new Error(error.message || "Something went wrong");
       }
       const data = await res.json();
-      console.log(data);
+      console.log(data.reply); //! use this data
     } catch (error) {
       toastManager.add({
         title: (error as Error).message,
@@ -54,7 +60,8 @@ export default function AIGenerateDialog() {
           Tell us about yourself so that we create your perfect resume
         </p>
         <Textarea
-          placeholder="Write a short paragraph about yourself including: your name, education, skills, projects, experience (if any), what job you want, and your email + phone."
+          ref={textRef}
+          placeholder={`Write a short paragraph about yourself including: your name, education, skills, projects, experience (if any), what job you want, and your email + phone.`}
           className="pe-9 h-[20dvh] focus-visible:ring-0"
         />
         <br />

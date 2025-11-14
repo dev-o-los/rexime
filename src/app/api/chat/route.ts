@@ -108,7 +108,7 @@ ${userMessage}
         },
         {
           role: "user",
-          content: `Generate the final JSON now`,
+          content: `Generate the final JSON now for this provided data ${userMessage}`,
         },
       ],
     });
