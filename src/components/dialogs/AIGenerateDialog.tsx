@@ -1,4 +1,5 @@
 "use client";
+import { resumeAtom } from "@/app/store";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -6,6 +7,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ResumeData } from "@/lib/resume-types";
+import { useSetAtom } from "jotai";
 import { useRef, useState } from "react";
 import { RiAiGenerate2 } from "react-icons/ri";
 import { SpinnerInfinity } from "spinners-react";
@@ -15,6 +18,8 @@ import { toastManager } from "../ui/toast";
 export default function AIGenerateDialog() {
   const [isLoading, setisLoading] = useState(false);
   const textRef = useRef<HTMLTextAreaElement>(null);
+  const setResumeData = useSetAtom(resumeAtom);
+  const [isOpen, setisOpen] = useState(false);
 
   const handleClick = async () => {
     try {
@@ -35,7 +40,13 @@ export default function AIGenerateDialog() {
         throw new Error(error.message || "Something went wrong");
       }
       const data = await res.json();
-      console.log(data.reply); //! use this data
+
+      const aiResumeData = data.reply as ResumeData;
+
+      console.log(aiResumeData);
+      setResumeData(aiResumeData);
+
+      setisOpen(false);
     } catch (error) {
       toastManager.add({
         title: (error as Error).message,
@@ -45,9 +56,9 @@ export default function AIGenerateDialog() {
       setisLoading(false);
     }
   };
-
+  // My name is Utkarsh Bhardwaj, and I’m currently pursuing a Bachelor’s degree in Computer Science, graduating in 2027. I specialize in modern web development using React, TypeScript, Next.js, Tailwind CSS, Firebase, and Supabase, and I’ve built several real-world projects including Alpha Omega (a minimal social media app), Rexime (an AI-powered resume builder), and multiple Flutter-based apps like Ace Expens and Project 51. I’m passionate about building clean, scalable user interfaces and solving real problems through technology. I’m actively looking for a Web Developer or Frontend Developer role where I can grow and contribute to impactful products. You can reach me at utkarshbhardwaj@email.com
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setisOpen}>
       <DialogTrigger asChild>
         <Button size="sm" variant="secondary">
           <RiAiGenerate2 /> Generate With AI

@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
 
     const completion = await openai.chat.completions.create({
       model: process.env.OPENAI_API_PROVIDER!,
+      response_format: { type: "json_object" },
       messages: [
         {
           role: "system",
@@ -114,7 +115,7 @@ ${userMessage}
     });
 
     return NextResponse.json({
-      reply: completion.choices[0].message.content,
+      reply: JSON.parse(completion.choices[0].message.content!),
     });
   } catch (error) {
     return NextResponse.json(
