@@ -122,8 +122,6 @@ async function fetchFromSupabase(resumeId: string): Promise<ResumeData | null> {
   return data?.data || null;
 }
 
-// ❌ The `throttledSave` helper is no longer needed.
-
 // ✅ Actual save function (Modified to accept jsonString)
 async function saveToSupabase(
   resumeId: string,

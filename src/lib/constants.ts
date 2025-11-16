@@ -21,6 +21,7 @@ const sampleEducationHTML = `
 
 export const DUMMY_STANDARD_DATA: ResumeData = {
   name: "John Doe",
+  dummyimage: "/resume-simple.png",
   phone: "+91-8989898989",
   email: "Johndoe@gmail.com",
   linkedin: "https://www.linkedin.com/in/johndoe",
@@ -120,6 +121,7 @@ export const DUMMY_STANDARD_DATA: ResumeData = {
 
 export const DUMMY_BERLIN_DATA: ResumeData = {
   name: "TAYLOR COOK",
+  dummyimage: "/resume-berlin.jpg",
   title: "Programmer",
   location: "1600 Amphitheatre Road\nPalo Alto, CA 94304\nUnited States",
   phone: "(315) 802-8179",
@@ -209,6 +211,7 @@ export const DUMMY_BERLIN_DATA: ResumeData = {
 
 export const DUMMY_TIMELINE_DATA: ResumeData = {
   name: "Johnatan Alexander Carillo",
+  dummyimage: "/resume-timeline.png",
   title: "Operations Manager",
   phone: "+1 204 555 5555",
   email: "help@enhancv.com",
@@ -297,6 +300,7 @@ export const DUMMY_TIMELINE_DATA: ResumeData = {
 
 export const DUMMY_AMSTERDAM_DATA: ResumeData = {
   name: "Wes Turner",
+  dummyimage: "/resume-amsterdam.jpg",
   title: "Sales Manager",
   phone: "(719) 555-8237",
   email: "wes.turner@gmail.com",
@@ -386,6 +390,7 @@ export const DUMMY_AMSTERDAM_DATA: ResumeData = {
 
 export const DUMMY_MODERN_CORPORATE_DATA: ResumeData = {
   name: "Alexandra Vance",
+  dummyimage: "/resume-aetherfall.png",
   title: "Director of Business Operations",
   phone: "+1 (999) 765-4321",
   email: "alexandra.vance@corp.net",
@@ -452,6 +457,7 @@ export const DUMMY_MODERN_CORPORATE_DATA: ResumeData = {
 
 export const DUMMY_STUDENT_ENTRY_DATA: ResumeData = {
   name: "Maria Rodriguez",
+  dummyimage: "/resume-lumora.png",
   title: "Computer Science Undergraduate",
   phone: "(408) 777-1001",
   email: "mrodriguez@university.edu",
@@ -538,6 +544,7 @@ export const DUMMY_STUDENT_ENTRY_DATA: ResumeData = {
 
 export const DUMMY_TECH_ORIENTED_DATA: ResumeData = {
   name: "Kenji Tanaka",
+  dummyimage: "/resume-kyoto.jpg",
   title: "Full Stack Software Engineer",
   phone: "(333) 444-5555",
   email: "kenji.tanaka@dev.com",
@@ -731,3 +738,547 @@ export const skillLevelMap: Record<string, string> = {
   "4": "Advanced",
   "5": "Expert",
 };
+
+export const resumes = [
+  {
+    id: 0,
+    imagePath: "/resume-simple.png",
+    defaultResume: DUMMY_STANDARD_DATA,
+    placeholder: `{
+  "name": "",
+  "dummyimage": "/resume-simple.png",
+  "phone": "",
+  "email": "",
+  "linkedin": "",
+  "summary": "",
+  "sections": [
+    {
+      "id": "education",
+      "title": "Education",
+      "displayOrder": 1,
+      "items": [
+        {
+          "title": "",
+          "subtitle": "",
+          "meta": "",
+          "gpa": "",
+          "editorHTML": ""
+        }
+      ]
+    },
+    {
+      "id": "experience",
+      "title": "Experience",
+      "displayOrder": 2,
+      "items": [
+        {
+          "title": "",
+          "subtitle": "",
+          "meta": "",
+          "location": "",
+          "editorHTML": ""
+        }
+      ]
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "displayOrder": 3,
+      "items": [
+        {
+          "title": "",
+          "meta": "",
+          "website": "",
+          "subtitle": "",
+          "editorHTML": ""
+        }
+      ]
+    },
+    {
+      "id": "achievements",
+      "title": "Achievements",
+      "displayOrder": 4,
+      "items": [
+        {
+          "editorHTML": ""
+        }
+      ]
+    },
+    {
+      "id": "skills",
+      "title": "Skills",
+      "displayOrder": 5,
+      "items": [
+        {
+          "editorHTML": ""
+        }
+      ]
+    }
+  ]
+}`,
+  },
+  {
+    id: 1,
+    imagePath: "/resume-berlin.jpg",
+    defaultResume: DUMMY_BERLIN_DATA,
+    placeholder: `{
+  name: "",
+  dummyimage: "/resume-berlin.jpg",
+  title: "",
+  location: "",
+  phone: "",
+  email: "",
+  summary: "",
+  languages: [],
+  sections: [
+    {
+      id: "experience",
+      title: "EMPLOYMENT HISTORY",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          location: "",
+          meta: "",
+          editorHTML: "",
+        },
+        {
+          title: "",
+          subtitle: "",
+          location: "",
+          meta: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "education",
+      title: "EDUCATION",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          location: "",
+          meta: "",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "SKILLS",
+      items: [
+        {
+          fields: [
+            {
+              label: "",
+              value: "",
+            },
+            {
+              label: "",
+              value: "",
+            },
+            {
+              label: "",
+              value: "",
+            },
+            {
+              label: "",
+              value: "",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "languages",
+      title: "LANGUAGES",
+      items: [
+        {
+          fields: [
+            {
+              label: "",
+              value: "",
+            },
+            {
+              label: "",
+              value: "",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}`,
+  },
+  {
+    id: 2,
+    imagePath: "/resume-timeline.png",
+    defaultResume: DUMMY_TIMELINE_DATA,
+    placeholder: `{
+  name: "",
+  dummyimage: "/resume-timeline.png",
+  title: "",
+  phone: "",
+  email: "",
+  linkedin: "",
+  location: "",
+  summary: "",
+  sections: [
+    {
+      id: "experience",
+      title: "Experience",
+      items: [
+        {
+          meta: "",
+          location: "",
+          title: "",
+          subtitle: "",
+          editorHTML: "",
+        },
+        {
+          meta: "",
+          location: "",
+          title: "",
+          subtitle: "",
+          editorHTML: "",
+        },
+        {
+          meta: "",
+          location: "",
+          title: "",
+          subtitle: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "achievements",
+      title: "Key Achievements",
+      items: [
+        {
+          title: "",
+          editorHTML: "",
+        },
+        {
+          title: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "projects",
+      title: "Projects",
+      items: [
+        {
+          title: "",
+          editorHTML: "",
+        },
+        {
+          title: "",
+          editorHTML: "",
+        },
+      ],
+    },
+  ],
+}`,
+  },
+  {
+    id: 3,
+    imagePath: "/resume-amsterdam.jpg",
+    defaultResume: DUMMY_AMSTERDAM_DATA,
+    placeholder: `{
+  name: "",
+  dummyimage: "/resume-amsterdam.jpg",
+  title: "",
+  phone: "",
+  email: "",
+  location: "",
+  summary: "",
+  sections: [
+    {
+      id: "skills",
+      title: "Skills",
+      items: [
+        {
+          fields: [
+            { label: "", value: "" },
+            { label: "", value: "" },
+            { label: "", value: "" },
+            { label: "", value: "" },
+            { label: "", value: "" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "experience",
+      title: "Employment History",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          location: "",
+          meta: "",
+          editorHTML: "",
+        },
+        {
+          title: "",
+          subtitle: "",
+          location: "",
+          meta: "",
+          editorHTML: "",
+        },
+        {
+          title: "",
+          subtitle: "",
+          location: "",
+          meta: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "education",
+      title: "Education",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          location: "",
+          meta: "",
+        },
+      ],
+    },
+  ],
+}`,
+  },
+  {
+    id: 4,
+    imagePath: "/resume-aetherfall.png",
+    defaultResume: DUMMY_MODERN_CORPORATE_DATA,
+    placeholder: `{
+  name: "",
+  dummyimage: "/resume-aetherfall.png",
+  title: "",
+  phone: "",
+  email: "",
+  location: "",
+  linkedin: "",
+  summary: "",
+  sections: [
+    {
+      id: "experience",
+      title: "Professional Experience",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          editorHTML: "",
+        },
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "education",
+      title: "Education",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          gpa: "",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Key Skills",
+      items: [
+        {
+          fields: [
+            { label: "", value: "" },
+            { label: "", value: "" },
+            { label: "", value: "" },
+            { label: "", value: "" },
+            { label: "", value: "" },
+          ],
+        },
+      ],
+    },
+  ],
+}`,
+  },
+  {
+    id: 5,
+    imagePath: "/resume-lumora.png",
+    defaultResume: DUMMY_STUDENT_ENTRY_DATA,
+    placeholder: `{
+  name: "",
+  dummyimage: "/resume-lumora.png",
+  title: "",
+  phone: "",
+  email: "",
+  location: "",
+  linkedin: "",
+  github: "",
+  summary: "",
+  sections: [
+    {
+      id: "education",
+      title: "Education",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          gpa: "",
+          editorHTML: "",
+        },
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          gpa: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "experience",
+      title: "Relevant Experience",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "projects",
+      title: "Projects",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Technical Skills",
+      items: [
+        {
+          editorHTML: "",
+        },
+      ],
+    },
+  ],
+}`,
+  },
+  {
+    id: 6,
+    imagePath: "/resume-kyoto.jpg",
+    defaultResume: DUMMY_TECH_ORIENTED_DATA,
+    placeholder: `{
+  name: "",
+  dummyimage: "/resume-kyoto.jpg",
+  title: "",
+  phone: "",
+  email: "",
+  location: "",
+  linkedin: "",
+  github: "",
+  website: "",
+  summary: "",
+  sections: [
+    {
+      id: "experience",
+      title: "Professional Experience",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          editorHTML: "",
+        },
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "projects",
+      title: "Key Projects",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+          editorHTML: "",
+        },
+      ],
+    },
+    {
+      id: "education",
+      title: "Education",
+      items: [
+        {
+          title: "",
+          subtitle: "",
+          meta: "",
+          location: "",
+        },
+      ],
+    },
+    {
+      id: "skills",
+      title: "Skills",
+      items: [
+        {
+          title: "Backend",
+          fields: [
+            { label: "", value: "" },
+            { label: "", value: "" },
+            { label: "", value: "" },
+            { label: "" },
+            { label: "" },
+          ],
+        },
+        {
+          title: "Cloud & DevOps",
+          fields: [
+            { label: "" },
+            { label: "" },
+            { label: "" },
+            { label: "" },
+          ],
+        },
+      ],
+    },
+  ],
+}`,
+  },
+];

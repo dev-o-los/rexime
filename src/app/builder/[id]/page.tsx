@@ -22,7 +22,6 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = React.use(params);
   const { resumeData, isLoading } = useResumeSync(id);
 
-  // ✅ NEW STATES FOR MOBILE DRAWERS
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
 
@@ -37,7 +36,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
         </button>
 
         <p className="font-medium text-base truncate max-w-[55%] text-center">
-          {resumeData?.title || "Resume"}
+          {resumeData?.name || "Resume"}
         </p>
 
         <button onClick={() => setShowRight(true)}>

@@ -25,6 +25,7 @@ export type ResumeSection = {
 
 export type ResumeData = {
   name: string;
+  dummyimage: string;
   title?: string;
   summary?: string;
   phone?: string;
@@ -35,8 +36,7 @@ export type ResumeData = {
   location?: string;
   nationality?: string;
   languages?: string[];
-  skillsBerlin?: string[];
-  sections?: ResumeSection[];
+  sections: ResumeSection[];
 };
 
 export type SectionFields = {

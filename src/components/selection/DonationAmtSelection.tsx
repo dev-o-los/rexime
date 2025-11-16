@@ -17,6 +17,7 @@ export default function DonationAmountSelection() {
     { value: "4", label: "$10", amount: 10 },
     { value: "5", label: "$20", amount: 20 },
     { value: "6", label: "$50", amount: 50 },
+    { value: "7", label: "$0.10", amount: 0.1 },
   ];
 
   return (

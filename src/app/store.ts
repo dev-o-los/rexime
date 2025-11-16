@@ -1,10 +1,14 @@
 import { DUMMY_STANDARD_DATA } from "@/lib/constants";
 import type { ResumeData } from "@/lib/resume-types";
 import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 
 export const openSignUpDialogAtom = atom(false);
 export const openCustomEditorAtom = atom(false);
-export const isEditedResumeAtom = atom(false);
+export const isEditedResumeAtom = atomWithStorage<boolean>(
+  "isEditedResume",
+  false
+);
 export const resumeAtom = atom<ResumeData>(DUMMY_STANDARD_DATA);
 export const resumeShowCaseIdxAtom = atom<number>(0);
 export const selectedFontAtom = atom<string | null>(null);

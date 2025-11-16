@@ -4,20 +4,13 @@ import {
   resumeAtom,
   resumeShowCaseIdxAtom,
 } from "@/app/store";
-import {
-  DUMMY_AMSTERDAM_DATA,
-  DUMMY_BERLIN_DATA,
-  DUMMY_MODERN_CORPORATE_DATA,
-  DUMMY_STANDARD_DATA,
-  DUMMY_STUDENT_ENTRY_DATA,
-  DUMMY_TECH_ORIENTED_DATA,
-  DUMMY_TIMELINE_DATA,
-} from "@/lib/constants";
+import { resumes } from "@/lib/constants";
+import { mergeResumes } from "@/lib/mergeResumes";
 import { ResumeData } from "@/lib/resume-types";
 import { updateResume } from "@/lib/supabase/createResume";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import Image from "next/image";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect } from "react";
 import { GrTemplate } from "react-icons/gr";
 import { ResumeHeading } from "../left-section/ResumeHeading";
 
@@ -48,34 +41,27 @@ function ResumeImage({
 
 export default function TemplateSelector({ id }: { id: string }) {
   const [index, setIdx] = useAtom(resumeShowCaseIdxAtom);
-  const setResumeData = useSetAtom(resumeAtom);
+  const [resume, setResumeData] = useAtom(resumeAtom);
   const isEditedResume = useAtomValue(isEditedResumeAtom);
-  const images = [
-    { imagePath: "/resume-simple.png", defaultResume: DUMMY_STANDARD_DATA },
-    { imagePath: "/resume-berlin.jpg", defaultResume: DUMMY_BERLIN_DATA },
-    { imagePath: "/resume-timeline.png", defaultResume: DUMMY_TIMELINE_DATA },
-    { imagePath: "/resume-amsterdam.jpg", defaultResume: DUMMY_AMSTERDAM_DATA },
-    {
-      imagePath: "/resume-aetherfall.png",
-      defaultResume: DUMMY_MODERN_CORPORATE_DATA,
-    },
-    {
-      imagePath: "/resume-lumora.png",
-      defaultResume: DUMMY_STUDENT_ENTRY_DATA,
-    },
-    {
-      imagePath: "/resume-kyoto.jpg",
-      defaultResume: DUMMY_TECH_ORIENTED_DATA,
-    },
-  ];
 
-  const handleClick = async (index: number, resume: ResumeData) => {
+  useEffect(() => {
+    const index = resumes.findIndex(
+      (item) => item.imagePath === resume.dummyimage
+    );
+
+    setIdx(index === -1 ? 0 : index);
+  }, []);
+
+  const handleClick = async (index: number, newResume: ResumeData) => {
     if (!isEditedResume) {
-      setResumeData(resume);
+      setResumeData(newResume);
+    } else {
+      const mergeResume = mergeResumes(resume, newResume);
+      setResumeData(mergeResume);
     }
     setIdx(index);
     await updateResume(id, {
-      image: images[index].imagePath,
+      image: resumes[index].imagePath,
     });
   };
 
@@ -87,7 +73,7 @@ export default function TemplateSelector({ id }: { id: string }) {
         showMore={false}
       />
       <div className="grid grid-cols-2 gap-3">
-        {images.map((data, key) => (
+        {resumes.map((data, key) => (
           <ResumeImage
             isSel={index == key}
             key={key}
