@@ -13,6 +13,7 @@ import {
   DUMMY_TECH_ORIENTED_DATA,
   DUMMY_TIMELINE_DATA,
 } from "@/lib/constants";
+import { mergeResumes } from "@/lib/mergeResumes";
 import { ResumeData } from "@/lib/resume-types";
 import { updateResume } from "@/lib/supabase/createResume";
 import { useAtom, useAtomValue } from "jotai";
@@ -78,9 +79,12 @@ export default function TemplateSelector({ id }: { id: string }) {
     },
   ];
 
-  const handleClick = async (index: number, resume: ResumeData) => {
+  const handleClick = async (index: number, newResume: ResumeData) => {
     if (!isEditedResume) {
-      setResumeData(resume);
+      setResumeData(newResume);
+    } else {
+      const mergeResume = mergeResumes(resume, newResume);
+      setResumeData(mergeResume);
     }
     setIdx(index);
     await updateResume(id, {

@@ -36,8 +36,7 @@ export type ResumeData = {
   location?: string;
   nationality?: string;
   languages?: string[];
-  skillsBerlin?: string[];
-  sections?: ResumeSection[];
+  sections: ResumeSection[];
 };
 
 export type SectionFields = {
