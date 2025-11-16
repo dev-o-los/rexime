@@ -1,5 +1,5 @@
 "use client";
-import { resumeAtom } from "@/app/store";
+import { resumeAtom, resumeShowCaseIdxAtom } from "@/app/store";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -7,8 +7,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { resumes } from "@/lib/constants";
 import { ResumeData } from "@/lib/resume-types";
-import { useSetAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useRef, useState } from "react";
 import { RiAiGenerate2 } from "react-icons/ri";
 import { SpinnerInfinity } from "spinners-react";
@@ -19,6 +20,7 @@ export default function AIGenerateDialog() {
   const [isLoading, setisLoading] = useState(false);
   const textRef = useRef<HTMLTextAreaElement>(null);
   const setResumeData = useSetAtom(resumeAtom);
+  const index = useAtomValue(resumeShowCaseIdxAtom);
   const [isOpen, setisOpen] = useState(false);
 
   const handleClick = async () => {
@@ -32,7 +34,10 @@ export default function AIGenerateDialog() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userMessage: textRef.current?.value.trim() }),
+        body: JSON.stringify({
+          userMessage: textRef.current?.value.trim(),
+          template: resumes[index].placeholder,
+        }),
       });
 
       if (!res.ok) {
@@ -56,7 +61,7 @@ export default function AIGenerateDialog() {
       setisLoading(false);
     }
   };
-  // My name is Utkarsh Bhardwaj, and I’m currently pursuing a Bachelor’s degree in Computer Science, graduating in 2027. I specialize in modern web development using React, TypeScript, Next.js, Tailwind CSS, Firebase, and Supabase, and I’ve built several real-world projects including Alpha Omega (a minimal social media app), Rexime (an AI-powered resume builder), and multiple Flutter-based apps like Ace Expens and Project 51. I’m passionate about building clean, scalable user interfaces and solving real problems through technology. I’m actively looking for a Web Developer or Frontend Developer role where I can grow and contribute to impactful products. You can reach me at utkarshbhardwaj@email.com
+
   return (
     <Dialog open={isOpen} onOpenChange={setisOpen}>
       <DialogTrigger asChild>

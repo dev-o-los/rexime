@@ -8,7 +8,7 @@ const openai = new OpenAI({
 
 export async function POST(req: NextRequest) {
   try {
-    const { userMessage } = await req.json();
+    const { userMessage, template } = await req.json();
 
     const completion = await openai.chat.completions.create({
       model: process.env.OPENAI_API_PROVIDER!,
@@ -30,78 +30,7 @@ Requirements:
 - OUTPUT ONLY the final resume JSON — no explanations, no markdown, no extra text.
 - STRICTLY follow this template:
 
-{
-  "name": "",
-  "dummyimage": "/resume-simple.png",
-  "phone": "",
-  "email": "",
-  "linkedin": "",
-  "summary": "",
-  "sections": [
-    {
-      "id": "education",
-      "title": "Education",
-      "displayOrder": 1,
-      "items": [
-        {
-          "title": "",
-          "subtitle": "",
-          "meta": "",
-          "gpa": "",
-          "editorHTML": ""
-        }
-      ]
-    },
-    {
-      "id": "experience",
-      "title": "Experience",
-      "displayOrder": 2,
-      "items": [
-        {
-          "title": "",
-          "subtitle": "",
-          "meta": "",
-          "location": "",
-          "editorHTML": ""
-        }
-      ]
-    },
-    {
-      "id": "projects",
-      "title": "Projects",
-      "displayOrder": 3,
-      "items": [
-        {
-          "title": "",
-          "meta": "",
-          "website": "",
-          "subtitle": "",
-          "editorHTML": ""
-        }
-      ]
-    },
-    {
-      "id": "achievements",
-      "title": "Achievements",
-      "displayOrder": 4,
-      "items": [
-        {
-          "editorHTML": ""
-        }
-      ]
-    },
-    {
-      "id": "skills",
-      "title": "Skills",
-      "displayOrder": 5,
-      "items": [
-        {
-          "editorHTML": ""
-        }
-      ]
-    }
-  ]
-}
+${template}
 
 Here is the userdata to build the resume from (may be partial; fill missing pieces yourself):
 ${userMessage}
@@ -109,7 +38,7 @@ ${userMessage}
         },
         {
           role: "user",
-          content: `Generate the final JSON now for this provided data ${userMessage}`,
+          content: `Generate the final JSON now for this provided data ${userMessage} based on the template provided: ${template}`,
         },
       ],
     });
