@@ -27,6 +27,15 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
+import {
+  Sheet,
+  SheetClose,
+  SheetDescription,
+  SheetHeader,
+  SheetPopup,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
 import { toastManager } from "../ui/toast";
 import { TiltCard } from "./TiltCard";
 
@@ -91,45 +100,103 @@ export default function ResumeCard({ resume }: { resume: Resume }) {
 
   return (
     <div>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <div>
-            <TiltCard imageUrl={resume.image}>
-              <h1
-                className={`text-center text-3xl max-w-[200px] text-ellipsis line-clamp-2 font-semibold ${ibmplexmono.className}`}
+      {isMobile ? (
+        <Sheet>
+          <SheetTrigger className="w-full">
+            <div>
+              <TiltCard imageUrl={resume.image}>
+                <h1
+                  className={`text-center text-3xl max-w-[200px] text-ellipsis line-clamp-2 font-semibold ${ibmplexmono.className}`}
+                >
+                  {resume.title}
+                </h1>
+              </TiltCard>
+            </div>
+          </SheetTrigger>
+          <SheetPopup side="bottom" inset className="rounded-t-3xl">
+            <SheetHeader>
+              <SheetTitle>Options</SheetTitle>
+              <SheetDescription>
+                Make changes to your resume here
+              </SheetDescription>
+
+              <Button
+                className="mt-7 h-12"
+                variant="secondary"
+                onClick={handleResumeEdit}
               >
-                {resume.title}
-              </h1>
-            </TiltCard>
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent
-          side="right"
-          align="end"
-          sideOffset={isMobile ? -200 : -100}
-          alignOffset={isMobile ? 0 : -45}
-        >
-          <DropdownMenuItem onClick={handleResumeEdit}>
-            <VscEdit size={16} className="opacity-60" aria-hidden="true" />
-            Edit Resume
-          </DropdownMenuItem>
+                <VscEdit size={16} className="opacity-60" aria-hidden="true" />
+                Edit Resume
+              </Button>
+              <SheetClose className="w-full">
+                <Button
+                  className="h-12 w-full"
+                  variant="secondary"
+                  onClick={handleEditTitle}
+                >
+                  <VscEdit
+                    size={16}
+                    className="opacity-60"
+                    aria-hidden="true"
+                  />
+                  Edit Title
+                </Button>
+              </SheetClose>
+              <Button
+                className="h-12"
+                variant="destructive"
+                onClick={handleDelete}
+              >
+                <MdOutlineRemoveCircleOutline size={16} aria-hidden="true" />
+                Delete Resume
+              </Button>
+            </SheetHeader>
+          </SheetPopup>
+        </Sheet>
+      ) : (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div>
+              <TiltCard imageUrl={resume.image}>
+                <h1
+                  className={`text-center text-3xl max-w-[200px] text-ellipsis line-clamp-2 font-semibold ${ibmplexmono.className}`}
+                >
+                  {resume.title}
+                </h1>
+              </TiltCard>
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            side="right"
+            align="end"
+            sideOffset={isMobile ? -200 : -100}
+            alignOffset={isMobile ? 0 : -45}
+          >
+            <DropdownMenuItem onClick={handleResumeEdit}>
+              <VscEdit size={16} className="opacity-60" aria-hidden="true" />
+              Edit Resume
+            </DropdownMenuItem>
 
-          <DropdownMenuItem onClick={handleEditTitle}>
-            <VscEdit size={16} className="opacity-60" aria-hidden="true" />
-            Edit Title
-          </DropdownMenuItem>
+            <DropdownMenuItem onClick={handleEditTitle}>
+              <VscEdit size={16} className="opacity-60" aria-hidden="true" />
+              Edit Title
+            </DropdownMenuItem>
 
-          <DropdownMenuItem className="text-destructive" onClick={handleDelete}>
-            <MdOutlineRemoveCircleOutline
-              size={16}
-              color="red"
-              className="opacity-60"
-              aria-hidden="true"
-            />
-            Delete
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+            <DropdownMenuItem
+              className="text-destructive"
+              onClick={handleDelete}
+            >
+              <MdOutlineRemoveCircleOutline
+                size={16}
+                color="red"
+                className="opacity-60"
+                aria-hidden="true"
+              />
+              Delete
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[400px]">
