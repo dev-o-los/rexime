@@ -7,6 +7,7 @@ import { useState } from "react";
 import { SaveChangesBtn } from "../buttons/SaveChangesBtn";
 import TiptapEditor from "../editor/TiptapEditor";
 import { DialogField } from "../inputs/DialogField";
+import { Button } from "../ui/button";
 import { Form } from "../ui/form";
 
 type OptinalFieldData = {
@@ -26,7 +27,8 @@ export default function DialogForm({
   index?: number;
 }) {
   const [editorHtml, seteditorHtml] = useState("");
-  const { updateSectionItem, addSectionItem } = useUpdateResume();
+  const { updateSectionItem, addSectionItem, deleteSectionItem } =
+    useUpdateResume();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -91,7 +93,19 @@ export default function DialogForm({
         onContentChange={(content) => seteditorHtml(content)}
         content={entry?.editorHTML}
       />
-      <SaveChangesBtn />
+      <div className="text-end mt-3">
+        {index != undefined && (
+          <Button
+            type="button"
+            className="mr-3"
+            variant="destructive"
+            onClick={() => deleteSectionItem(id, index)}
+          >
+            Delete item
+          </Button>
+        )}
+        <SaveChangesBtn />
+      </div>
     </Form>
   );
 }

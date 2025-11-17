@@ -39,7 +39,9 @@ export function ResumeCardEntryForm() {
         placeholder={"Google, Meta, X"}
         name="resume-title"
       />
-      <SaveChangesBtn />
+      <div className="text-end">
+        <SaveChangesBtn />
+      </div>
     </Form>
   );
 }

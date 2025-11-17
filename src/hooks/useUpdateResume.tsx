@@ -127,6 +127,22 @@ export const useUpdateResume = (field?: keyof ResumeData) => {
     });
   };
 
+  const deleteSectionItem = (sectionId: string, itemIndex: number) => {
+    setResumeData((prev) => {
+      const updatedSections = (prev.sections ?? []).map((section) => {
+        if (section.id !== sectionId) return section;
+
+        const filteredItems = section.items.filter(
+          (_, idx) => idx !== itemIndex
+        );
+
+        return { ...section, items: filteredItems };
+      });
+
+      return { ...prev, sections: updatedSections };
+    });
+  };
+
   return {
     resumeData,
     handleChange,
@@ -135,5 +151,6 @@ export const useUpdateResume = (field?: keyof ResumeData) => {
     addFieldToResumeEntry,
     updateFieldInResumeEntry,
     updateSectionItem,
+    deleteSectionItem,
   };
 };

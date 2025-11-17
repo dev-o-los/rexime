@@ -81,7 +81,7 @@ export default function AddOrEditItemDialog({
             id={id}
           />
         ) : (
-          <DialogForm data={data} entry={entry} id={id} index={fIndex} />
+          <DialogForm data={data} entry={entry} id={id} index={index} />
         )}
       </DialogContent>
     </Dialog>
