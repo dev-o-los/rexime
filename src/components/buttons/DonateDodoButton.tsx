@@ -32,7 +32,7 @@ export default function DonateDodoButton({
       return;
     }
 
-    const name = (user.user_metadata?.full_name as string) ?? "Username";
+    const name = (user.user_metadata?.full_name as string) ?? "Full name";
 
     const response = await fetch("/api/checkout", {
       method: "POST",
