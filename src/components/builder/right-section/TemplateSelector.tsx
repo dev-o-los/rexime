@@ -41,8 +41,6 @@ export default function TemplateSelector({ id }: { id: string }) {
   const [editedIds] = useAtom(resumeEditAtom);
   const isEditedResume = editedIds.includes(id);
 
-  console.log(isEditedResume);
-
   useEffect(() => {
     const index = resumes.findIndex(
       (item) => item.imagePath === resume.dummyimage

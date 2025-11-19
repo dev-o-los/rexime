@@ -14,7 +14,6 @@ export default function FormTextArea({ content }: { content: string }) {
       <TiptapEditor
         content={content}
         onContentChange={(newContent: string) => {
-          // console.log(newContent);//! fix later
           if (newContent !== content) {
             handleChange(newContent);
           }

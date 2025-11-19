@@ -306,7 +306,7 @@ export const DUMMY_AMSTERDAM_DATA: ResumeData = {
   email: "wes.turner@gmail.com",
   location: "8765 Arbean Lane\nBoulder, CO 80302\nUnited States",
   summary:
-    "Experienced and self-motivated Sales Manager with five years of industry experience overseeing sales figures and new account development. Bringing forth a proven track record of working collaboratively with sales teams to achieve goals, increase revenue gains, and advance the sales cycle of the company. A strong leader with the ability to increase sales and develop strategies to retain customers.",
+    "<p>Experienced and self-motivated Sales Manager with five years of industry experience overseeing sales figures and new account development. Bringing forth a proven track record of working collaboratively with sales teams to achieve goals, increase revenue gains, and advance the sales cycle of the company. A strong leader with the ability to increase sales and develop strategies to retain customers.</p>",
   sections: [
     {
       id: "skills",
@@ -397,7 +397,7 @@ export const DUMMY_MODERN_CORPORATE_DATA: ResumeData = {
   location: "Chicago, IL",
   linkedin: "linkedin.com/in/alexandravance",
   summary:
-    "Seasoned operations executive with 15 years of experience optimizing global business processes and leading high-stakes strategic initiatives. Proven ability to drive efficiency, manage complex budgets, and foster cross-functional collaboration at the executive level.",
+    "<p>Seasoned operations executive with 15 years of experience optimizing global business processes and leading high-stakes strategic initiatives. Proven ability to drive efficiency, manage complex budgets, and foster cross-functional collaboration at the executive level.</p>",
   sections: [
     {
       id: "experience",
@@ -465,7 +465,7 @@ export const DUMMY_STUDENT_ENTRY_DATA: ResumeData = {
   linkedin: "linkedin.com/in/mariarodriguez",
   github: "github.com/mariacodes",
   summary:
-    "Motivated Computer Science student with a strong foundation in data structures and algorithms, seeking a challenging internship to apply theoretical knowledge in a professional environment. Proven ability to quickly master new technologies.",
+    "<p>Motivated Computer Science student with a strong foundation in data structures and algorithms, seeking a challenging internship to apply theoretical knowledge in a professional environment. Proven ability to quickly master new technologies.</p>",
   sections: [
     {
       id: "education",
@@ -553,7 +553,7 @@ export const DUMMY_TECH_ORIENTED_DATA: ResumeData = {
   github: "github.com/kenjidev",
   website: "kenjitanaka.io",
   summary:
-    "Experienced Full Stack Engineer specializing in robust, scalable systems using modern cloud infrastructure. Four years of professional experience driving deployment and automation initiatives in high-traffic production environments.",
+    "<p>Experienced Full Stack Engineer specializing in robust, scalable systems using modern cloud infrastructure. Four years of professional experience driving deployment and automation initiatives in high-traffic production environments.</p>",
   sections: [
     {
       id: "experience",
