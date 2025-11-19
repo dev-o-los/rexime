@@ -12,8 +12,12 @@ export default function FormTextArea({ content }: { content: string }) {
     <div className="summary">
       <ResumeHeading heading="Summary" icon={<BsTextParagraph />} />
       <TiptapEditor
-        content={content ?? ""}
-        onContentChange={(content: string) => handleChange(content)}
+        content={content}
+        onContentChange={(newContent: string) => {
+          if (newContent !== content) {
+            handleChange(newContent);
+          }
+        }}
       />
     </div>
   );

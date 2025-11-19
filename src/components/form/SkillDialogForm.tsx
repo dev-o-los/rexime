@@ -50,7 +50,9 @@ export function SkillDialogForm({
       />
       <SkillSlider level={Number(skill?.value ?? 0)} onValueChange={setlevel} />
       {/* <InputWithTags /> */}
-      <SaveChangesBtn />
+      <div className="text-end">
+        <SaveChangesBtn />
+      </div>
     </Form>
   );
 }

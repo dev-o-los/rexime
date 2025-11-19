@@ -9,6 +9,7 @@ const validator = z.object({
   id: z.string().uuid(),
   productId: z.string(),
   amt: z.number(),
+  name: z.string(),
 });
 
 export const POST = async (request: NextRequest) => {
@@ -18,20 +19,20 @@ export const POST = async (request: NextRequest) => {
     "US") as CountryCode;
 
   if (parser.success) {
-    const { email, productId, id, amt } = parser.data;
+    const { email, productId, id, amt, name } = parser.data;
 
     try {
       const payment = await dodopayments.payments.create({
         billing: {
-          city: "",
+          city: "city",
           country: country_code,
-          state: "",
-          street: "",
-          zipcode: "",
+          state: "state",
+          street: "street",
+          zipcode: "zipcode",
         },
         customer: {
           email: email,
-          name: "",
+          name: name,
         },
         metadata: {
           supabaseid: id,

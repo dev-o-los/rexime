@@ -1,4 +1,4 @@
-import { isEditedResumeAtom, resumeAtom } from "@/app/store";
+import { resumeAtom, resumeEditAtom } from "@/app/store";
 import {
   ResumeData,
   ResumeEntry,
@@ -6,11 +6,17 @@ import {
   ResumeSection,
 } from "@/lib/resume-types";
 import { useAtom } from "jotai";
+import { useParams } from "next/navigation";
 import React from "react";
 
 export const useUpdateResume = (field?: keyof ResumeData) => {
   const [resumeData, setResumeData] = useAtom(resumeAtom);
-  const [isEditedResume, setIsEditedResume] = useAtom(isEditedResumeAtom);
+
+  const params = useParams();
+  const resumeId = params.id as string;
+
+  const [editedIds, setEdited] = useAtom(resumeEditAtom);
+  const isEditedResume = editedIds.includes(resumeId);
 
   // Generic handler for top-level text fields
   const handleChange = (
@@ -19,7 +25,7 @@ export const useUpdateResume = (field?: keyof ResumeData) => {
     const value = typeof e === "string" ? e : e.target.value;
     if (!field) return;
 
-    if (!isEditedResume) setIsEditedResume(true);
+    if (!isEditedResume) setEdited(resumeId);
 
     setResumeData((prev) => ({
       ...prev,
@@ -127,6 +133,22 @@ export const useUpdateResume = (field?: keyof ResumeData) => {
     });
   };
 
+  const deleteSectionItem = (sectionId: string, itemIndex: number) => {
+    setResumeData((prev) => {
+      const updatedSections = (prev.sections ?? []).map((section) => {
+        if (section.id !== sectionId) return section;
+
+        const filteredItems = section.items.filter(
+          (_, idx) => idx !== itemIndex
+        );
+
+        return { ...section, items: filteredItems };
+      });
+
+      return { ...prev, sections: updatedSections };
+    });
+  };
+
   return {
     resumeData,
     handleChange,
@@ -135,5 +157,6 @@ export const useUpdateResume = (field?: keyof ResumeData) => {
     addFieldToResumeEntry,
     updateFieldInResumeEntry,
     updateSectionItem,
+    deleteSectionItem,
   };
 };

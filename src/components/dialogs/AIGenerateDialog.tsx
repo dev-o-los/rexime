@@ -1,5 +1,5 @@
 "use client";
-import { resumeAtom, resumeShowCaseIdxAtom } from "@/app/store";
+import { resumeAtom, resumeEditAtom, resumeShowCaseIdxAtom } from "@/app/store";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,7 +9,8 @@ import {
 } from "@/components/ui/dialog";
 import { resumes } from "@/lib/constants";
 import { ResumeData } from "@/lib/resume-types";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useParams } from "next/navigation";
 import { useRef, useState } from "react";
 import { RiAiGenerate2 } from "react-icons/ri";
 import { SpinnerInfinity } from "spinners-react";
@@ -23,6 +24,11 @@ export default function AIGenerateDialog() {
   const index = useAtomValue(resumeShowCaseIdxAtom);
   const [isOpen, setisOpen] = useState(false);
 
+  const params = useParams();
+  const resumeId = params.id as string;
+
+  const [editedIds, setIsEditedResume] = useAtom(resumeEditAtom);
+  const isEditedResume = editedIds.includes(resumeId);
   const handleClick = async () => {
     try {
       setisLoading(true);
@@ -46,10 +52,9 @@ export default function AIGenerateDialog() {
       }
       const data = await res.json();
       const aiResumeData = data.reply as ResumeData;
-      // console.log(aiResumeData);
-      setResumeData(aiResumeData);
 
-      setisOpen(false);
+      setResumeData(aiResumeData);
+      if (!isEditedResume) setIsEditedResume(resumeId);
     } catch (error) {
       toastManager.add({
         title: (error as Error).message,
@@ -57,6 +62,7 @@ export default function AIGenerateDialog() {
       });
     } finally {
       setisLoading(false);
+      setisOpen(false);
     }
   };
 

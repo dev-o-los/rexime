@@ -1,14 +1,10 @@
 "use client";
-import {
-  isEditedResumeAtom,
-  resumeAtom,
-  resumeShowCaseIdxAtom,
-} from "@/app/store";
+import { resumeAtom, resumeEditAtom, resumeShowCaseIdxAtom } from "@/app/store";
 import { resumes } from "@/lib/constants";
 import { mergeResumes } from "@/lib/mergeResumes";
 import { ResumeData } from "@/lib/resume-types";
 import { updateResume } from "@/lib/supabase/createResume";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom } from "jotai";
 import Image from "next/image";
 import { MouseEventHandler, useEffect } from "react";
 import { GrTemplate } from "react-icons/gr";
@@ -42,7 +38,8 @@ function ResumeImage({
 export default function TemplateSelector({ id }: { id: string }) {
   const [index, setIdx] = useAtom(resumeShowCaseIdxAtom);
   const [resume, setResumeData] = useAtom(resumeAtom);
-  const isEditedResume = useAtomValue(isEditedResumeAtom);
+  const [editedIds] = useAtom(resumeEditAtom);
+  const isEditedResume = editedIds.includes(id);
 
   useEffect(() => {
     const index = resumes.findIndex(

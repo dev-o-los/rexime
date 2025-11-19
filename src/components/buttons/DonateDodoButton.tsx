@@ -26,11 +26,13 @@ export default function DonateDodoButton({
     if (!user) {
       toastManager.add({
         title: "User Error",
-        description: "No user id found",
+        description: "Please login before donating",
         type: "error",
       });
       return;
     }
+
+    const name = (user.user_metadata?.full_name as string) ?? "Full name";
 
     const response = await fetch("/api/checkout", {
       method: "POST",
@@ -40,8 +42,9 @@ export default function DonateDodoButton({
       body: JSON.stringify({
         email: user.email,
         productId: product,
-        id: user.id, //"0ca17b23-e0a7-4de6-8aa8-b35ce275abf9",
+        id: user.id,
         amt: donationAmt * 100,
+        name: name,
       }),
     });
 

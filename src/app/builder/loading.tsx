@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { SpinnerDotted } from "spinners-react";
 import { ibmplexmono } from "../fonts";
 
-const LoadingPage = () => {
+export default function Loading() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -30,6 +30,4 @@ const LoadingPage = () => {
       <span className="mt-7">Loading editor, please wait...</span>
     </div>
   );
-};
-
-export default LoadingPage;
+}

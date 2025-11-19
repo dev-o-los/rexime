@@ -16,7 +16,7 @@ import { CiPalette } from "react-icons/ci";
 import { GoTypography } from "react-icons/go";
 import { LuPanelLeft, LuPanelRight } from "react-icons/lu";
 import { MdClose } from "react-icons/md";
-import LoadingPage from "../LoadingPage";
+import Loading from "../loading";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = React.use(params);
@@ -25,7 +25,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const [showLeft, setShowLeft] = useState(false);
   const [showRight, setShowRight] = useState(false);
 
-  if (isLoading || !resumeData) return <LoadingPage />;
+  if (isLoading || !resumeData) return <Loading />;
 
   return (
     <div className="flex h-screen w-full overflow-hidden relative">
