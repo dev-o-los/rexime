@@ -35,7 +35,7 @@ export function ResumeSection({
 
   return (
     <div>
-      <ResumeHeading heading={heading} icon={icon} />
+      <ResumeHeading heading={heading} icon={icon} id={id} />
       {(isEditorOpen && id === "skills") || id === "achievements" ? (
         <TiptapEditor
           onContentChange={(content) =>
@@ -47,31 +47,14 @@ export function ResumeSection({
         <SkillCollapsible items={entries} id={id} />
       ) : (
         <div>
-          {
-            // isDiffDialog(id)
-            //   ? entries.map((entry, key) => (
-            //       <div key={key}>
-            //         {entry.fields?.map((entryFields, index) => (
-            //           <AddOrEditItemDialog
-            //             index={index}
-            //             entry={entry}
-            //             entryFields={entryFields}
-            //             key={key}
-            //             id={id}
-            //           />
-            //         ))}
-            //       </div>
-            //     ))
-
-            entries.map((entry, index) => (
-              <AddOrEditItemDialog
-                index={index}
-                entry={entry}
-                key={index}
-                id={id}
-              />
-            ))
-          }
+          {entries.map((entry, index) => (
+            <AddOrEditItemDialog
+              index={index}
+              entry={entry}
+              key={index}
+              id={id}
+            />
+          ))}
           <div className="mb-5"></div>
           {isDiffDialog(id) ? <SkillDialog /> : <AddOrEditItemDialog id={id} />}
         </div>

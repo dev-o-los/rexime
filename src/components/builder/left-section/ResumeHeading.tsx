@@ -7,11 +7,13 @@ export function ResumeHeading({
   icon,
   showMore = true,
   extraBtn,
+  id,
 }: {
   heading: string;
   icon: React.ReactElement;
   extraBtn?: React.ReactElement;
   showMore?: boolean;
+  id?: string;
 }) {
   return (
     <div className="flex items-center mb-4 mt-2 justify-between">
@@ -19,7 +21,7 @@ export function ResumeHeading({
         <div className="text-xl">{icon}</div>
         <h1 className="text-3xl font-semibold">{heading}</h1>
       </div>
-      {showMore && <FormHeadingMoreBtn />}
+      {showMore && <FormHeadingMoreBtn id={id} />}
       {extraBtn}
     </div>
   );

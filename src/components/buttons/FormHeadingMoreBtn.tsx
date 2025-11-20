@@ -13,8 +13,10 @@ import { CgMoreVertical } from "react-icons/cg";
 import { MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { VscEdit, VscEditorLayout } from "react-icons/vsc";
 
-export default function FormHeadingMoreBtn() {
+export default function FormHeadingMoreBtn({ id }: { id?: string }) {
   const [editorIsOpen, setEditorOpen] = useAtom(openCustomEditorAtom);
+
+  const disabled = id !== "skills";
 
   return (
     <DropdownMenu>
@@ -29,6 +31,7 @@ export default function FormHeadingMoreBtn() {
           Edit Heading
         </DropdownMenuItem>
         <DropdownMenuItem
+          disabled={disabled}
           onClick={() => {
             setEditorOpen(!editorIsOpen);
           }}
