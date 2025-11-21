@@ -21,40 +21,47 @@ export default function DonateDodoButton({
   const donationAmt = useAtomValue(selectedDonationAmountAtom);
 
   const handlePayClick = async (product: string) => {
-    const user = await getUser();
+    try {
+      const user = await getUser();
 
-    if (!user) {
-      toastManager.add({
-        title: "User Error",
-        description: "Please login before donating",
-        type: "error",
+      if (!user) {
+        toastManager.add({
+          title: "User Error",
+          description: "Please login before donating",
+          type: "error",
+        });
+        return;
+      }
+
+      const name = (user.user_metadata?.full_name as string) ?? "Anon name";
+
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: user.email,
+          productId: product,
+          id: user.id,
+          amt: donationAmt * 100,
+          name: name,
+        }),
       });
-      return;
-    }
+      console.log(response);
 
-    const name = (user.user_metadata?.full_name as string) ?? "Full name";
+      if (!response.ok) {
+        throw new Error("Failed to initiate checkout");
+      }
 
-    const response = await fetch("/api/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: user.email,
-        productId: product,
-        id: user.id,
-        amt: donationAmt * 100,
-        name: name,
-      }),
-    });
-
-    const body = (await response.json()) as PaymentCreateResponse;
-
-    if (body.payment_link) {
-      router.push(body.payment_link);
-    } else {
+      const body = (await response.json()) as PaymentCreateResponse;
+      if (body.payment_link) {
+        router.push(body.payment_link);
+      }
+    } catch (error) {
       toastManager.add({
         title: "Something went wrong",
+        description: (error as Error).message,
         type: "error",
       });
     }
