@@ -8,15 +8,25 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL ?? "https://rexime.vercel.app"),
+
   title: {
     default:
-      "Rexime — Modern Resume Builder | Create ATS-Friendly Professional Resumes Online",
+      "Rexime – Modern Resume Builder | Create ATS-Friendly Resumes Online",
     template: "%s | Rexime",
   },
 
   description:
-    "Build a job-winning resume in minutes with Rexime. Fully customizable, modern templates, ATS-friendly formatting, real-time editing, and instant PDF download. No login required.",
+    "Rexime is a modern and fast online resume builder that helps you create ATS-friendly, professional resumes in minutes. Choose from clean templates, edit in real time, and download instantly — no login required.",
+
   keywords: [
+    // Strong brand keywords
+    "rexime resume builder",
+    "rexime cv builder",
+    "rexime online resume maker",
+    "rexime ats resume",
+    "rexime resume generator",
+
+    // Resume keywords
     "resume builder",
     "create resume online",
     "ATS resume checker",
@@ -27,28 +37,30 @@ export const metadata: Metadata = {
     "job application resume",
     "resume generator",
     "best resume format",
-    "software engineer resume builder",
     "freshers resume builder",
-    "one page resume",
-    "minimal resume design",
-    "no watermark resume builder",
+    "software engineer resume builder",
   ],
+
   authors: [{ name: "Utkarsh" }],
   creator: "Rexime",
   publisher: "Rexime",
+
   alternates: {
     canonical: process.env.SITE_URL,
   },
+
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+
   openGraph: {
-    title: "Rexime — Create Job-Winning, ATS-Friendly Resumes in Minutes",
+    title: "Rexime – Create Job-Winning, ATS-Friendly Resumes in Minutes",
     description:
-      "Stand out in interviews with sleek, modern resume templates. Edit live, customize easily, and download instantly. No account required.",
+      "Build elegant, ATS-ready resumes with Rexime. Edit live, customize easily, and download instantly. No login required.",
     url: process.env.SITE_URL,
     siteName: "Rexime Resume Builder",
+
     images: [
       {
         url: `${process.env.SITE_URL}/og-image.png`,
@@ -57,15 +69,18 @@ export const metadata: Metadata = {
         alt: "Rexime Resume Builder Preview",
       },
     ],
+
     locale: "en_US",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Build Your Resume Online — Rexime Resume Builder",
+    title: "Rexime – Modern Online Resume Builder",
     description:
-      "Create a clean, ATS-ready resume with modern templates. Real-time editing. Instant downloads. No sign-up required.",
+      "Create a clean, ATS-friendly resume in minutes with Rexime. Real-time editing, professional templates, and instant PDF downloads.",
     images: [`${process.env.SITE_URL}/og-image.png`],
+    creator: "@utkarshdev_",
   },
 };
 
@@ -77,6 +92,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta
+          name="google-site-verification"
+          content="beOb8EHGtM_t7mW3kofi6jec_DNOWWwlFZqYAy6dg94"
+        />
+        {/* JSON-LD for SEO */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -93,9 +113,11 @@ export default function RootLayout({
             },
             url: process.env.SITE_URL,
             image: `${process.env.SITE_URL}/og-image.png`,
+            sameAs: ["https://twitter.com/utkarshdev_"],
           })}
         </script>
       </head>
+
       <body
         className={`${geistSans.className} antialiased selection:bg-white/40 not-dark:selection:bg-black/55`}
       >
