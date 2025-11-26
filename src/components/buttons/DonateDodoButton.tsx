@@ -48,7 +48,7 @@ export default function DonateDodoButton({
           name: name,
         }),
       });
-      console.log(response);
+      // console.log(response);
 
       if (!response.ok) {
         throw new Error("Failed to initiate checkout");
