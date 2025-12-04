@@ -115,7 +115,7 @@ export function ResumeControlBar({
       // -----------------------
       pdf.save(fileName);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       toastManager.add({
         title: "Failed to generate PDF",
         type: "error",

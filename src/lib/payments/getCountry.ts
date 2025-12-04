@@ -9,5 +9,5 @@ export async function getCountryCode(req: NextRequest): Promise<CountryCode> {
   }
 
   // fallback if header missing (e.g. local dev)
-  return "US";
+  return "IN";
 }
