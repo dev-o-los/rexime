@@ -27,7 +27,7 @@ export default function Loading() {
         color={theme === "dark" ? "white" : "black"}
       />
 
-      <span className="mt-7">Loading editor, please wait...</span>
+      <span className="mt-7">Loading builder, please wait...</span>
     </div>
   );
 }
